@@ -237,7 +237,7 @@ class DataseriesController implements GrailsConfigurationAware {
                 String mysql = modelService.getSql4_1mg (itvl, row, magnitude_id, opoint_id, year, month, dom, hour)
 
                 def sqlconn = new Sql(dataSource)
-                def n = 0
+                int n = 0
                 sqlconn.eachRow(mysql) { rr ->
                     def rrfc = [
                         isHourlyData:rr?.isHourlyData,
@@ -248,10 +248,6 @@ class DataseriesController implements GrailsConfigurationAware {
                         value24h:rr?.fc24,
                         value24hmax:rr?.fc24max
                     ]
-                    println "00 =-> ${rr?.value1}, ${rrfc.value1}"
-                    println rr
-                    println rrfc
-//                    println "isHourlyData: ${rr?.isHourlyData}, value1h: ${ rr?.value1h }, value1hmax: ${ rr?.value1hmax }, value8h: ${ rr?.value8h }, value8hmax: ${ rr?.value8hmax }, value24h: ${ rr?.value24h }, value24hmax: ${ rr?.value24hmax }"
                     outs << "${(mode=='nasa' && magnitude_schema?.nasa_name)?magnitude_schema.nasa_name:magnitude_schema?.magnitude_name?.getAt(lang)};".bytes
                     outs << "${modelService.getOpoint2(rr?.opoint_id)?.opoint_name};".bytes
                     outs << "${rr?.datetime};".split(' ').join('T').bytes
@@ -283,16 +279,16 @@ class DataseriesController implements GrailsConfigurationAware {
                         outs << "${rr?.fc24max?Math.round(rr?.fc24max*10.0)/10.0: ''};".replace('.', decimalp).bytes
                     }
                     def iqca = magnitude_schema?.IQCA?.value?.call(rr)
-                    outs << "${iqca?Math.round(iqca):''};".replace('.',decimalp).bytes
+                    outs << "${iqca?iqca:''};".replace('.',decimalp).bytes
                     if(complete) {
                         def fc_iqca = magnitude_schema?.IQCA?.value?.call(rrfc)
                         outs << "${fc_iqca?Math.round(fc_iqca):''};".replace('.', decimalp).bytes
                     }
                     def aqi = magnitude_schema?.AQI?.value?.call(rr)
-                    outs << "${aqi?Math.round(aqi):''};".replace('.',decimalp).bytes
+                    outs << "${aqi?aqi:''};".replace('.',decimalp).bytes
                     if(complete) {
                         def fc_aqi = magnitude_schema?.AQI?.value?.call(rrfc)
-                        outs << "${fc_aqi?Math.round(fc_aqi): ''}".replace('.', decimalp).bytes
+                        outs << "${fc_aqi?fc_aqi: ''}".replace('.', decimalp).bytes
                     }
                     outs << "\n"
                     n++

@@ -157,30 +157,36 @@ class ModelService {
 			4: (lang=='en')?'very unhealthy':'muy insalubre',
 			5: (lang=='en')?'hazardous':'peligroso',
 			6: (lang=='en')?'very hazardous':'muy peligroso'
-		]
-	}
-
-	def AQIcolors(Integer id) {
-		[
-			0: 'rgb(50, 205, 50)',
-			1: 'rgb(255, 255, 0)',
-			2: 'rgb(255, 165, 0)',
-			3: 'rgb(255, 0, 0)',
-			4: 'rgb(148, 0, 211)',
-			5: 'rgb(138, 0, 0)',
-			6: 'rgb(128, 0, 0)'
 		][id]
 	}
 
+	def AQIcolors =[
+		0: 'rgb(50, 205, 50)',
+		1: 'rgb(255, 255, 0)',
+		2: 'rgb(255, 165, 0)',
+		3: 'rgb(255, 0, 0)',
+		4: 'rgb(148, 0, 211)',
+		5: 'rgb(138, 0, 0)',
+		6: 'rgb(128, 0, 0)'
+	]
 
+	def getAQIcolors(Integer id) {
+		AQIcolors[id]
+	}
 
-	def IQCA_good = 0
-	def IQCA_acceptable = 1
-	def IQCA_caution = 2
-	def IQCA_alert = 3
-	def IQCA_alarm = 4
-	def IQCA_emergency = 5
-	def IQCA_very_danger = 6
+	int[] IQCAids = [0 , 1 , 2 , 3 , 4 , 5 , 6]
+
+	def IQCAname(id, lang = 'en') {
+		[
+			0: (lang == 'en') ? 'Optimus': 'Óptimo',
+			1: (lang == 'en') ? 'Acceptable': 'Aceptable',
+			2: (lang == 'en') ? 'Caution': 'Precaución',
+			3: (lang == 'en') ? 'Alert': 'Alerta',
+			4: (lang == 'en') ? 'Alarm':	'Alarma',
+			5: (lang == 'en') ? 'Emergency': 'Emergencia',
+			6: (lang == 'en') ? 'Danger': 'Peligro'
+		][id]
+	}
 
 	def IQCAcolors(Integer id) {
 		[
@@ -218,16 +224,26 @@ class ModelService {
 			],
 			IQCA: [
 				value: { prms ->
-					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
-					def result = null
-					if(d24h >= 0 && d24h < 62.5)         result =  0.80*d24h
-					else if(d24h >= 62.5 && d24h < 125)  result =  0.80*d24h
-					else if(d24h >= 125  && d24h < 200)  result =  4*d24h/3.0 -200/3.0
-					else if(d24h >= 200  && d24h < 1000) result =  0.125*d24h + 175
-					else if(d24h >= 1000 && d24h < 1800) result =  0.125*d24h + 175
-					else if(d24h >= 1800)                result =  0.125*d24h + 175
-					else result =  null
-					return result
+//					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+//					def result = null
+//					if(d24h >= 0 && d24h < 62.5)         result =  0.80*d24h
+//					else if(d24h >= 62.5 && d24h < 125)  result =  0.80*d24h
+//					else if(d24h >= 125  && d24h < 200)  result =  4*d24h/3.0 -200/3.0
+//					else if(d24h >= 200  && d24h < 1000) result =  0.125*d24h + 175
+//					else if(d24h >= 1000 && d24h < 1800) result =  0.125*d24h + 175
+//					else if(d24h >= 1800)                result =  0.125*d24h + 175
+//					else result =  null
+//					return result
+
+					Double iqca = null
+					Double C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+					if(iqca == null && C24h> 0 && C24h <= 62.5) iqca = Math.round(0.8*C24h)
+					if(iqca == null && C24h> 62.5 && C24h <= 125) iqca = Math.round(0.8*C24h)
+					if(iqca == null && C24h> 125 && C24h <= 200) iqca = Math.round((4/3)*C24h - (200/3))
+					if(iqca == null && C24h> 200 && C24h <= 1000) iqca = Math.round(0.125*C24h + 175)
+					if(iqca == null && C24h> 1000 && C24h <= 1800) iqca = Math.round(0.125*C24h + 175)
+					if(iqca == null && C24h> 1800) iqca = Math.round(0.125*C24h + 175)
+					return iqca
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es') ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA'] },
@@ -236,15 +252,26 @@ class ModelService {
 			AQI: [
 				value: {
 					prms ->
-						def d24h = (prms.isHourlyData==null || prms.isHourlyData) ? prms.value24h : prms.value24max ? prms.value24max : prms.value24h
-						if (d24h >= 0 && d24h < 91.7) return (50 / 91.7) * d24h
-						else if (d24h >= 91.7 && d24h < 196.5) return 0.47710 * d24h + 6.25
-						else if (d24h >= 196.5 && d24h < 484.7) return 0.17349 * d24h + 65.90909
-						else if (d24h >= 484.7 && d24h < 796.48) return 0.16037 * d24h + 72.26891
-						else if (d24h >= 796.48 && d24h < 1582.48) return 0.12722 * d24h + 98.66667
-						else if (d24h >= 1582.48 && d24h < 2106.48) return 0.19084 * d24h - 2
-						else if (d24h >= 2106.48 && d24h < 2630.48) return 0.19084 * d24h - 2
-						else return null
+//						def d24h = (prms.isHourlyData==null || prms.isHourlyData) ? prms.value24h : prms.value24max ? prms.value24max : prms.value24h
+//						if (d24h >= 0 && d24h < 91.7) return (50 / 91.7) * d24h
+//						else if (d24h >= 91.7 && d24h < 196.5) return 0.47710 * d24h + 6.25
+//						else if (d24h >= 196.5 && d24h < 484.7) return 0.17349 * d24h + 65.90909
+//						else if (d24h >= 484.7 && d24h < 796.48) return 0.16037 * d24h + 72.26891
+//						else if (d24h >= 796.48 && d24h < 1582.48) return 0.12722 * d24h + 98.66667
+//						else if (d24h >= 1582.48 && d24h < 2106.48) return 0.19084 * d24h - 2
+//						else if (d24h >= 2106.48 && d24h < 2630.48) return 0.19084 * d24h - 2
+//						else return null
+
+						def C24h = (prms.isHourlyData==null || prms.isHourlyData) ? prms.value24h : prms.value24max ? prms.value24max : prms.value24h
+						Double aqi= null
+						if(aqi == null && C24h> 0 && C24h <= 91.7) aqi = Math.round((50/91.7)*C24h)
+						if(aqi == null && C24h> 91.7 && C24h <= 196.5) aqi = Math.round(0.4771*C24h + 6.25)
+						if(aqi == null && C24h> 196.5 && C24h <= 484.7) aqi = Math.round(0.4771*C24h + 6,25)
+						if(aqi == null && C24h> 484.7 && C24h <= 796.48) aqi = Math.round(0.16037*C24h + 72.26891)
+						if(aqi == null && C24h> 796.48 && C24h <= 1582.48) aqi = Math.round(0.12722*C24h + 98.66667)
+						if(aqi == null && C24h> 1582.48 && C24h <= 2106.48) aqi = Math.round(0.19084*C24h - 2)
+						if(aqi == null && C24h> 2106.48) aqi = Math.round(0.19084*C24h - 2)
+						return aqi
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es') ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI'] },
@@ -274,14 +301,24 @@ class ModelService {
 			],
 			IQCA: [
 				value: { prms ->
-					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
-					if(d24h >= 0 && d24h <= 50)          return 1.0*d24h
-					else if(d24h > 50 && d24h <= 100)    return 1.0*d24h
-					else if(d24h > 100  && d24h <= 250)  return 2*d24h/3.0 + (100/3.0)
-					else if(d24h > 250  && d24h <= 400)  return 2*d24h/3.0 + (100/3.0)
-					else if(d24h > 400 && d24h <= 500)   return 1*d24h - 100
-					else if(d24h > 500)                  return 1*d24h - 100
-					else return null
+//					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+//					if(d24h >= 0 && d24h <= 50)          return 1.0*d24h
+//					else if(d24h > 50 && d24h <= 100)    return 1.0*d24h
+//					else if(d24h > 100  && d24h <= 250)  return 2*d24h/3.0 + (100/3.0)
+//					else if(d24h > 250  && d24h <= 400)  return 2*d24h/3.0 + (100/3.0)
+//					else if(d24h > 400 && d24h <= 500)   return 1*d24h - 100
+//					else if(d24h > 500)                  return 1*d24h - 100
+//					else return null
+
+					Double d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+					Double iqca = null
+					if(iqca == null && C24h> 0 && C24h <= 50) iqca = Math.round(C24h)
+					if(iqca == null && C24h> 50 && C24h <= 100) iqca = Math.round(C24h)
+					if(iqca == null && C24h> 100 && C24h <= 250) iqca = Math.round((2/3.0)*C24h+(100/3.0))
+					if(iqca == null && C24h> 250 && C24h <= 400) iqca = Math.round((2/3.0)*C24h+(100/3.0))
+					if(iqca == null && C24h> 400 && C24h <= 500) iqca = Math.round(C24h-100)
+					if(iqca == null && C24h> 500) iqca = Math.round(C24h-100)
+					return iqca
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA']) },
@@ -289,16 +326,27 @@ class ModelService {
 			],
 			AQI: [
 				value: {prms ->
-					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
-					if(d24h >= 0 && d24h < 54)          return (25/27.0)*d24h
-					else if(d24h >= 54 && d24h < 154)  return 0.5*d24h + 23
-					else if(d24h >= 154 && d24h < 254) return 0.5*d24h + 23
-					else if(d24h >= 254 && d24h < 354) return 0.5*d24h + 23
-					else if(d24h >= 354 && d24h < 424) return 1.42857*d24h - 305.71428
-					else if(d24h >= 424 && d24h < 504) return 1.25*d24h - 230
-					else if(d24h >= 504 && d24h < 604) return 1.00*d24h - 104
-					else
-						return null
+//					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+//					if(d24h >= 0 && d24h < 54)          return (25/27.0)*d24h
+//					else if(d24h >= 54 && d24h < 154)  return 0.5*d24h + 23
+//					else if(d24h >= 154 && d24h < 254) return 0.5*d24h + 23
+//					else if(d24h >= 254 && d24h < 354) return 0.5*d24h + 23
+//					else if(d24h >= 354 && d24h < 424) return 1.42857*d24h - 305.71428
+//					else if(d24h >= 424 && d24h < 504) return 1.25*d24h - 230
+//					else if(d24h >= 504 && d24h < 604) return 1.00*d24h - 104
+//					else
+//						return null
+
+					Double C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+					Double aqi= null
+					if(aqi == null && C24h> 0 && C24h <= 54) aqi = Math.round((25/27.0)*C24h)
+					if(aqi == null && C24h> 54 && C24h <= 154) aqi = Math.round(0.5*C24h + 23)
+					if(aqi == null && C24h> 154 && C24h <= 254) aqi = Math.round(0.5*C24h + 23)
+					if(aqi == null && C24h> 254 && C24h <= 354) aqi = Math.round(0.5*C24h + 23)
+					if(aqi == null && C24h> 354 && C24h <= 424) aqi = Math.round(1.42857*C24h - 305.71428)
+					if(aqi == null && C24h> 424 && C24h <= 504) aqi = Math.round(1.25*C24h - 230)
+					if(aqi == null && C24h> 504) aqi = Math.round(1*C24h - 104)
+					return aqi
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI']) },
@@ -328,14 +376,23 @@ class ModelService {
 			],
 			IQCA: [
 				value: { prms ->
-					def d8h = (prms.isHourlyData==null || prms.isHourlyData) ? prms.value8h : prms.value8max ? prms.value8max : prms.value8h
-					if (d8h >= 0 && d8h <= 5) return 10 * d8h
-					else if (d8h > 5 && d8h <= 10) return 10 * d8h
-					else if (d8h > 10 && d8h <= 15) return 20 * d8h - 100
-					else if (d8h > 15 && d8h <= 30) return 6.67 * d8h + 100
-					else if (d8h > 30 && d8h <= 40) return 10 * d8h
-					else if (d8h > 40) return 10 * d8h
-					else return null
+//					def d8h = (prms.isHourlyData==null || prms.isHourlyData) ? prms.value8h : prms.value8max ? prms.value8max : prms.value8h
+//					if (d8h >= 0 && d8h <= 5) return 10 * d8h
+//					else if (d8h > 5 && d8h <= 10) return 10 * d8h
+//					else if (d8h > 10 && d8h <= 15) return 20 * d8h - 100
+//					else if (d8h > 15 && d8h <= 30) return 6.67 * d8h + 100
+//					else if (d8h > 30 && d8h <= 40) return 10 * d8h
+//					else if (d8h > 40) return 10 * d8h
+//					else return null
+					Double C8h = (prms.isHourlyData==null || prms.isHourlyData) ? prms.value8h : prms.value8max ? prms.value8max : prms.value8h
+					Double iqca = null
+					if(iqca == null && C8h> 0 && C8h <= 5) iqca = Math.round(C8h*10)
+					if(iqca == null && C8h> 5 && C8h <= 10) iqca = Math.round(C8h*10)
+					if(iqca == null && C8h> 10 && C8h <= 15) iqca = Math.round(C8h*20 - 100)
+					if(iqca == null && C8h> 15 && C8h <= 30) iqca = Math.round((2/3.0)*C8h+100)
+					if(iqca == null && C8h> 30 && C8h <= 40) iqca = Math.round(C8h*10)
+					if(iqca == null && C8h> 40) iqca = Math.round(C8h*10)
+					return iqca
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA']) },
@@ -343,15 +400,25 @@ class ModelService {
 			],
 			AQI: [
 				value: {prms ->
-					def d8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
-					if(d8h >= 0          && d8h <= 5.038)  return (50/5.038)*d8h
-					else if(d8h > 5.038  && d8h <= 10.763) return 8.73362*d8h + 6
-					else if(d8h > 10.763 && d8h <= 14.198) return 14.556*d8h - 56.667
-					else if(d8h > 14.198 && d8h <= 17.633) return 14.556*d8h - 56.667
-					else if(d8h > 17.633 && d8h <= 34.808) return 5.82241*d8h + 97.33333
-					else if(d8h > 34.808 && d8h <= 46.258) return 8.73362*d8h - 4
-					else if(d8h > 46.258 && d8h <= 57.708) return 8.73362*d8h - 4
-					else return null
+//					def d8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
+//					if(d8h >= 0          && d8h <= 5.038)  return (50/5.038)*d8h
+//					else if(d8h > 5.038  && d8h <= 10.763) return 8.73362*d8h + 6
+//					else if(d8h > 10.763 && d8h <= 14.198) return 14.556*d8h - 56.667
+//					else if(d8h > 14.198 && d8h <= 17.633) return 14.556*d8h - 56.667
+//					else if(d8h > 17.633 && d8h <= 34.808) return 5.82241*d8h + 97.33333
+//					else if(d8h > 34.808 && d8h <= 46.258) return 8.73362*d8h - 4
+//					else if(d8h > 46.258 && d8h <= 57.708) return 8.73362*d8h - 4
+//					else return null
+					def C8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
+					Double aqi= null
+					if(aqi == null && C8h> 0 && C8h <= 5.038) aqi = Math.round((50/5.038)*C8h)
+					if(aqi == null && C8h> 5.038 && C8h <= 10.763) aqi = Math.round(8.73362*C8h + 6)
+					if(aqi == null && C8h> 10.763 && C8h <= 14.198) aqi = Math.round(14.55605*C8h - 56.66667)
+					if(aqi == null && C8h> 14.198 && C8h <= 17.633) aqi = Math.round(14.55605*C8h - 56.66667)
+					if(aqi == null && C8h> 17.633 && C8h <= 34.808) aqi = Math.round(5.82241*C8h + 97.3333)
+					if(aqi == null && C8h> 34.808 && C8h <= 46.258) aqi = Math.round(8.73362*C8h - 4)
+					if(aqi == null && C8h> 46.258) aqi = Math.round(8.73362*C8h - 4)
+					return aqi
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI']) },
@@ -382,14 +449,23 @@ class ModelService {
 			],
 			IQCA: [
 				value: {prms ->
-					def d1h = prms.value1
-					if (d1h >= 0 && d1h <= 100)         return 0.50 * d1h
-					else if (d1h > 100 && d1h <= 200)   return 0.50 * d1h
-					else if (d1h > 200 && d1h <= 1000)  return 0.125 * d1h + 75
-					else if (d1h > 1000 && d1h <= 2000) return 0.10 * d1h + 100
-					else if (d1h > 2000 && d1h <= 3000) return 0.10 * d1h + 100
-					else if (d1h > 3000)                return 0.10 * d1h + 100
-					else return null
+//					def d1h = prms.value1
+//					if (d1h >= 0 && d1h <= 100)         return 0.50 * d1h
+//					else if (d1h > 100 && d1h <= 200)   return 0.50 * d1h
+//					else if (d1h > 200 && d1h <= 1000)  return 0.125 * d1h + 75
+//					else if (d1h > 1000 && d1h <= 2000) return 0.10 * d1h + 100
+//					else if (d1h > 2000 && d1h <= 3000) return 0.10 * d1h + 100
+//					else if (d1h > 3000)                return 0.10 * d1h + 100
+//					else return null
+					Double C1h = prms.value1
+					Double iqca = null
+					if(iqca == null && C1h> 0 && C1h <= 100) iqca = Math.round(C1h*0.5)
+					if(iqca == null && C1h> 100 && C1h <= 200) iqca = Math.round(C1h*0.5)
+					if(iqca == null && C1h> 200 && C1h <= 1000) iqca = Math.round(0.125*C1h+75)
+					if(iqca == null && C1h> 1000 && C1h <= 2000) iqca = Math.round(0.1*C1h+100)
+					if(iqca == null && C1h> 2000 && C1h <= 3000) iqca = Math.round(0.1*C1h+100)
+					if(iqca == null && C1h> 3000) iqca = Math.round(0.1*C1h+100)
+					return iqca
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA']) },
@@ -397,15 +473,25 @@ class ModelService {
 			],
 			AQI: [
 				value: {prms ->
-					def d1h = prms.value1
-					if(d1h > 0 && d1h <= 99.64)              return 0.50181*d1h
-					else if(d1h > 99.64 && d1h <= 188)       return 0.56587*d1h - 6.38298
-					else if(d1h > 188 && d1h <= 676.8)       return 0.10229*d1h + 80.76923
-					else if(d1h > 676.8 && d1h <= 1220.12)   return 0.09202*d1h + 87.71626
-					else if(d1h > 1220.12 && d1h <= 2348.12) return 0.08865*d1h + 91.83333
-					else if(d1h > 2348.12 && d1h <= 3100.12) return 0.13298*d1h - 12.25
-					else if(d1h > 3100.12 && d1h <= 3852.12) return 0.13298*d1h - 12.25
-					else return null
+//					def d1h = prms.value1
+//					if(d1h > 0 && d1h <= 99.64)              return 0.50181*d1h
+//					else if(d1h > 99.64 && d1h <= 188)       return 0.56587*d1h - 6.38298
+//					else if(d1h > 188 && d1h <= 676.8)       return 0.10229*d1h + 80.76923
+//					else if(d1h > 676.8 && d1h <= 1220.12)   return 0.09202*d1h + 87.71626
+//					else if(d1h > 1220.12 && d1h <= 2348.12) return 0.08865*d1h + 91.83333
+//					else if(d1h > 2348.12 && d1h <= 3100.12) return 0.13298*d1h - 12.25
+//					else if(d1h > 3100.12 && d1h <= 3852.12) return 0.13298*d1h - 12.25
+//					else return null
+					Double C1h = prms.value1
+					Double aqi= null
+					if(aqi == null && C1h> 0 && C1h <= 99.64) aqi = Math.round(0.50181*C1h)
+					if(aqi == null && C1h> 99.64 && C1h <= 188) aqi = Math.round(0.56587*C1h - 6.38298)
+					if(aqi == null && C1h> 188 && C1h <= 676.8) aqi = Math.round(0.10229*C1h + 80.76923)
+					if(aqi == null && C1h> 676.8 && C1h <= 1220.12) aqi = Math.round(0.09202*C1h + 87.71626)
+					if(aqi == null && C1h> 1220.12 && C1h <= 2348.12) aqi = Math.round(0.08865*C1h + 91.83333)
+					if(aqi == null && C1h> 2348.12 && C1h <= 3100.12) aqi = Math.round(0.13298*C1h - 12.25)
+					if(aqi == null && C1h> 3100.12) aqi = Math.round(0.13298*C1h - 12.25)
+					return aqi
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI']) },
@@ -435,14 +521,23 @@ class ModelService {
 			],
 			IQCA: [
 				value: { prms ->
-					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
-					if(d24h >= 0 && d24h <= 25)         return 2.0*d24h
-					else if(d24h > 25 && d24h <= 50)    return 2.0*d24h
-					else if(d24h > 50  && d24h <= 150)  return 1*d24h + 50
-					else if(d24h > 150  && d24h <= 250) return 1*d24h + 50
-					else if(d24h > 250 && d24h <= 350)  return 1*d24h + 50
-					else if(d24h > 350)                 return 1*d24h + 50
-					else return null
+//					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+//					if(d24h >= 0 && d24h <= 25)         return 2.0*d24h
+//					else if(d24h > 25 && d24h <= 50)    return 2.0*d24h
+//					else if(d24h > 50  && d24h <= 150)  return 1*d24h + 50
+//					else if(d24h > 150  && d24h <= 250) return 1*d24h + 50
+//					else if(d24h > 250 && d24h <= 350)  return 1*d24h + 50
+//					else if(d24h > 350)                 return 1*d24h + 50
+//					else return null
+					Double C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+					Double iqca = null
+					if(iqca == null && C24h> 0 && C24h <= 25) iqca = Math.round(2*C24h)
+					if(iqca == null && C24h> 25 && C24h <= 50) iqca = Math.round(2*C24h)
+					if(iqca == null && C24h> 50 && C24h <= 150) iqca = Math.round(C24h+50)
+					if(iqca == null && C24h> 150 && C24h <= 250) iqca = Math.round(C24h+50)
+					if(iqca == null && C24h> 250 && C24h <= 350) iqca = Math.round(C24h+50)
+					if(iqca == null && C24h> 350) iqca = Math.round(C24h+50)
+					return iqca
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es') ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA'] },
@@ -450,15 +545,25 @@ class ModelService {
 			],
 			AQI: [
 				value: { prms ->
-					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
-					if(d24h >= 0 && d24h <= 12)            return (25/6.0)*d24h
-					else if(d24h > 12 && d24h <= 35.4)     return 2.13675*d24h + 24.35897
-					else if(d24h > 35.4 && d24h <= 55.4)   return 2.50*d24h + 11.50
-					else if(d24h > 55.4 && d24h <= 150.4)  return 0.52631*d24h + 120.84210
-					else if(d24h > 150.4 && d24h <= 250.4) return 1.00*d24h + 49.6
-					else if(d24h > 250.4 && d24h <= 350.4) return 1.00*d24h + 49.6
-					else if(d24h > 350.4 && d24h <= 500.4) return (2/3)*d24h + 166.4
-					else return null
+//					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+//					if(d24h >= 0 && d24h <= 12)            return (25/6.0)*d24h
+//					else if(d24h > 12 && d24h <= 35.4)     return 2.13675*d24h + 24.35897
+//					else if(d24h > 35.4 && d24h <= 55.4)   return 2.50*d24h + 11.50
+//					else if(d24h > 55.4 && d24h <= 150.4)  return 0.52631*d24h + 120.84210
+//					else if(d24h > 150.4 && d24h <= 250.4) return 1.00*d24h + 49.6
+//					else if(d24h > 250.4 && d24h <= 350.4) return 1.00*d24h + 49.6
+//					else if(d24h > 350.4 && d24h <= 500.4) return (2/3)*d24h + 166.4
+//					else return null
+					def C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+					Double aqi= null
+					if(aqi == null && C24h> 0 && C24h <= 12) aqi = Math.round((25/6.0)*C24h)
+					if(aqi == null && C24h> 12 && C24h <= 35.4) aqi = Math.round(2.13675*C24h + 24.35897)
+					if(aqi == null && C24h> 35.4 && C24h <= 55.4) aqi = Math.round(2.5*C24h + 11.5)
+					if(aqi == null && C24h> 55.4 && C24h <= 150.4) aqi = Math.round(0.52631*C24h + 120.8421)
+					if(aqi == null && C24h> 150.4 && C24h <= 250.4) aqi = Math.round(1*C24h + 49.6)
+					if(aqi == null && C24h> 250.4 && C24h <= 350.4) aqi = Math.round(1*C24h + 49.6)
+					if(aqi == null && C24h> 350.4) aqi = Math.round(1*C24h + 49.6)
+					return aqi
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI']) },
@@ -488,14 +593,25 @@ class ModelService {
 			],
 			IQCA: [
 				value: {prms ->
-					def d1h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value1:prms.value1max?prms.value1max:prms.value1
-					if (d1h >= 0 && d1h <= 50) return 1.0 * d1h
-					else if (d1h > 50 && d1h <= 100) return 1.0 * d1h
-					else if (d1h > 100 && d1h <= 200) return 1.0 * d1h
-					else if (d1h > 200 && d1h <= 400) return 0.5 * d1h + 100
-					else if (d1h > 400 && d1h <= 600) return 0.5 * d1h + 100
-					else if (d1h > 600) return 0.5 * d1h + 100
-					else return null
+//					def d1h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value1:prms.value1max?prms.value1max:prms.value1
+//					if (d1h >= 0 && d1h <= 50) return 1.0 * d1h
+//					else if (d1h > 50 && d1h <= 100) return 1.0 * d1h
+//					else if (d1h > 100 && d1h <= 200) return 1.0 * d1h
+//					else if (d1h > 200 && d1h <= 400) return 0.5 * d1h + 100
+//					else if (d1h > 400 && d1h <= 600) return 0.5 * d1h + 100
+//					else if (d1h > 600) return 0.5 * d1h + 100
+//					else return null
+					Double C1h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value1:prms.value1max?prms.value1max:prms.value1
+					Double C8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8hmax?prms.value8hmax:prms.value8h
+					Double iqca = null
+					if(iqca == null && C8h> 0 && C8h <= 50) iqca = Math.round(C8h)
+					if(iqca == null && C8h> 50 && C8h <= 100) iqca = Math.round(C8h)
+					if(iqca == null && C8h> 100 && C8h <= 200) iqca = Math.round(C8h)
+					if(iqca == null && C8h> 200 && C8h <= 400) iqca = Math.round(0,5*C8h+100)
+					if(iqca == null && C1h> 408 && C1h <= 808) iqca = Math.round(0.25*C1h + 98)
+					if(iqca == null && C1h> 808 && C1h <= 1008) iqca = Math.round(0.5*C1h -104)
+					if(iqca == null && C1h> 1008 && C1h <= 1200) iqca = Math.round((100/192.0)*C1h -125)
+					return iqca
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA']) },
@@ -504,18 +620,29 @@ class ModelService {
 			],
 			AQI: [
 				value: {prms ->
-					def d8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
-					println "11 =-> ${prms}"
-					println "12 =-> ${prms.value1}"
-					println "13 =-> ${prms.value1max}"
-					def d1h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value1:prms.value1max?prms.value1max:prms.value1
-					if (d8h >= 0 && d8h <= 108) return (50.0 / 108) * d8h
-					else if (d8h > 108 && d8h <= 140) return 1.5625 * d8h - 115.75
-					else if (d8h > 140 && d8h <= 170) return 1.6667 * d8h - 133.3333
-					else if (d8h > 170 && d8h <= 210) return 1.25 * d8h - 62.5
-					else if (d8h > 210 && d8h <= 400) return 0.526316 * d8h + 89.47368
-					else if (d8h > 400) return 1.0 * d8h
-					else return null
+//					def d8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
+//					def d1h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value1:prms.value1max?prms.value1max:prms.value1
+//					if (d8h >= 0 && d8h <= 108) return (50.0 / 108) * d8h
+//					else if (d8h > 108 && d8h <= 140) return 1.5625 * d8h - 115.75
+//					else if (d8h > 140 && d8h <= 170) return 1.6667 * d8h - 133.3333
+//					else if (d8h > 170 && d8h <= 210) return 1.25 * d8h - 62.5
+//					else if (d8h > 210 && d8h <= 400) return 0.526316 * d8h + 89.47368
+//					else if (d8h > 400) return 1.0 * d8h
+//					else return null
+					Double C8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
+					Double C1h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value1:prms.value1max?prms.value1max:prms.value1
+					Double aqi= null
+					if(aqi == null && C8h > 0 && C8h <= 108) aqi = Math.round((50/108)*C8h)
+					if(aqi == null && C8h > 108 && C8h <= 140) aqi = Math.round(1,5625*C8h-118,75)
+					if(aqi == null && C8h > 140 && C8h <= 170) aqi = Math.round(1,667*C8h-133,333)
+					if(aqi == null && C8h > 170 && C8h <= 210) aqi = Math.round(1,25*C8h-62,5)
+					if(aqi == null && C8h > 210 && C8h <= 400) aqi = Math.round(0.526316*C8h+89.47368)
+					if(aqi == null && C1h > 250 && C1h <= 328) aqi = Math.round(0,641025*C1h -60,25641)
+					if(aqi == null && C1h > 328 && C1h <= 408) aqi = Math.round(0,625*C1h - 55)
+					if(aqi == null && C1h > 408 && C1h <= 808) aqi = Math.round(0,25*C1h + 98)
+					if(aqi == null && C1h > 808 && C1h <= 1008) aqi = Math.round(0,5*C1h - 104)
+					if(aqi == null && C1h > 1008) aqi = Math.round(0,5*C1h - 104)
+					return aqi
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI']) },
