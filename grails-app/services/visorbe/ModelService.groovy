@@ -134,107 +134,155 @@ class ModelService {
 	def magnitudeById(id) { magnitudes.find {it -> it.id == id} }
 
 	def presentation = [
-			10:[code:'data',   es:'Data',                                     en:'Data'],
-			20:[code:'minmax', es:'Mínimo y Máximo',                          en:'Min and Max'],
-			30:[code:'data2',  es:'Dato de magnitud asociada',                en:'Asociated magnitude data'],
-			40:[code:'IQCA',   es:'Indice Quiteño de Calidad del Aire',       en:'Quito City Air Quality Index'],
-			50:[code:'AQI',    es:'Indice Internacional de Calidad del Aire', en:'International Air Quality Index'],
-			60:[code:'other',  es:'Otra concentración',                       en:'Another concentration']
+		10:[code:'data',   es:'Data',                                     en:'Data'],
+		20:[code:'minmax', es:'Mínimo y Máximo',                          en:'Min and Max'],
+		30:[code:'data2',  es:'Dato de magnitud asociada',                en:'Asociated magnitude data'],
+		40:[code:'IQCA',   es:'Indice Quiteño de Calidad del Aire',       en:'Quito City Air Quality Index'],
+		50:[code:'AQI',    es:'Indice Internacional de Calidad del Aire', en:'International Air Quality Index'],
+		60:[code:'other',  es:'Otra concentración',                       en:'Another concentration']
 	]
 
-	def calcDATA24h(prms) { return prms?.value24h }
+	def calcDATA24h(prms) { return prms?.value24h }  //TODO: borrar this huevada
 
 	def calcIQCA24h(prms) { return (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h}
 
-	def AQIids() { [0 , 1 , 2 , 3 , 4 , 5 , 6] }
+// ======= AQI =======
 
-	def AQIname(id, lang = 'en') {
-		[
-			0: (lang=='en')?'good':'bueno',
-			1: (lang=='en')?'moderate':'moderado',
-			2: (lang=='en')?'unhealthy sensitive groups':'insalubre grupos sensibles',
-			3: (lang=='en')?'unhealthy':'insalubre',
-			4: (lang=='en')?'very unhealthy':'muy insalubre',
-			5: (lang=='en')?'hazardous':'peligroso',
-			6: (lang=='en')?'very hazardous':'muy peligroso'
-		][id]
-	}
+	def AQIidx = [0, 1, 2, 3, 4, 5, 6]
 
-	def AQIcolors =[
-		0: 'rgb(50, 205, 50)',
-		1: 'rgb(255, 255, 0)',
-		2: 'rgb(255, 165, 0)',
-		3: 'rgb(255, 0, 0)',
-		4: 'rgb(148, 0, 211)',
-		5: 'rgb(138, 0, 0)',
-		6: 'rgb(128, 0, 0)'
+	def AQIranges = [0, 50, 100, 150, 200, 300, 400, 500]
+
+//	def AQIhealths = [
+//			0: (lang = 'en') -> (lang=='en')?'good':'bueno',
+//			1: (lang = 'en') -> (lang=='en')?'moderate':'moderado',
+//			2: (lang = 'en') -> (lang=='en')?'unhealthy sensitive groups':'insalubre grupos sensibles',
+//			3: (lang = 'en') -> (lang=='en')?'unhealthy':'insalubre',
+//			4: (lang = 'en') -> (lang=='en')?'very unhealthy':'muy insalubre',
+//			5: (lang = 'en') -> (lang=='en')?'hazardous':'peligroso',
+//			6: (lang = 'en') -> (lang=='en')?'very hazardous':'muy peligroso'
+//	]
+
+
+	def getAQIhealth(id, lang = 'en') {return AQIhealths[id]?.call(lang)}
+
+	def AQIcolors = [
+			0: 'rgb(50, 205, 50)',
+			1: 'rgb(255, 255, 0)',
+			2: 'rgb(255, 165, 0)',
+			3: 'rgb(255, 0, 0)',
+			4: 'rgb(148, 0, 211)',
+			5: 'rgb(138, 0, 0)',
+			6: 'rgb(128, 0, 0)'
 	]
 
-	def getAQIcolors(Integer id) {
-		AQIcolors[id]
+	def getAQIcolors(Integer id) { AQIcolors[id] }
+
+// ======= IQCA =======
+
+	int[] IQCAidx = [0, 1, 2, 3, 4, 5]
+
+	int[] IQCAranges = [0, 50, 100, 200, 300, 400, 500]
+
+//	def IQCAhealths = [
+//		//idx: health
+//		0: (lang) -> (lang == 'en') ? 'Optimus': 'Óptimo',
+//		1: (lang) -> (lang == 'en') ? 'Acceptable': 'Aceptable',
+//		2: (lang) -> (lang == 'en') ? 'Caution': 'Precaución',
+//		3: (lang) -> (lang == 'en') ? 'Alert': 'Alerta',
+//		4: (lang) -> (lang == 'en') ? 'Alarm': 'Alarma',
+//		5: (lang) -> (lang == 'en') ? 'Emergency': 'Emergencia',
+//		6: (lang) -> (lang == 'en') ? 'Danger': 'Peligro'
+//	]
+
+	def getIQCAhealth(id, lang='en') { return IQCAhealths[id]?.call(lang) }
+
+	def IQCAcolors = AQIcolors
+
+	def getIQCAcolor(Integer id) { IQCAcolors[id] }
+
+	def SO2 = 1
+	def PM10 = 3
+	def CO = 6
+	def NO2 = 8
+	def PM25 = 10
+	def O3 = 14
+
+	def C1hranges = [
+		(SO2):  [0, 62.5, 125, 200, 1000, 1800, 2600],
+		(PM10): [0, 50, 100, 250, 400, 500, 600],
+		(CO):   [0, 5, 10, 15, 30, 40, 50],
+		(NO2):  [0, 100, 200, 1000, 2000, 3000, 4000],
+		(PM25): [0, 25, 50, 150, 250, 350, 450]
+	]
+
+	def C8hranges = [
+		(SO2):  null,
+		(PM10): null,
+		(CO):   [0, 5, 10, 15, 30, 40, 50],
+		(NO2):  null,
+		(PM25): null
+	]
+
+	def C24hranges = [
+		(SO2):  [0, 62.5, 125, 200, 1000, 1800, 2600],
+		(PM10): [0, 50, 100, 250, 400, 500, 600],
+		(CO):   null,
+		(NO2):  null,
+		(PM25): [0, 25, 50, 150, 250, 350, 450]
+	]
+
+// ======= formulas =======
+
+	def getIdxHealth(value, ranges) {
+		Integer result = null
+		for(int i=0; i < ranges.size-1; i++) {
+			if(ranges[i] <= value && value <= ranges[i+1] && result == null) {
+				result = i
+				break
+			}
+		}
+		return result
 	}
 
-	int[] IQCAids = [0 , 1 , 2 , 3 , 4 , 5 , 6]
-
-	def IQCAname(id, lang = 'en') {
-		[
-			0: (lang == 'en') ? 'Optimus': 'Óptimo',
-			1: (lang == 'en') ? 'Acceptable': 'Aceptable',
-			2: (lang == 'en') ? 'Caution': 'Precaución',
-			3: (lang == 'en') ? 'Alert': 'Alerta',
-			4: (lang == 'en') ? 'Alarm':	'Alarma',
-			5: (lang == 'en') ? 'Emergency': 'Emergencia',
-			6: (lang == 'en') ? 'Danger': 'Peligro'
-		][id]
+	def getHealth(idx, healths, lang='en') {
+		return healths[idx]?.call(lang)
 	}
 
-	def IQCAcolors(Integer id) {
-		[
-			0: 'rgb(135, 206, 250)',
-			1: 'rgb(30, 144, 255)',
-			2: 'rgb(50, 205, 50)',
-			3: 'rgb(255, 255, 0)',
-			4: 'rgb(255, 165, 0)',
-			5: 'rgb(255, 0, 0)',
-			6: 'rgb(148, 0, 211)'
-		][id]
-	}
-
-	def IQCids() {[0, 1, 2, 3, 4, 5, 6]}
+	// ======= schemas =======
 
 	def magnitude_schemas = [
 		[
-			magnitude_id: 1,
+			magnitude_id: SO2,   // magnitude_id = 1
 			magnitude_name: [es:'Dióxido de Azufre [SO2]', en:'Sulfur dioxide [SO2]'],
 			nasa_name: null,
 			unit: 'ug/m3',
 			DATA: [
-				value: { prms -> calcDATA24h(prms) },
-				colDescription: {lang -> (lang == 'es')?['24hC','Concentración promedio últimas 24 horas']:['24hC','last 24 hours average concentration']},
+				value: { prms -> return prms?.value24h },
+				colDescription: {lang -> (lang == 'es')?['C24h','Concentración promedio 24 horas']:['C24h','24 hours average concentration']},
 				valuemin: { prms -> prms?.value24min },
 				valuemed: { prms -> prms?.value24med },
-				valuemax: { prms -> prms?.value24max }
+				valuemax: { prms -> prms?.value24max },
+				ranges: C24hranges[SO2],                                   // (1)
+				health: {value -> getIdxHealth(value, C24hranges[SO2])},   // (2)
+				colors: IQCAcolors,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: { prms -> prms?.value1 },
-				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C1h','Concentración promedio en 1 hora']:['C1h','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
-				valuemax: { prms -> prms?.value1max }
+				valuemax: { prms -> prms?.value1max },
+				ranges: C1hranges[1],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[SO2])},    // (4)
+				colors: IQCAcolors,
+				decimals: 1
 			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[SO2])},    // (5)
+			c8h_health: null,                                            // (6)
+			c24h_health: {value -> getIdxHealth(value, C24hranges[SO2])},  // (7)
 			IQCA: [
 				value: { prms ->
-//					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
-//					def result = null
-//					if(d24h >= 0 && d24h < 62.5)         result =  0.80*d24h
-//					else if(d24h >= 62.5 && d24h < 125)  result =  0.80*d24h
-//					else if(d24h >= 125  && d24h < 200)  result =  4*d24h/3.0 -200/3.0
-//					else if(d24h >= 200  && d24h < 1000) result =  0.125*d24h + 175
-//					else if(d24h >= 1000 && d24h < 1800) result =  0.125*d24h + 175
-//					else if(d24h >= 1800)                result =  0.125*d24h + 175
-//					else result =  null
-//					return result
-
 					Double iqca = null
 					Double C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
 					if(iqca == null && C24h> 0 && C24h <= 62.5) iqca = Math.round(0.8*C24h)
@@ -247,21 +295,14 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es') ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA'] },
-				decimals: 1
+				ranges: IQCAranges,                                      // (8)
+				health: {value -> getIdxHealth(value, IQCAranges)},      // (9)
+				colors: IQCAcolors,                                      // (10)
+				decimals: 0
 			],
 			AQI: [
 				value: {
 					prms ->
-//						def d24h = (prms.isHourlyData==null || prms.isHourlyData) ? prms.value24h : prms.value24max ? prms.value24max : prms.value24h
-//						if (d24h >= 0 && d24h < 91.7) return (50 / 91.7) * d24h
-//						else if (d24h >= 91.7 && d24h < 196.5) return 0.47710 * d24h + 6.25
-//						else if (d24h >= 196.5 && d24h < 484.7) return 0.17349 * d24h + 65.90909
-//						else if (d24h >= 484.7 && d24h < 796.48) return 0.16037 * d24h + 72.26891
-//						else if (d24h >= 796.48 && d24h < 1582.48) return 0.12722 * d24h + 98.66667
-//						else if (d24h >= 1582.48 && d24h < 2106.48) return 0.19084 * d24h - 2
-//						else if (d24h >= 2106.48 && d24h < 2630.48) return 0.19084 * d24h - 2
-//						else return null
-
 						def C24h = (prms.isHourlyData==null || prms.isHourlyData) ? prms.value24h : prms.value24max ? prms.value24max : prms.value24h
 						Double aqi= null
 						if(aqi == null && C24h> 0 && C24h <= 91.7) aqi = Math.round((50/91.7)*C24h)
@@ -275,14 +316,15 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es') ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI'] },
-				ranges: [0, 35, 75, 185, 304, 604, 804, 1004],
-				colors: AQIcolors,
-				decimals: 1
+				ranges: AQIranges,                                       // (11)
+				health: {value -> getIdxHealth(value, AQIranges)},       // (12)
+				colors: AQIcolors,                                       // (13)
+				decimals: 0
 			],
 		],
 		[
 			magnitude_id: 3,
-			magnitude_name: [es:'Material Particulado 10 [PM10]', en:'Particulate material 10 [PM10]'],
+			magnitude_name: [es:'Material Particulado 10 [PM10]', en:'Particulate matter 10 [PM10]'],
 			nasa_name: null,
 			unit: 'ug/m3',
 			DATA: [
@@ -290,27 +332,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['24hC','Concentración promedio últimas 24 horas']:['24hC','last 24 hours average concentration']},
 				valuemin: { prms -> prms?.value24min },
 				valuemed: { prms -> prms?.value24med },
-				valuemax: { prms -> prms?.value24max }
+				valuemax: { prms -> prms?.value24max },
+				ranges: C24hranges[3],                                   // (1)
+				health: {value -> getIdxHealth(value, C24hranges[3])},   // (2)
+				colors: IQCAcolors,                                      // 2.1
+				decimals: 1                                              // 2.2
 			],
 			CONCENTRATION: [
 				value: { prms -> prms?.value1 },
 				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
-				valuemax: { prms -> prms?.value1max }
+				valuemax: { prms -> prms?.value1max },
+				ranges: C1hranges[3],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[3])},    // (4)
+				colors: IQCAcolors,                                      // 4.1
+				decimals: 1                                              // 4.2
 			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[3])},    // (5)
+			c8h_health: null,                                            // (6)
+			c24h_health: {value -> getIdxHealth(value, C24hranges[3])},  // (7)
 			IQCA: [
 				value: { prms ->
-//					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
-//					if(d24h >= 0 && d24h <= 50)          return 1.0*d24h
-//					else if(d24h > 50 && d24h <= 100)    return 1.0*d24h
-//					else if(d24h > 100  && d24h <= 250)  return 2*d24h/3.0 + (100/3.0)
-//					else if(d24h > 250  && d24h <= 400)  return 2*d24h/3.0 + (100/3.0)
-//					else if(d24h > 400 && d24h <= 500)   return 1*d24h - 100
-//					else if(d24h > 500)                  return 1*d24h - 100
-//					else return null
-
-					Double d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
+					Double C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
 					Double iqca = null
 					if(iqca == null && C24h> 0 && C24h <= 50) iqca = Math.round(C24h)
 					if(iqca == null && C24h> 50 && C24h <= 100) iqca = Math.round(C24h)
@@ -322,21 +366,13 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA']) },
+				ranges: IQCAranges,                                      // (8)
+				health: {value -> getIdxHealth(value, IQCAranges)},      // (9)
+				colors: IQCAcolors,                                      // (10)
 				decimals: 1
 			],
 			AQI: [
 				value: {prms ->
-//					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
-//					if(d24h >= 0 && d24h < 54)          return (25/27.0)*d24h
-//					else if(d24h >= 54 && d24h < 154)  return 0.5*d24h + 23
-//					else if(d24h >= 154 && d24h < 254) return 0.5*d24h + 23
-//					else if(d24h >= 254 && d24h < 354) return 0.5*d24h + 23
-//					else if(d24h >= 354 && d24h < 424) return 1.42857*d24h - 305.71428
-//					else if(d24h >= 424 && d24h < 504) return 1.25*d24h - 230
-//					else if(d24h >= 504 && d24h < 604) return 1.00*d24h - 104
-//					else
-//						return null
-
 					Double C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
 					Double aqi= null
 					if(aqi == null && C24h> 0 && C24h <= 54) aqi = Math.round((25/27.0)*C24h)
@@ -350,8 +386,9 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI']) },
-				ranges: [0, 54, 154, 254, 354, 424, 504, 604],
-				colors: AQIcolors,
+				ranges: AQIranges,                                       // (11)
+				health: {value -> getIdxHealth(value, AQIranges)},       // (12)
+				colors: AQIcolors,                                       // (13)
 				decimals: 1
 			]
 		],
@@ -365,25 +402,28 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['8hC','Concentración promedio en 8 horas']:['8hC','8 hours average concentration']},
 				valuemin: { prms -> prms?.value8min },
 				valuemed: { prms -> prms?.value8med },
-				valuemax: { prms -> prms?.value8max }
+				valuemax: { prms -> prms?.value8max },
+				ranges: C8hranges[6],                                   // (1)
+				health: {value -> getIdxHealth(value, C8hranges[6])},   // (2)
+				colors: IQCAcolors,                                      // 2.1
+				decimals: 1                                              // 2.2
 			],
 			CONCENTRATION: [
 				value: { prms -> prms?.value1 },
 				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
-				valuemax: { prms -> prms?.value1max }
+				valuemax: { prms -> prms?.value1max },
+				ranges: C1hranges[1],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[6])},    // (4)
+				colors: IQCAcolors,                                      // 4.1
+				decimals: 1                                              // 4.2
 			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[6])},    // (5)
+			c8h_health: {value -> getIdxHealth(value, C8hranges[6])},    // (6)
+			c24h_health:  null,                                          // (7)
 			IQCA: [
 				value: { prms ->
-//					def d8h = (prms.isHourlyData==null || prms.isHourlyData) ? prms.value8h : prms.value8max ? prms.value8max : prms.value8h
-//					if (d8h >= 0 && d8h <= 5) return 10 * d8h
-//					else if (d8h > 5 && d8h <= 10) return 10 * d8h
-//					else if (d8h > 10 && d8h <= 15) return 20 * d8h - 100
-//					else if (d8h > 15 && d8h <= 30) return 6.67 * d8h + 100
-//					else if (d8h > 30 && d8h <= 40) return 10 * d8h
-//					else if (d8h > 40) return 10 * d8h
-//					else return null
 					Double C8h = (prms.isHourlyData==null || prms.isHourlyData) ? prms.value8h : prms.value8max ? prms.value8max : prms.value8h
 					Double iqca = null
 					if(iqca == null && C8h> 0 && C8h <= 5) iqca = Math.round(C8h*10)
@@ -396,19 +436,13 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA']) },
+				ranges: IQCAranges,                                      // (8)
+				health: {value -> getIdxHealth(value, IQCAranges)},      // (9)
+				colors: IQCAcolors,                                      // (10)
 				decimals: 0
 			],
 			AQI: [
 				value: {prms ->
-//					def d8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
-//					if(d8h >= 0          && d8h <= 5.038)  return (50/5.038)*d8h
-//					else if(d8h > 5.038  && d8h <= 10.763) return 8.73362*d8h + 6
-//					else if(d8h > 10.763 && d8h <= 14.198) return 14.556*d8h - 56.667
-//					else if(d8h > 14.198 && d8h <= 17.633) return 14.556*d8h - 56.667
-//					else if(d8h > 17.633 && d8h <= 34.808) return 5.82241*d8h + 97.33333
-//					else if(d8h > 34.808 && d8h <= 46.258) return 8.73362*d8h - 4
-//					else if(d8h > 46.258 && d8h <= 57.708) return 8.73362*d8h - 4
-//					else return null
 					def C8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
 					Double aqi= null
 					if(aqi == null && C8h> 0 && C8h <= 5.038) aqi = Math.round((50/5.038)*C8h)
@@ -422,8 +456,9 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI']) },
-				ranges: [0, 4.4, 9.4, 12.4, 15.4, 30.4, 40.4, 50.4],
-				colors: AQIcolors,
+				ranges: AQIranges,                                       // (11)
+				health: {value -> getIdxHealth(value, AQIranges)},       // (12)
+				colors: AQIcolors,                                       // (13)
 				decimals: 0
 			]
 	    ],
@@ -437,26 +472,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
-				valuemax: { prms -> prms?.value1max }
+				valuemax: { prms -> prms?.value1max },
+				ranges: C1hranges[1],                                    // (1)
+				health: {value -> getIdxHealth(value, C1hranges[8])},    // (2)
+				colors: IQCAcolors,                                      // 2.1
+				decimals: 1                                              // 2.2
 			],
 			DATA2: null,
 			CONCENTRATION: [
-					value: { prms -> prms?.value1 },
-					colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
-					valuemin: { prms -> prms?.value1min },
-					valuemed: { prms -> prms?.value1med },
-					valuemax: { prms -> prms?.value1max }
+				value: { prms -> prms?.value1 },
+				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
+				valuemin: { prms -> prms?.value1min },
+				valuemed: { prms -> prms?.value1med },
+				valuemax: { prms -> prms?.value1max },
+				ranges: C1hranges[8],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[8])},    // (4)
+				colors: IQCAcolors,                                      // 4.1
+				decimals: 1                                              // 4.2
 			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[8])},    // (5)
+			c8h_health: null,                                            // (6)
+			c24h_health: null,                                           // (7)
 			IQCA: [
 				value: {prms ->
-//					def d1h = prms.value1
-//					if (d1h >= 0 && d1h <= 100)         return 0.50 * d1h
-//					else if (d1h > 100 && d1h <= 200)   return 0.50 * d1h
-//					else if (d1h > 200 && d1h <= 1000)  return 0.125 * d1h + 75
-//					else if (d1h > 1000 && d1h <= 2000) return 0.10 * d1h + 100
-//					else if (d1h > 2000 && d1h <= 3000) return 0.10 * d1h + 100
-//					else if (d1h > 3000)                return 0.10 * d1h + 100
-//					else return null
 					Double C1h = prms.value1
 					Double iqca = null
 					if(iqca == null && C1h> 0 && C1h <= 100) iqca = Math.round(C1h*0.5)
@@ -469,19 +507,13 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA']) },
+				ranges: IQCAranges,                                      // (8)
+				health: {value -> getIdxHealth(value, IQCAranges)},      // (9)
+				colors: IQCAcolors,                                      // (10)
 				decimals: 0
 			],
 			AQI: [
 				value: {prms ->
-//					def d1h = prms.value1
-//					if(d1h > 0 && d1h <= 99.64)              return 0.50181*d1h
-//					else if(d1h > 99.64 && d1h <= 188)       return 0.56587*d1h - 6.38298
-//					else if(d1h > 188 && d1h <= 676.8)       return 0.10229*d1h + 80.76923
-//					else if(d1h > 676.8 && d1h <= 1220.12)   return 0.09202*d1h + 87.71626
-//					else if(d1h > 1220.12 && d1h <= 2348.12) return 0.08865*d1h + 91.83333
-//					else if(d1h > 2348.12 && d1h <= 3100.12) return 0.13298*d1h - 12.25
-//					else if(d1h > 3100.12 && d1h <= 3852.12) return 0.13298*d1h - 12.25
-//					else return null
 					Double C1h = prms.value1
 					Double aqi= null
 					if(aqi == null && C1h> 0 && C1h <= 99.64) aqi = Math.round(0.50181*C1h)
@@ -495,14 +527,15 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI']) },
-				ranges: [0, 53, 100, 360, 649, 1249, 1649, 20149],
-				colors: AQIcolors,
+				ranges: AQIranges,                                       // (11)
+				health: {value -> getIdxHealth(value, AQIranges)},       // (12)
+				colors: AQIcolors,                                       // (13)
 				decimals: 0
 			]
 		],
 		[
 			magnitude_id: 10,
-			magnitude_name: [es:'Material Particulado 2.5 [PM2.5]', en:'Particulate material [PM2.5]'],
+			magnitude_name: [es:'Material Particulado 2.5 [PM2.5]', en:'Particulate matter [PM2.5]'],
 			nasa_name: 'pm25_gcc_ML_[ugm-3]',
 			unit: 'ug/m3',
 			DATA: [
@@ -510,25 +543,28 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['24hC','Concentración promedio últimas 24 horas']:['24hC','last 24 hours average concentration']},
 				valuemin: {prms -> prms?.value24min},
 				valuemed: { prms -> prms?.value24med },
-				valuemax: { prms -> prms?.value24max }
+				valuemax: { prms -> prms?.value24max },
+				ranges: C24hranges[10],                                  // (1)
+				health: {value -> getIdxHealth(value, C24hranges[10])},  // (2)
+				colors: IQCAcolors,                                      // 2.1
+				decimals: 1                                              // 2.2
 			],
 			CONCENTRATION: [
 				value: { prms -> prms.value1 },
 				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
-				valuemax: { prms -> prms?.value1max }
+				valuemax: { prms -> prms?.value1max },
+				ranges: C1hranges[10],                                   // (3)
+				health: {value -> getIdxHealth(value, C1hranges[10])},   // (4)
+				colors: IQCAcolors,                                      // 4.1
+				decimals: 1                                              // 4.2
 			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[10])},   // (5)
+			c8h_health: null,                                            // (6)
+			c24h_health: {value -> getIdxHealth(value, C24hranges[10])}, // (7)
 			IQCA: [
 				value: { prms ->
-//					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
-//					if(d24h >= 0 && d24h <= 25)         return 2.0*d24h
-//					else if(d24h > 25 && d24h <= 50)    return 2.0*d24h
-//					else if(d24h > 50  && d24h <= 150)  return 1*d24h + 50
-//					else if(d24h > 150  && d24h <= 250) return 1*d24h + 50
-//					else if(d24h > 250 && d24h <= 350)  return 1*d24h + 50
-//					else if(d24h > 350)                 return 1*d24h + 50
-//					else return null
 					Double C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
 					Double iqca = null
 					if(iqca == null && C24h> 0 && C24h <= 25) iqca = Math.round(2*C24h)
@@ -541,19 +577,13 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es') ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA'] },
-				decimals: 1
+				ranges: IQCAranges,                                      // (8)
+				health: {value -> getIdxHealth(value, IQCAranges)},      // (9)
+				colors: IQCAcolors,                                      // (10)
+				decimals: 0
 			],
 			AQI: [
 				value: { prms ->
-//					def d24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
-//					if(d24h >= 0 && d24h <= 12)            return (25/6.0)*d24h
-//					else if(d24h > 12 && d24h <= 35.4)     return 2.13675*d24h + 24.35897
-//					else if(d24h > 35.4 && d24h <= 55.4)   return 2.50*d24h + 11.50
-//					else if(d24h > 55.4 && d24h <= 150.4)  return 0.52631*d24h + 120.84210
-//					else if(d24h > 150.4 && d24h <= 250.4) return 1.00*d24h + 49.6
-//					else if(d24h > 250.4 && d24h <= 350.4) return 1.00*d24h + 49.6
-//					else if(d24h > 350.4 && d24h <= 500.4) return (2/3)*d24h + 166.4
-//					else return null
 					def C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
 					Double aqi= null
 					if(aqi == null && C24h> 0 && C24h <= 12) aqi = Math.round((25/6.0)*C24h)
@@ -567,8 +597,9 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI']) },
-				ranges: [0, 12, 35.4, 55.4, 150.4, 250.4, 350.4, 500.4],
-				colors: AQIcolors,
+				ranges: AQIranges,                                       // (11)
+				health: {value -> getIdxHealth(value, AQIranges)},       // (12)
+				colors: AQIcolors,                                       // (13)
 				decimals: 1
 			]
 		],
@@ -578,31 +609,64 @@ class ModelService {
 			nasa_name: 'o3_ML_[ugm-3]',
 			unit: 'ug/m3',
 			DATA: [
-				value: { prms -> prms?.value1 },
+				value: {prms -> prms?.value8h},
+
 				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
-				valuemax: { prms -> prms?.value1max }
+				valuemax: { prms -> prms?.value1max },
+				ranges: C1hranges[14],                                   // (3)
+				health: { prms ->
+					Double C1h = prms?.value1
+					Double C8h = prms?.value8h
+					/*if(value8h> 0 && value <= 50) return 0
+					else if(value8h> 50 && value <= 100) return 1
+					else else if(value> 100 && value <= 200) return 2
+					else if(value> 200 && value <= 400) return 3
+					else if(value> 408 && value <= 808) return 3
+					else if(value> 808 && value <= 1008) return 4
+					else if(value> 1008 /*&& value <= 1200) return 5
+					else*/ return null
+				},                                                       // (4)
+				colors: IQCAcolors,                                      // 4.1
+				decimals: 1                                              // 4.2
 			],
 			CONCENTRATION: [
 				value: { prms -> prms?.value8h },
 				desc: ['c8h', '8 hours concentration','concentración 8 horas'],
 				valuemin: { prms -> prms?.value8min },
 				valuemed: { prms -> prms?.value8med },
-				valuemax: { prms -> prms?.value8max }
+				valuemax: { prms -> prms?.value8max },
+				ranges: C1hranges[1],
+				health: {value ->
+					if(value> 0 && value <= 50) return 0 else
+					if(value> 50 && value <= 100) return 1 else
+					if(value> 100 && value <= 200) return 2 else
+					if(value> 200 && value <= 400) return 3 else
+					if(value> 408 && value <= 808) return 3 else
+					if(value> 808 && value <= 1008) return 4 else
+					if(value> 1008 /*&& value <= 1200*/) return 5 else
+					return null
+				},
+				colors: IQCAcolors,
+				decimals: 1
 			],
+			c1h_health: {value ->
+				if(value> 408 && value <= 808) return 3 else
+				if(value> 808 && value <= 1008) return 4 else
+				if(value> 1008 /*&& value <= 1200*/) return 5 else return null
+			},                                                           // (5)
+			c8h_health: {value ->
+				if(value> 0 && value <= 50) return 0 else
+				if(value> 50 && value <= 100) return 1 else
+				if(value> 100 && value <= 200) return 2 else
+				if(value> 200 && value <= 400) return 3 else return null
+			},                                                           // (6)
+			c24h_health: null,                                           // (7)
 			IQCA: [
 				value: {prms ->
-//					def d1h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value1:prms.value1max?prms.value1max:prms.value1
-//					if (d1h >= 0 && d1h <= 50) return 1.0 * d1h
-//					else if (d1h > 50 && d1h <= 100) return 1.0 * d1h
-//					else if (d1h > 100 && d1h <= 200) return 1.0 * d1h
-//					else if (d1h > 200 && d1h <= 400) return 0.5 * d1h + 100
-//					else if (d1h > 400 && d1h <= 600) return 0.5 * d1h + 100
-//					else if (d1h > 600) return 0.5 * d1h + 100
-//					else return null
 					Double C1h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value1:prms.value1max?prms.value1max:prms.value1
-					Double C8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8hmax?prms.value8hmax:prms.value8h
+					Double C8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
 					Double iqca = null
 					if(iqca == null && C8h> 0 && C8h <= 50) iqca = Math.round(C8h)
 					if(iqca == null && C8h> 50 && C8h <= 100) iqca = Math.round(C8h)
@@ -615,20 +679,13 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['IQCA', 'Indice Quiteño de la Calidad del Aire'] : ['IQCA', 'Aire Quality Quito Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Quiteño de Calidad del Aire', 'IQCA'] : ['Quito Air Quality Index', 'IQCA']) },
-				decimals: 1,
-				colors: AQIcolors,
+				ranges: IQCAranges,                                      // (8)
+				health: {value -> getIdxHealth(value, IQCAranges)},      // (9)
+				colors: IQCAcolors,                                      // (10)
+				decimals: 0
 			],
 			AQI: [
 				value: {prms ->
-//					def d8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
-//					def d1h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value1:prms.value1max?prms.value1max:prms.value1
-//					if (d8h >= 0 && d8h <= 108) return (50.0 / 108) * d8h
-//					else if (d8h > 108 && d8h <= 140) return 1.5625 * d8h - 115.75
-//					else if (d8h > 140 && d8h <= 170) return 1.6667 * d8h - 133.3333
-//					else if (d8h > 170 && d8h <= 210) return 1.25 * d8h - 62.5
-//					else if (d8h > 210 && d8h <= 400) return 0.526316 * d8h + 89.47368
-//					else if (d8h > 400) return 1.0 * d8h
-//					else return null
 					Double C8h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value8h:prms.value8max?prms.value8max:prms.value8h
 					Double C1h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value1:prms.value1max?prms.value1max:prms.value1
 					Double aqi= null
@@ -646,8 +703,9 @@ class ModelService {
 				},
 				colDescription: { lang -> (lang == 'es') ? ['AQI', 'Indice Internacional de la Calidad del Aire'] : ['AQI', 'Aire Quality Index'] },
 				description: { lang -> (lang == 'es' ? ['Índice Internacional de Calidad del Aire', 'AQI'] : ['Air Quality Index', 'AQI']) },
-				scale: [0, 54, 70, 85, 105, 200, 303, 556], /* 303 & 556 al calculated from hourly*/
-				ranges: [0, 12, 35.4, 55.4, 150.4, 250.4, 350.4, 500.4],
+				ranges: AQIranges,                                       // (11)
+				health: {value -> getIdxHealth(value, AQIranges)},       // (12)
+				colors: AQIcolors,                                       // (13)
 				decimals: 1
 			]
 		],
@@ -1050,8 +1108,8 @@ class ModelService {
 	 *
 	 * @param itvl the interval of time
 	 * @param row what type of row data:
-	 * @param magnitude_id magnitude id
-	 * @param opoint_id station id, null for all stations
+	 * @param magnitudes csv of magnitudes or null for all magnitudes
+	 * @param opoints csv of stations or null for all stations
 	 * @param year the year of the date
 	 * @param month the month
 	 * @param dom the day of month
@@ -1060,122 +1118,69 @@ class ModelService {
 	 *
 	 * @author JPSalvadorM@gmail.com
 	 */
-	def getSql4_1mg (itvl, row, magnitude_id, opoint_id, year, month=1, dom=1, hour = 0, forecastingIfAny = true) {
-		opoint_id = (opoint_id != null)?:3
-
-		String sqlstr  = null
-		if(forecastingIfAny && [8, 10, 14, 81, 82, 83, 87, 89].contains(magnitude_id)) {
-			sqlstr = """
-				select
-					d.magnitude_id,
-					d.opoint_id,
-					d.datetime,
-					d.utcdatetime,
-					d.magnitude_unit,
-					d.utcdatetime,
-					d.value1,
-					d.value1x,
-					d.value1y,
-					d.n1,
-					d.value1min,
-					d.value1med,
-					d.value1max,
-					d.value8 value8h,
-					d.value8min,
-					d.value8med,
-					d.value8max,
-					d.value24 value24h,
-					d.value24min,
-					d.value24med,
-					d.value24max,                
-					${row == 'per hour'} isHourlyData,
-					f.fc1,
-					f.fc1min,
-					f.fc1max,
-					f.fc1sum,
-					f.fc1x,
-					f.fc1y,
-					f.fc8,
-					f.fc8min,
-					f.fc8max,
-					f.fc24,
-					f.fc24min,
-					f.fc24max
-				from
-					dashboard.api_dataseries_vw(
-						'${itvl}',
-						'${row}',
-						${magnitude_id},
-						${opoint_id},
-						${year},
-						${month},
-						${dom},
-						${hour}
-					) d 
-        			left join dashboard.api_dataseriesfc(
-						'${itvl}',
-						'${row}',
-						${magnitude_id},
-						${opoint_id},
-						${year},
-						${month},
-						${dom},
-						${hour}
-					) f
-					on d.magnitude_id = f.magnitude_id and d.opoint_id = f.opoint_id and d.datetime = f.datetime
-				order by 1, 2, 3
-			"""
-		} else {
-			sqlstr = """
-				select
-					d.magnitude_id,
-					d.opoint_id,
-					d.datetime,
-					d.utcdatetime,
-					d.magnitude_unit,
-					d.utcdatetime,
-					d.value1,
-					d.value1x,
-					d.value1y,
-					d.n1,
-					d.value1min,
-					d.value1med,
-					d.value1max,
-					d.value8 value8h,
-					d.value8min,
-					d.value8med,
-					d.value8max,
-					d.value24 value24h,
-					d.value24min,
-					d.value24med,
-					d.value24max,                
-					${row == 'per hour'} isHourlyData,
-					null::numeric fc1,
-					null::numeric fc1min,
-					null::numeric fc1max,
-					null::numeric fc1sum,
-					null::numeric fc1x,
-					null::numeric fc1y,
-					null::numeric fc8,
-					null::numeric fc8min,
-					null::numeric fc8max,
-					null::numeric fc24,
-					null::numeric fc24min,
-					null::numeric fc24max
-				from
-					dashboard.api_dataseries_vw(
-						'${itvl}',
-						'${row}',
-						${magnitude_id},
-						${opoint_id},
-						${year},
-						${month},
-						${dom},
-						${hour}
-					) d
-				order by 1, 2, 3
-			"""
-		}
+	def getSql4_1mg (itvl, row, magnitudes, opoints, year, month=1, dom=1, hour = 0, forecastingIfAny = true) {
+	String sqlstr  = null
+		sqlstr = """
+			select
+				d.magnitude_id,
+				d.opoint_id,
+				d.datetime,
+				d.utcdatetime,
+				d.magnitude_unit,
+				d.utcdatetime,
+				d.value1,
+				d.value1x,
+				d.value1y,
+				d.n1,
+				d.value1min,
+				d.value1med,
+				d.value1max,
+				d.value8 value8h,
+				d.value8min,
+				d.value8med,
+				d.value8max,
+				d.value24 value24h,
+				d.value24min,
+				d.value24med,
+				d.value24max,                
+				${row == 'per hour'} isHourlyData,
+				f.fc1,
+				f.fc1min,
+				f.fc1max,
+				f.fc1sum,
+				f.fc1x,
+				f.fc1y,
+				f.fc8,
+				f.fc8min,
+				f.fc8max,
+				f.fc24,
+				f.fc24min,
+				f.fc24max
+			from
+				dashboard.api_dataseries_vw(
+					'${itvl}',
+					'${row}',
+					null,
+					null,
+					${year},
+					${month},
+					${dom},
+					${hour}
+				) d 
+				left join dashboard.api_dataseriesfc(
+					'${itvl}',
+					'${row}',
+					null,
+					null,
+					${year},
+					${month},
+					${dom},
+					${hour}
+				) f
+				on d.magnitude_id = f.magnitude_id and d.opoint_id = f.opoint_id and d.datetime = f.datetime
+				where d.magnitude_id in (${magnitudes?.join(',')}) and (${opoints} is null or d.opoint in (${opoints}))
+			order by 1, 2, 3
+		"""
 		return sqlstr
 	}
 

@@ -33,12 +33,12 @@ class DataseriesController implements GrailsConfigurationAware {
 
     static def getDataDescription(rowc, lang='en') {
         return [
-            '24hC':'Each hourly concentration data is calculated as the average of the previous 24 hours. For exmple: the average at 12H00 is the average between 12H00 (previous day) and 11H59',
-            '8hC':'Each hourly concentration data is calculated as the average of the previous 8 hours. For exmple: the average at 12H00 is the average between 04H00 and 11H59',
-            '1hC':'Each hourly concentration data is calculated as the average of the next 60 minutes. For example: the average at 12H00 is the average between 12H00 and 12H59',
-            '1hP':'The one hour average is computed as the average of the next 60 minutes. For example: the average at 12H00 is the average between 12H00 and 12H59',
-            '10mX':'The max ten minutes average in one hour is calculated after partitioning one hour in 6 parts (ten minutes each), then getting the average for each partition, and selecting the highest',
-            '1hAc':'The sum of every minute in one hour'
+            'C24h':'Each hourly concentration data is calculated as the average of the previous 24 hours. For exmple: the average at 12H00 is the average between 12H00 (previous day) and 11H59',
+            'C8h':'Each hourly concentration data is calculated as the average of the previous 8 hours. For exmple: the average at 12H00 is the average between 04H00 and 11H59',
+            'C1h':'Each hourly concentration data is calculated as the average of the next 60 minutes. For example: the average at 12H00 is the average between 12H00 and 12H59',
+            'P1hP':'The one hour average is computed as the average of the next 60 minutes. For example: the average at 12H00 is the average between 12H00 and 12H59',
+            'Mx10m':'The max ten minutes average in one hour is calculated after partitioning one hour in 6 parts (ten minutes each), then getting the average for each partition, and selecting the highest',
+            'Ac1h':'The sum of every minute in one hour'
         ][rowc]
     }
 
@@ -58,10 +58,9 @@ class DataseriesController implements GrailsConfigurationAware {
      */
     def qryDsCSV() {
         // service call sample
-        // http://www.aqvisor.net:9090/visorbe-0.2/dshbrd/csvdn?lang=en&magnitude=14&opoint=null&year=2021&month=3&dom=25&hour=0&itvl=1+hour&mode=remmaq&row=per+hour&show=data&complete=true&decimalp=false
+        // http://www.aqvisor.net:9090/visorbe-0.2/dshbrd/csvdn?lang=en&magnitude=1,3,6&opoints=1,3,8&year=2021&month=3&dom=25&hour=0&itvl=1+hour&mode=remmaq&row=per+hour&show=data&complete=true&decimalp=false
 
         def show = params.show
-
         def outs = response.outputStream
         response.status = OK.value()
         response.contentType = "&#36;{csvMimeType};charset=&#36;{encoding}"
@@ -69,12 +68,12 @@ class DataseriesController implements GrailsConfigurationAware {
             response.setHeader "Content-disposition", "attachment; filename=REMMAQ_HELP_dshbrd_csvdn.md"
             outs << "# Endpoint: http:/www.aqvisor.net:9090/dshbrd/csvdn?...(params)\n".bytes
             outs << "## Params:\n".bytes
-            outs << "* **lang** .- the language of reports: **en** for english, **es** for spanish. Fur example: `http://www.aqvisor.net:9090/dshbrd/csvdn?lang=en`\n".bytes
-            outs << "* **magnitde** .- magnitude code, accordiong the next list:\n".bytes
+            outs << "* **lang** .- language of report: **en** for english, **es** for spanish. For example: `http://www.aqvisor.net:9090/dshbrd/csvdn?lang=en`\n".bytes
+            outs << "* **magnitdes** .- comma separated list of magnitude codes, according the next list:\n".bytes
             for(def mg in modelService.magnitude_schemas) {
                 outs << "	* `${mg.magnitude_id}` = `${mg.magnitude_name['en']}, spanish: `${mg.magnitude_name['es']}`\n"
             }
-            outs << "* **opoint** .- station code, accordiong the next list:\n".bytes
+            outs << "* **opoints** .- somma separated list of station codes, according the next list:\n".bytes
             for(def op in modelService.opoints2.sort{it.id}) {
                 outs << "	* `${op?.id}` = (`${op?.pid}`) `${op.opoint_name}`\n"
             }
@@ -98,19 +97,18 @@ class DataseriesController implements GrailsConfigurationAware {
             outs << "  * `data` .- CSV file with data\n".bytes
             outs << "  * `metadata` .- a markdown file containing themetadata corresponding to CSV file\n".bytes
             outs << "  * `help` .- a markdown file with this help info\n".bytes
+            outs << "* **complete** .- true, all columns. false: few columns\n".bytes
+            outs << "* **decimalp** .- true, a numbre use '.' on decimal points. false, ',' for decimal numbers. false: few columns\n".bytes
             outs << "* **sample**\n".bytes
             outs << "`http://www.aqvisor.net:9090/visorbe-0.2/dshbrd/csvdn?lang=en&magnitude=14&opoint=null&year=2021&month=3&dom=25&hour=0&itvl=24+hours&mode=remmaq&row=per+hour&show=data&complete=true&decimalp=false`\n"
         }
         else
         {
             def getMagnitudeSchema = modelService.getMagnitudeSchema
-
             // params
             String lang = params.lang?params.lang:'en'
-            def magnitude_id = params.magnitude as Integer
-            def magnitude_schema = getMagnitudeSchema(magnitude_id)
-            def opoint_id = (!params.opoint || params.opoint == 'null')?null:(params.opoint as Integer)
-            def opoint = (opoint_id != null)?modelService.getOpoint2(opoint_id):null
+            def magnitudes = (params.magnitudes == null || params.magnitudes?.toLowerCase() == 'null')?null:params.magnitudes.split(',')?.collect {it as Integer}
+            def opoints = (params.opoints == null || params.opoints?.toLowerCase() == 'null')?'null':params.opoints
             def year = params.year?(params.year as Integer):null
             def month = params.month?(params.month as Integer):null
             def dom = params.dom?(params.dom as Integer):null
@@ -118,10 +116,10 @@ class DataseriesController implements GrailsConfigurationAware {
             def itvl = params.itvl?params.itvl:null
             def row = params.row?:'per hour'
             def rowDesc = [
-                'per hour':(lang == 'en')?'HOURLY':'HORARIO',
-                'per day':(lang == 'en')?'DAYLY':'DIARIO',
-                'per month':(lang == 'en')?'MONTHLY':'MENSUAL',
-                'per year':(lang == 'en')?'ANNUAL':'ANUAL',
+                'per hour':(lang == 'en')?'Hourly':'Horario',
+                'per day':(lang == 'en')?'Daily':'Diario',
+                'per month':(lang == 'en')?'Monthly':'Mmensual',
+                'per year':(lang == 'en')?'Yearly':'Anual',
                 'total':'TOTAL'
             ][row]
             def mode = (params.mode == 'nasa')?'nasa':'remmaq'
@@ -130,88 +128,90 @@ class DataseriesController implements GrailsConfigurationAware {
 
             //output file names
             def date = createDate(year, month, dom, hour)
-            String filename = "REMMAQ_${date?date.format('yyyyMMdd-HHmm'):'ERROR'}"
-
+            String filename = "REMMAQ_${date?date.format('yyyyMMdd-HHmm-')+magnitudes?.join('-'):'ERROR'}"
             String filenamemd = "${filename}.md"
             String filenamecsv = "${filename}.csv"
-
             // input params erors
             def errors = ""
-            if(magnitude_id == null) errors = errors + '  * Magnitude param is not valid (magnitude param)\n'
-            if(magnitude_schema == null) errors = errors + '  * Unknown magnitude code (magnitude param)\n'
+            if(magnitudes == null) errors = errors + '  * Magnitude param is not valid (magnitude param)\n'
             if(date == null) errors = errors + '  * wrong date parameters (year, month, dom, hour params)\n'
             if(itvl == null) errors = errors + '  * interval must be defined (`itvl` param)\n'
-            if(opoint_id != null && opoint == null) errors = errors + '  * unknown station code (`opoint` param)\n'
             if(!['per hour', 'per day', 'per month', 'per year', 'total'].contains(row)) errors = errors + '  * unknown row code (`row` param)\n'
-
+            for(Integer magnitude_id in magnitudes) {
+                def magnitude_schema = modelService.magnitude_schemas.find {it.magnitude_id  == magnitude_id }
+                if(magnitude_schema == null) errors = errors + "  * Unknown magnitude code (magnitude param): ${magnitude_id}\n"
+            }
             if(show == 'metadata') {
                 response.setHeader "Content-disposition", "attachment; filename=${filenamemd}"
-                if(errors.length() > 0) {
-                    outs << "# REMMAQ|Visor System, Dataseries Downloader\n\n".bytes
+                outs << "# REMMAQ|Visor System, Dataseries Downloader\n\n".bytes
+                if(errors?.length() > 0) {
                     outs << "## Params\n\n".bytes
                     outs << "### **Errors**\n\n".bytes
                     outs << "${errors}\n\n".bytes
                 } else {
-                    outs << "# **`${magnitude_schema.magnitude_name['en']}`**\n\n".bytes
-                    outs << "REMMAQ|Visor System, Dataseries Downloader\n\n".bytes
                     outs << "## Params\n\n".bytes
+                    outs << "### Magnitudes\n\n".bytes
                     outs << "  * Date and interval: from ${date.format('yyyy.MM.dd-HH:mm')}, ${itvl}. ${(lang == 'en')?'Each data row is ':'Each fila representa un dato '} ${rowDesc} ${(lang == 'en')?' in the interval':' En el intervalo '}\n\n".bytes
-                    outs << "  * Magnitude: ${magnitude_schema.magnitude_name[lang]} \n\n".bytes
-                    if(magnitude_schema.nasa_name != null) {
-                        outs << "  * Nasa name: `${magnitude_schema.nasa_name}` \n\n".bytes
+                    for(Integer magnitude_id in magnitudes) {
+                        def magnitude_schema = modelService.magnitude_schemas.find {it.magnitude_id  == magnitude_id }
+                        outs << "\n#### **`${magnitude_schema.magnitude_name['en']}, id: ${magnitude_id}`**".bytes
+                        if(magnitude_schema.nasa_name != null)
+                            outs << ", Nasa name: `${magnitude_schema.nasa_name}` \n\n".bytes
+                        else outs << "\n\n".bytes
+                        outs << "  * Magnitude name in english: **`${magnitude_schema.magnitude_name['en']}`**\n\n".bytes
+                        outs << "  * Magnitude name in spanish: **`${magnitude_schema.magnitude_name['es']}`**\n\n".bytes
+                        outs << "  * NASA magnitude name: **`${magnitude_schema.nasa_name?magnitude_schema.nasa_name:'n/a'}`**\n\n".bytes
+                        outs << "  * Units: **`${magnitude_schema.unit?magnitude_schema.unit:'n/a'}`**\n\n".bytes
+                        outs << "  * Base data: **${magnitude_schema.DATA.colDescription('en')[0]}**, ${magnitude_schema.DATA.colDescription('en')[1]}, ${getDataDescription(magnitude_schema.DATA.colDescription('en')[0])}\n\n".bytes
+                        outs << "  * Row width: **${row}**, ${getRowDescription(row)}\n\n".bytes
                     }
-                    outs << "  * Station: `${(opoint_id != null)?opoint:'all'}` \n\n".bytes
-                    outs << "\n### *Magnitude details*\n\n".bytes
-                    outs << "  * Magnitude name in english: **`${magnitude_schema.magnitude_name['en']}`**\n\n".bytes
-                    outs << "  * Magnitude name in spanish: **`${magnitude_schema.magnitude_name['es']}`**\n\n".bytes
-                    outs << "  * NASA magnitude name: **`${magnitude_schema.nasa_name?magnitude_schema.nasa_name:'n/a'}`**\n\n".bytes
-                    outs << "  * Units: **`${magnitude_schema.unit?magnitude_schema.unit:'n/a'}`**\n\n".bytes
-                    outs << "  * Base data: **${magnitude_schema.DATA.colDescription('en')[0]}**, ${magnitude_schema.DATA.colDescription('en')[1]}, ${getDataDescription(magnitude_schema.DATA.colDescription('en')[0])}\n\n".bytes
-                    outs << "  * Row width: **${row}**, ${getRowDescription(row)}\n\n".bytes
-
                     outs << "## Columns\n\n".bytes
+                    outs << "  * **row** .- type of data, `hourly' hourly data, `aggr` aggregated data\n\n".bytes
                     outs << "### Magnituide and date time Columns\n\n".bytes
                     outs << "  * **magnitude** .- magnitude name\n\n".bytes
                     outs << "  * **station** .- station name\n\n".bytes
                     outs << "  * **datetime** .- local date and time\n\n".bytes
                     outs << "  * **utcdatetime** .- equivalent UTC date and time\n\n".bytes
-                    outs << "### Hourly based ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **1hC** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
+                    outs << "### ${row!='per hour'?(rowDesc + ' aggregated '):''} Columns\n\n".bytes
+                    outs << "  * **C1h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
                     if(complete) {
-                        outs << "  * **1hC_x** .- x axis data component\n\n".bytes
-                        outs << "  * **1hC_x** .- y axis data component\n\n".bytes
-                        outs << "  * **1hC_min** .- minimum\n\n".bytes
-                        outs << "  * **1hC_max** .- maximum\n\n".bytes
+                        outs << "  * **C1h_health** .- health Index for 1 hour concentration\n\n".bytes
+                        outs << "  * **C1h_x** .- x axis data component (for Wind magnitude)\n\n".bytes
+                        outs << "  * **C1h_x** .- y axis data component (for Wind magnitude)\n\n".bytes
+                        outs << "  * **C1h_min** .- minimum\n\n".bytes
+                        outs << "  * **C1h_max** .- maximum\n\n".bytes
                     }
                     outs << "### Hourly forecasting data based ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **fc_1hC** .- forecasting ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
+                    outs << "  * **fc_C1h** .- forecasting ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
                     if(complete) {
-                        outs << "  * **fc_1hC_x** .- forecasting x axis data component\n\n".bytes
-                        outs << "  * **fc_1hC_x** .- forecasting y axis data component\n\n".bytes
+                        outs << "  * **fc_C1h_x** .- forecasting x axis data component (for Wind magnitude)\n\n".bytes
+                        outs << "  * **fc_C1h_y** .- forecasting y axis data component (for Wind magnitude)\n\n".bytes
                     }
                     outs << "### 8 hours moving average data ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **8hC** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
+                    outs << "  * **C8h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
                     if(complete) {
-                        outs << "  * **8hC_min** .- minimum\n\n".bytes
-                        outs << "  * **8hC_max** .- maximum\n\n".bytes
+                        outs << "  * **health_C8h** .- Health Index for 8 hours concentration\n\n".bytes
+                        outs << "  * **C8h_min** .- minimum\n\n".bytes
+                        outs << "  * **C8h_max** .- maximum\n\n".bytes
                     }
                     outs << "### 8 forecasting hours moving average data ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **fc_8hC** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
+                    outs << "  * **fc_C8h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
                     if(complete) {
-                        outs << "  * **fc_8hC_min** .- minimum\n\n".bytes
-                        outs << "  * **fc_8hC_max** .- maximum\n\n".bytes
+                        outs << "  * **fc_C8h_min** .- minimum\n\n".bytes
+                        outs << "  * **fc_C8h_max** .- maximum\n\n".bytes
                     }
                     outs << "### 24 hours moving average data ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **24hC** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
+                    outs << "  * **C24h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
                     if(complete) {
-                        outs << "  * **24hC_min** .- minimum\n\n".bytes
-                        outs << "  * **24hC_max** .- maximum\n\n".bytes
+                        outs << "  * **health_C24h** .- Health Index for 24 hours concentration\n\n".bytes
+                        outs << "  * **C24h_min** .- minimum\n\n".bytes
+                        outs << "  * **C24h_max** .- maximum\n\n".bytes
                     }
                     outs << "### 24 forecasting hours moving average data ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **fc_24hC** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
+                    outs << "  * **fc_C24h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
                     if(complete) {
-                        outs << "  * **fc_24hC_min** .- minimum\n\n".bytes
-                        outs << "  * **fc_24hC_max** .- maximum\n\n".bytes
+                        outs << "  * **fc_C24h_min** .- minimum\n\n".bytes
+                        outs << "  * **fc_C24h_max** .- maximum\n\n".bytes
                     }
                     outs << "### Indexces \n\n".bytes
                     outs << "  * **IQCA** .- Quito Air Quality Index\n\n".bytes
@@ -227,18 +227,19 @@ class DataseriesController implements GrailsConfigurationAware {
             else
             {
                 response.setHeader "Content-disposition", "attachment; filename=${filenamecsv}"
-                def magnitude_schema2 = getMagnitudeSchema(magnitude_id==81?82:magnitude_id==82?81:null)
+//                def magnitude_schema2 = getMagnitudeSchema(magnitude_id==81?82:magnitude_id==82?81:null)
                 if(complete) {
-                    outs << "magnitude;station;datetime;utcdatetime;1hC;1hC_x;1hC_y;1hC_min;1hC_max;fc_1hC;fc_1hC_x;fc_1hC_y;8hC;8hC_min;8hC_max;fc_8hC_max;fc_8hC_min;fc_8hC_max;24hC;24hC_min;24hC_max;fc_24hC;fc_24hC_min;fc_24hC_max;IQCA;fc_IQCA;AQI;fc_AQI\n".bytes
+                    outs << "row;magnitude;station;datetime;utcdatetime;C1h;C1h_health;C1h_x;C1h_y;C1h_min;C1h_max;fc_C1h;fc_C1h_x;fc_C1h_y;C8h;C8h_health;C8h_min;C8h_max;fc_C8h_max;fc_C8h_min;fc_C8h_max;C24h;C24h_health;C24h_min;C24h_max;fc_C24h;fc_C24h_min;fc_C24h_max;IQCA;fc_IQCA;AQI;fc_AQI\n".bytes
                 } else {
-                    outs << "magnitude;station;datetime;utcdatetime;1hC;8hC;24hC;IQCA;AQI\n"
+                    outs << "row;magnitude;station;datetime;utcdatetime;C1h;C8h;C24h;IQCA;AQI\n"
                 }
 
-                String mysql = modelService.getSql4_1mg (itvl, row, magnitude_id, opoint_id, year, month, dom, hour)
+                String mysql = modelService.getSql4_1mg (itvl, row, magnitudes, opoints, year, month, dom, hour)
 
                 def sqlconn = new Sql(dataSource)
                 int n = 0
                 sqlconn.eachRow(mysql) { rr ->
+                    def magnitude_schema = getMagnitudeSchema(rr?.magnitude_id)
                     def rrfc = [
                         isHourlyData:rr?.isHourlyData,
                         value1:rr?.fc1,
@@ -248,12 +249,16 @@ class DataseriesController implements GrailsConfigurationAware {
                         value24h:rr?.fc24,
                         value24hmax:rr?.fc24max
                     ]
+                    outs << "${(rr?.isHourlyData == true?"hour":"aggr")};".bytes
                     outs << "${(mode=='nasa' && magnitude_schema?.nasa_name)?magnitude_schema.nasa_name:magnitude_schema?.magnitude_name?.getAt(lang)};".bytes
                     outs << "${modelService.getOpoint2(rr?.opoint_id)?.opoint_name};".bytes
                     outs << "${rr?.datetime};".split(' ').join('T').bytes
                     outs << "${rr?.utcdatetime};".bytes
-                    outs << "${rr?.value1?Math.round(rr?.value1*10.0)/10.0:''};".replace('.',decimalp).bytes
+                    def c1h = rr?.value1?Math.round(rr?.value1*10.0)/10.0:null
+                    outs << "${(c1h != null)?c1h:''};".replace('.',decimalp).bytes
                     if(complete) {
+                        def c1h_health = (c1h!=null)?magnitude_schema?.c1h_health?.call(c1h):null
+                        outs << "${(c1h_health!=null)?c1h_health:''};".replace('.',decimalp).bytes
                         outs << "${rr?.value1x?Math.round(rr?.value1x*10.0)/10.0:''};".replace('.',decimalp).bytes
                         outs << "${rr?.value1y?Math.round(rr?.value1y*10.0)/10.0:''};".replace('.',decimalp).bytes
                         outs << "${rr?.value1min ?Math.round(rr?.value1min*10.0)/10.0: ''};".replace('.', decimalp).bytes
@@ -262,16 +267,22 @@ class DataseriesController implements GrailsConfigurationAware {
                         outs << "${rr?.fc1x ?Math.round(rr?.fc1x*10.0)/10.0: ''};".replace('.', decimalp).bytes
                         outs << "${rr?.fc1y ?Math.round(rr?.fc1y*10.0)/10.0: ''};".replace('.', decimalp).bytes
                     }
-                    outs << "${rr?.value8h?Math.round(rr?.value8h*10.0)/10.0:''};".replace('.',decimalp).bytes
+                    def c8h = (rr?.value8h != null)?Math.round(rr?.value8h*10.0)/10.0:null
+                    outs << "${(c8h != null)?c8h:''};".replace('.',decimalp).bytes
                     if(complete) {
+                        def c8h_health = (c8h!=null)?magnitude_schema?.c8h_health?.call(c8h):null
+                        outs << "${(c8h_health!=null)?c8h_health:''};".replace('.',decimalp).bytes
                         outs << "${rr?.value8min?Math.round(rr?.value8min*10.0)/10.0: ''};".replace('.', decimalp).bytes
                         outs << "${rr?.value8max?Math.round(rr?.value8max*10.0)/10.0: ''};".replace('.', decimalp).bytes
                         outs << "${rr?.fc8?Math.round(rr?.fc8*10.0)/10.0: ''};".replace('.', decimalp).bytes
                         outs << "${rr?.fc8min?Math.round(rr?.fc8min*10.0)/10.0: ''};".replace('.', decimalp).bytes
                         outs << "${rr?.fc8max?Math.round(rr?.fc8max*10.0)/10.0: ''};".replace('.', decimalp).bytes
                     }
-                    outs << "${rr?.value24h?Math.round(rr?.value24h*10.0)/10.0:''};".replace('.',decimalp).bytes
+                    def c24h = (rr?.value24h != null)?Math.round(rr?.value24h*10.0)/10.0:null
+                    outs << "${(c24h != null)?c24h:''};".replace('.',decimalp).bytes
                     if(complete) {
+                        def c24h_health = (c24h!=null)?magnitude_schema?.c24h_health?.call(c24h):null
+                        outs << "((${(c24h_health!=null)?c24h_health:''}));".replace('.',decimalp).bytes
                         outs << "${rr?.value24min?Math.round(rr?.value24min*10.0)/10.0: ''};".replace('.', decimalp).bytes
                         outs << "${rr?.value24max?Math.round(rr?.value24max*10.0)/10.0: ''};".replace('.', decimalp).bytes
                         outs << "${rr?.fc24?Math.round(rr?.fc24*10.0)/10.0: ''};".replace('.', decimalp).bytes
