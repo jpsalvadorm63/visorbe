@@ -5,407 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ec4f475-793d-4d00-a1f3-acd5e92a5007" name="Default Changelist" comment="IQCA &amp; AQI formulas redefined">
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure5.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure258.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure259.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure260.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure262.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure264.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure265.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure266.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure267.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure268.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure258.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure259.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure260.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure263.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure264.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure265.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure266.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure267.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure258.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure259.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure260.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure261.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure263.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure265.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure266.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure267.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure268.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure269.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure258.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure259.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure260.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure261.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure262.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure264.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure266.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure267.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure268.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure269.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure270.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure259.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure261.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure262.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure263.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure264.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure265.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure258.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure260.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure261.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure262.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure263.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure264.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure259.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure260.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure261.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure262.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure263.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure236.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure237.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure239.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure240.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure237.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure238.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure240.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure210.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure211.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure212.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure213.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure214.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure215.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure216.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure217.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure218.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure219.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure220.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure221.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure222.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure223.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure224.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure225.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure226.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure227.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure228$_closure260.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure228.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure229$_closure261.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure229.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure230$_closure262.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure230.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure231$_closure263.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure231.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure232$_closure264.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure232.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure233$_closure265.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure233.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure234.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure235.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure236.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure237.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure238.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure239$_closure271.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure239.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure240$_closure272.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure240.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure241$_closure273.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure242$_closure274.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure243$_closure275.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure244$_closure276.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure233.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure234.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure236.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure237.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure238.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure239.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure240.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure234.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure235.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure237.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure238.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure239.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure240.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure232.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure233.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure235.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure236.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure237.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure238.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure239.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure240.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure239.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure240.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure238.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure239.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure258.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure259.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure240.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure258.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure255.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure258.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure259.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure260.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure261.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure253.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure258.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure259.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure260.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure261.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure262.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure235.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure236.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure238.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure239.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure240.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure248.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure249.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure250.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure251.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure252.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure254.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure256.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure257.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure258.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure259.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure260.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure231.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure232.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure234.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure235.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure236.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure237.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure238.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure239.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure247.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure230.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure231.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure233.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure234.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure235.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure236.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure237.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure238.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure240.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure245.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure246.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure229.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure230.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure232.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure233.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure234.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure235.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure236.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure237.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure239.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure241.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure242.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure243.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure244.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure245.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsJSON_closure6.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsJSON_closure7$_closure8$_closure9.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsJSON_closure7$_closure8.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsJSON_closure7$_closure9$_closure10.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsJSON_closure7$_closure9.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsJSON_closure7.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsJSON_closure8$_closure9.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsJSON_closure8.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure263.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure261.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure262.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure264.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure265.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure260.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure259.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure258.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure247.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure248.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure234$_closure266.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure235$_closure267.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure236$_closure268.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure237$_closure269.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure238$_closure270.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure244.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure245.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure243.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure250.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure249.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure254.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure252.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure251.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure253.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure256.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure257.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure246.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure255.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure242.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure241.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure240.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileSnapshots.bin" afterDir="false" />
@@ -416,33 +54,20 @@
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_AQIids_closure219.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_AQIname_closure220.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_IQCAcolors_closure223.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_IQCAcolors_closure224.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_IQCAids_closure222.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_IQCAname_closure222.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_IQCAname_closure223.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_IQCids_closure224.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_IQCids_closure225.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure233.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure234.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure231.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure232.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure233.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure234.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure235.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure235.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure236.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure230.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure231.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure229.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure230.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure228.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure229.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure217.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure218.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure268.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure266.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure267.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure269.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure270.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure265.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure264.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure263.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcDATA24h_closure252.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure253.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure100.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure100.class" afterDir="false" />
@@ -560,28 +185,57 @@
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure201.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure201.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure202.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure202.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure203.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure203.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure204$_closure236.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure204$_closure237.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure204.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure204.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure205$_closure237.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure205$_closure238.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure205.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure205.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure206$_closure238.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure206$_closure239.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure206.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure206.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure207$_closure239.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure207$_closure240.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure207.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure207.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure208$_closure240.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure208$_closure241.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure208.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure208.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure209$_closure241.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure209$_closure242.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure209.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure209.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure21.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure21.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure210.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure210.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure211.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure211.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure212.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure212.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure213.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure213.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure214.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure214.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure215.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure215.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure216.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure216.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure217.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure217.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure218.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure218.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure219.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure219.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure22.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure22.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure220.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure220.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure221.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure221.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure222.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure222.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure223.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure223.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure224.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure224.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure225.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure225.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure226.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure226.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure227.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure227.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure228.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure228.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure229.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure229.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure23.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure23.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure230.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure230.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure231.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure231.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure232.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure232.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure233.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure233.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure234.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure234.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure235.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure235.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure236.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure236.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure237.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure237.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure238.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure238.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure239$_closure271.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure239$_closure271.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure239.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure239.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure24.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure24.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure240$_closure272.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure240.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure241$_closure273.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure241.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure242$_closure274.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure242.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure243$_closure275.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure243.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure244$_closure276.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure244.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure25.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure25.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure26.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure26.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure27.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure27.class" afterDir="false" />
@@ -664,26 +318,30 @@
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure97.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure97.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure98.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure98.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure99.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure99.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure214.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure215.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure213.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure221.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure226.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure227.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure227.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure228.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure216.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure225.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure226.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure212.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure211.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure210.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure249.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure250.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure248.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure255.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure254.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure259.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure257.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure256.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure258.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure261.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure262.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure251.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure260.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure247.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure246.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure245.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings$__clinit__closure1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings$__clinit__closure1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/WsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/WsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/META-INF/grails.build.info" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/META-INF/grails.build.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/stacktrace.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/stacktrace.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grails-app/controllers/visorbe/DataseriesController.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/grails-app/controllers/visorbe/DataseriesController.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grails-app/controllers/visorbe/UrlMappings.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/grails-app/controllers/visorbe/UrlMappings.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grails-app/services/visorbe/ModelService.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/grails-app/services/visorbe/ModelService.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -769,7 +427,7 @@
       <updated>1617592270088</updated>
       <workItem from="1617592272962" duration="21000" />
       <workItem from="1617592334217" duration="138567000" />
-      <workItem from="1618580503476" duration="14965000" />
+      <workItem from="1618580503476" duration="56192000" />
     </task>
     <task id="LOCAL-00001" summary="IQCA &amp; AQI formulas redefined">
       <created>1618013520101</created>
@@ -778,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618013520101</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="IQCA &amp; AQI formulas redefined">
+      <created>1618630166518</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618630166518</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

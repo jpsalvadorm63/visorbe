@@ -323,35 +323,35 @@ class ModelService {
 			],
 		],
 		[
-			magnitude_id: 3,
+			magnitude_id: PM10,    // magnitude_id = 3
 			magnitude_name: [es:'Material Particulado 10 [PM10]', en:'Particulate matter 10 [PM10]'],
 			nasa_name: null,
 			unit: 'ug/m3',
 			DATA: [
 				value: { prms -> prms?.value24h },
-				colDescription: {lang -> (lang == 'es')?['24hC','Concentración promedio últimas 24 horas']:['24hC','last 24 hours average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C24h','Concentración promedio 24 horas']:['C24h','24 hours average concentration']},
 				valuemin: { prms -> prms?.value24min },
 				valuemed: { prms -> prms?.value24med },
 				valuemax: { prms -> prms?.value24max },
-				ranges: C24hranges[3],                                   // (1)
-				health: {value -> getIdxHealth(value, C24hranges[3])},   // (2)
-				colors: IQCAcolors,                                      // 2.1
-				decimals: 1                                              // 2.2
+				ranges: C24hranges[PM10],                                 // (1)
+				health: {value -> getIdxHealth(value, C24hranges[PM10])}, // (2)
+				colors: IQCAcolors,                                       // 2.1
+				decimals: 1                                               // 2.2
 			],
 			CONCENTRATION: [
 				value: { prms -> prms?.value1 },
-				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C1h','Concentración promedio en 1 hora']:['C1h','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
 				valuemax: { prms -> prms?.value1max },
-				ranges: C1hranges[3],                                    // (3)
-				health: {value -> getIdxHealth(value, C1hranges[3])},    // (4)
-				colors: IQCAcolors,                                      // 4.1
-				decimals: 1                                              // 4.2
+				ranges: C1hranges[PM10],                                   // (3)
+				health: {value -> getIdxHealth(value, C1hranges[PM10])},   // (4)
+				colors: IQCAcolors,                                        // 4.1
+				decimals: 1                                                // 4.2
 			],
-			c1h_health: {value -> getIdxHealth(value, C1hranges[3])},    // (5)
-			c8h_health: null,                                            // (6)
-			c24h_health: {value -> getIdxHealth(value, C24hranges[3])},  // (7)
+			c1h_health: {value -> getIdxHealth(value, C1hranges[PM10])},   // (5)
+			c8h_health: null,                                              // (6)
+			c24h_health: {value -> getIdxHealth(value, C24hranges[PM10])}, // (7)
 			IQCA: [
 				value: { prms ->
 					Double C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
@@ -393,34 +393,34 @@ class ModelService {
 			]
 		],
 		[
-			magnitude_id: 6,
+			magnitude_id: CO,    // magnitude_id = 6
 			magnitude_name: [es:'Monóxido de Carbono [CO]', en:'Carbon monoxide [CO]'],
 			nasa_name: null,
 			unit: 'ug/m3',
 			DATA: [
 				value: { prms -> prms?.value8h },
-				colDescription: {lang -> (lang == 'es')?['8hC','Concentración promedio en 8 horas']:['8hC','8 hours average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C8h','Concentración promedio en 8 horas']:['C8h','8 hours average concentration']},
 				valuemin: { prms -> prms?.value8min },
 				valuemed: { prms -> prms?.value8med },
 				valuemax: { prms -> prms?.value8max },
-				ranges: C8hranges[6],                                   // (1)
-				health: {value -> getIdxHealth(value, C8hranges[6])},   // (2)
+				ranges: C8hranges[CO],                                   // (1)
+				health: {value -> getIdxHealth(value, C8hranges[CO])},   // (2)
 				colors: IQCAcolors,                                      // 2.1
 				decimals: 1                                              // 2.2
 			],
 			CONCENTRATION: [
 				value: { prms -> prms?.value1 },
-				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C1h','Concentración promedio en 1 hora']:['C1h','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
 				valuemax: { prms -> prms?.value1max },
-				ranges: C1hranges[1],                                    // (3)
-				health: {value -> getIdxHealth(value, C1hranges[6])},    // (4)
+				ranges: C1hranges[CO],                                   // (3)
+				health: {value -> getIdxHealth(value, C1hranges[CO])},   // (4)
 				colors: IQCAcolors,                                      // 4.1
 				decimals: 1                                              // 4.2
 			],
-			c1h_health: {value -> getIdxHealth(value, C1hranges[6])},    // (5)
-			c8h_health: {value -> getIdxHealth(value, C8hranges[6])},    // (6)
+			c1h_health: {value -> getIdxHealth(value, C1hranges[CO])},   // (5)
+			c8h_health: {value -> getIdxHealth(value, C8hranges[CO])},   // (6)
 			c24h_health:  null,                                          // (7)
 			IQCA: [
 				value: { prms ->
@@ -463,36 +463,36 @@ class ModelService {
 			]
 	    ],
 		[
-			magnitude_id: 8,
+			magnitude_id: NO2,   // id:8
 			magnitude_name: [es:'Dióxido de Nitrógeno [NO2]', en:'Nitrogen dioxide [NO2]'],
 			nasa_name: 'no2_ML_[ugm-3]',
 			unit: 'ug/m3',
 			DATA: [
 				value: { prms -> prms?.value1 },
-				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C1h','Concentración promedio en 1 hora']:['C1h','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
 				valuemax: { prms -> prms?.value1max },
-				ranges: C1hranges[1],                                    // (1)
-				health: {value -> getIdxHealth(value, C1hranges[8])},    // (2)
+				ranges: C1hranges[NO2],                                  // (1)
+				health: {value -> getIdxHealth(value, C1hranges[NO2])},  // (2)
 				colors: IQCAcolors,                                      // 2.1
 				decimals: 1                                              // 2.2
 			],
 			DATA2: null,
 			CONCENTRATION: [
 				value: { prms -> prms?.value1 },
-				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C1h','Concentración promedio en 1 hora']:['C1h','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
 				valuemax: { prms -> prms?.value1max },
-				ranges: C1hranges[8],                                    // (3)
-				health: {value -> getIdxHealth(value, C1hranges[8])},    // (4)
-				colors: IQCAcolors,                                      // 4.1
-				decimals: 1                                              // 4.2
+				ranges: C1hranges[NO2],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[NO2])},    // (4)
+				colors: IQCAcolors,                                        // 4.1
+				decimals: 1                                                // 4.2
 			],
-			c1h_health: {value -> getIdxHealth(value, C1hranges[8])},    // (5)
-			c8h_health: null,                                            // (6)
-			c24h_health: null,                                           // (7)
+			c1h_health: {value -> getIdxHealth(value, C1hranges[NO2])},    // (5)
+			c8h_health: null,                                              // (6)
+			c24h_health: null,                                             // (7)
 			IQCA: [
 				value: {prms ->
 					Double C1h = prms.value1
@@ -534,13 +534,13 @@ class ModelService {
 			]
 		],
 		[
-			magnitude_id: 10,
+			magnitude_id: PM25,     // magnitude_id = 10
 			magnitude_name: [es:'Material Particulado 2.5 [PM2.5]', en:'Particulate matter [PM2.5]'],
 			nasa_name: 'pm25_gcc_ML_[ugm-3]',
 			unit: 'ug/m3',
 			DATA: [
 				value: { prms -> prms?.value24h },
-				colDescription: {lang -> (lang == 'es')?['24hC','Concentración promedio últimas 24 horas']:['24hC','last 24 hours average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C24h','Concentración promedio últimas 24 horas']:['C24h','last 24 hours average concentration']},
 				valuemin: {prms -> prms?.value24min},
 				valuemed: { prms -> prms?.value24med },
 				valuemax: { prms -> prms?.value24max },
@@ -551,18 +551,18 @@ class ModelService {
 			],
 			CONCENTRATION: [
 				value: { prms -> prms.value1 },
-				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C1h','Concentración promedio en 1 hora']:['C1h','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
 				valuemax: { prms -> prms?.value1max },
-				ranges: C1hranges[10],                                   // (3)
-				health: {value -> getIdxHealth(value, C1hranges[10])},   // (4)
-				colors: IQCAcolors,                                      // 4.1
-				decimals: 1                                              // 4.2
+				ranges: C1hranges[PM25],                                   // (3)
+				health: {value -> getIdxHealth(value, C1hranges[PM25])},   // (4)
+				colors: IQCAcolors,                                        // 4.1
+				decimals: 1                                                // 4.2
 			],
-			c1h_health: {value -> getIdxHealth(value, C1hranges[10])},   // (5)
-			c8h_health: null,                                            // (6)
-			c24h_health: {value -> getIdxHealth(value, C24hranges[10])}, // (7)
+			c1h_health: {value -> getIdxHealth(value, C1hranges[PM25])},   // (5)
+			c8h_health: null,                                              // (6)
+			c24h_health: {value -> getIdxHealth(value, C24hranges[PM25])}, // (7)
 			IQCA: [
 				value: { prms ->
 					Double C24h = (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h
@@ -604,53 +604,34 @@ class ModelService {
 			]
 		],
 		[
-			magnitude_id: 14,
+			magnitude_id: O3,                  // magnitude_id = 14
 			magnitude_name: [es:'Ozono [O3]', en:'Ozone [O3]'],
 			nasa_name: 'o3_ML_[ugm-3]',
 			unit: 'ug/m3',
 			DATA: [
 				value: {prms -> prms?.value8h},
 
-				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C8h','Concentración promedio en 8 horas']:['C8h','8 hours average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
 				valuemax: { prms -> prms?.value1max },
-				ranges: C1hranges[14],                                   // (3)
+				ranges: C1hranges[O3],                                   // (3)
 				health: { prms ->
 					Double C1h = prms?.value1
 					Double C8h = prms?.value8h
-					/*if(value8h> 0 && value <= 50) return 0
+					if(value8h> 0 && value <= 50) return 0
 					else if(value8h> 50 && value <= 100) return 1
-					else else if(value> 100 && value <= 200) return 2
+					else if(value> 100 && value <= 200) return 2
 					else if(value> 200 && value <= 400) return 3
 					else if(value> 408 && value <= 808) return 3
 					else if(value> 808 && value <= 1008) return 4
-					else if(value> 1008 /*&& value <= 1200) return 5
-					else*/ return null
+					else if(value> 1008 /*&& value <= 1200*/) return 5
+					else return null
 				},                                                       // (4)
 				colors: IQCAcolors,                                      // 4.1
 				decimals: 1                                              // 4.2
 			],
-			CONCENTRATION: [
-				value: { prms -> prms?.value8h },
-				desc: ['c8h', '8 hours concentration','concentración 8 horas'],
-				valuemin: { prms -> prms?.value8min },
-				valuemed: { prms -> prms?.value8med },
-				valuemax: { prms -> prms?.value8max },
-				ranges: C1hranges[1],
-				health: {value ->
-					if(value> 0 && value <= 50) return 0 else
-					if(value> 50 && value <= 100) return 1 else
-					if(value> 100 && value <= 200) return 2 else
-					if(value> 200 && value <= 400) return 3 else
-					if(value> 408 && value <= 808) return 3 else
-					if(value> 808 && value <= 1008) return 4 else
-					if(value> 1008 /*&& value <= 1200*/) return 5 else
-					return null
-				},
-				colors: IQCAcolors,
-				decimals: 1
-			],
+			CONCENTRATION: null,
 			c1h_health: {value ->
 				if(value> 408 && value <= 808) return 3 else
 				if(value> 808 && value <= 1008) return 4 else
@@ -716,14 +697,14 @@ class ModelService {
 			unit: 'ug/m3',
 			DATA: [
 				value: { prms -> prms?.value1 },
-				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C1h','Concentración promedio en 1 hora']:['C1h','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
 				valuemax: { prms -> prms?.value1max }
 			],
 			CONCENTRATION: [
 				value: { prms -> prms?.value1 },
-				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
+				colDescription: {lang -> (lang == 'es')?['C1h','Concentración promedio en 1 hora']:['C1h','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
 				valuemax: { prms -> prms?.value1max }
@@ -1119,8 +1100,7 @@ class ModelService {
 	 * @author JPSalvadorM@gmail.com
 	 */
 	def getSql4_1mg (itvl, row, magnitudes, opoints, year, month=1, dom=1, hour = 0, forecastingIfAny = true) {
-	String sqlstr  = null
-		sqlstr = """
+		return """
 			select
 				d.magnitude_id,
 				d.opoint_id,
@@ -1178,10 +1158,9 @@ class ModelService {
 					${hour}
 				) f
 				on d.magnitude_id = f.magnitude_id and d.opoint_id = f.opoint_id and d.datetime = f.datetime
-				where d.magnitude_id in (${magnitudes?.join(',')}) and (${opoints} is null or d.opoint in (${opoints}))
+				where d.magnitude_id in (${magnitudes.join(',')}) and d.opoint_id in (${opoints})
 			order by 1, 2, 3
 		"""
-		return sqlstr
 	}
 
 	// init
