@@ -326,7 +326,6 @@ class DashboardController implements GrailsConfigurationAware {
 		} catch(e) {
 			zonetype = 1
 		}
-
 		def mydistances = modelService.readDistances(maxDistance, zonetype)
 		render(status: 200, contentType: "application/json", text: mydistances as JSON)
 	}

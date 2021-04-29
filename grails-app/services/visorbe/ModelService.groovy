@@ -142,9 +142,65 @@ class ModelService {
 		60:[code:'other',  es:'Otra concentración',                       en:'Another concentration']
 	]
 
-	def calcDATA24h(prms) { return prms?.value24h }  //TODO: borrar this huevada
+//	def calcDATA24h(prms) { return prms?.value24h }  //TODO: borrar this huevada
+
+	def colorsTEMP = [
+		0: 'rgb(0,191,255)',
+		1: 'rgb(0,255.0)',
+		2: 'rgb(255,255,0)',
+		3: 'rgb(255,204,102)',
+		4: 'rgb(255,0,0)',
+		5: 'rgb(201,71,245)'
+	]
+
+//	const healthTEMP = (lang) => [
+//			lang === 'en' ? 'low' : 'baja',
+//			lang === 'en' ? 'reatively low' : 'relativamente baja',
+//			lang === 'en' ? 'moderate' : 'moderada',
+//			lang === 'en' ? 'confortable' : 'confortable',
+//			lang === 'en' ? 'reatively high' : 'relativamente alta',
+//			lang === 'en' ? 'high' : 'alta',
+//	]
+
+	def colorsHUM = [
+		0: 'rgb(255,255,0)',
+		1: 'rgb(255,165,0)',
+		2: 'rgb(201,71,245)'
+	]
+
+//	const healthHUM = (lang) => [
+//			lang === 'en' ? 'low' : 'baja',
+//			lang === 'en' ? 'moderate' : 'moderada',
+//			lang === 'en' ? 'high' : 'alta',
+//			lang === 'en' ? 'very high' : 'muy alta',
+//			lang === 'en' ? 'extremely high' : 'extremadamente alta'
+//	]
 
 	def calcIQCA24h(prms) { return (prms.isHourlyData==null || prms.isHourlyData)?prms.value24h:prms.value24max?prms.value24max:prms.value24h}
+
+	def colorsBPressure = [
+		0: 'rgb(30,144,255)',
+		1: 'rgb(0,210,255)',
+		2: 'rgb(252, 191, 73)',
+		3: 'rgb(238,130,238)',
+		4: 'rgb(138,43,226)'
+	]
+
+//	const healthBPressure = (lang) => [
+//			lang === 'en' ? 'deep low presure system' : 'system baja presión profunda',
+//			lang === 'en' ? 'low presure' : 'baja Presión',
+//			lang === 'en' ? 'sea level presure' : 'presión al nivel del mar Estándar',
+//			lang === 'en' ? 'high pressure' : 'alta Presión',
+//			lang === 'en' ? 'strong high pressure system' : 'sistema de alta presión fuerte'
+//	]
+
+	def colorsRain = [
+		0: 'rgba(0,228,0)',
+		1: 'rgba(255,225,0)',
+		2: 'rgba(255,126,0)',
+		3: 'rgba(255,0,0)',
+		4: 'rgba(143,63,151)'
+	]
 
 // ======= AQI =======
 
@@ -153,46 +209,97 @@ class ModelService {
 	def AQIranges = [0, 50, 100, 150, 200, 300, 400, 500]
 
 //	def AQIhealths = [
-//			0: (lang = 'en') -> (lang=='en')?'good':'bueno',
-//			1: (lang = 'en') -> (lang=='en')?'moderate':'moderado',
-//			2: (lang = 'en') -> (lang=='en')?'unhealthy sensitive groups':'insalubre grupos sensibles',
-//			3: (lang = 'en') -> (lang=='en')?'unhealthy':'insalubre',
-//			4: (lang = 'en') -> (lang=='en')?'very unhealthy':'muy insalubre',
-//			5: (lang = 'en') -> (lang=='en')?'hazardous':'peligroso',
-//			6: (lang = 'en') -> (lang=='en')?'very hazardous':'muy peligroso'
-//	]
-
+//		0: (lang = 'en') -> (lang=='en')?'good':'bueno',
+//		1: (lang = 'en') -> (lang=='en')?'moderate':'moderado',
+//		2: (lang = 'en') -> (lang=='en')?'unhealthy sensitive groups':'insalubre grupos sensibles',
+//		3: (lang = 'en') -> (lang=='en')?'unhealthy':'insalubre',
+//		4: (lang = 'en') -> (lang=='en')?'very unhealthy':'muy insalubre',
+//		5: (lang = 'en') -> (lang=='en')?'hazardous':'peligroso',
+//		6: (lang = 'en') -> (lang=='en')?'very hazardous':'muy peligroso'
+//	] as java.lang.Object
 
 	def getAQIhealth(id, lang = 'en') {return AQIhealths[id]?.call(lang)}
 
 	def AQIcolors = [
-			0: 'rgb(50, 205, 50)',
-			1: 'rgb(255, 255, 0)',
-			2: 'rgb(255, 165, 0)',
-			3: 'rgb(255, 0, 0)',
-			4: 'rgb(148, 0, 211)',
-			5: 'rgb(138, 0, 0)',
-			6: 'rgb(128, 0, 0)'
+		0: 'rgb(50, 205, 50)',
+		1: 'rgb(255, 255, 0)',
+		2: 'rgb(255, 165, 0)',
+		3: 'rgb(255, 0, 0)',
+		4: 'rgb(148, 0, 211)',
+		5: 'rgb(138, 0, 0)',
+		6: 'rgb(128, 0, 0)'
 	]
+
+	def RADScolors = [
+		0: 'rgb(0,255,0)',
+		1: 'rgb(255,255,0)',
+		2: 'rgb(255,165,0)',
+		3: 'rgb(255,0,0)',
+		5: 'rgb(201,71,245)'
+	]
+
+//	const healthRADS = (lang) => [
+//		lang === 'en' ?'low':'baja',
+//		lang === 'en' ?'moderate':'moderada',
+//		lang === 'en' ?'high':'alta',
+//		lang === 'en' ?'very high':'muy alta',
+//		lang === 'en' ?'extremely high':'extremadamente alta'
+//	]
+
+	def colorsWindSpeed = [
+		0: 'rgb(0,225,255)',
+		1: 'rgb(0,200,255)',
+		2: 'rgb(0,200,0)',
+		3: 'rgb(0,225,0)',
+		4: 'rgb(0,255,0)',
+		5: 'rgb(255,225,0)',
+		6: 'rgb(255,150,0)',
+		7: 'rgb(255,0,0)',
+		8: 'rgb(200,0,0)',
+		9: 'rgb(150,0,0)',
+		10: 'rgb(100,0,0)',
+		11: 'rgb(50,0,0)',
+		12: 'rgb(20,0,0)'
+	]
+
+	def colorsWindDir = [0: 'rgb(0,200,0)']
+
+	//	const healthWindSpeed = (lang) => [ // The Beaufort Wind Force Scale: https://www.weathergamut.com/2019/02/25/weather-lingo-the-beaufort-wind-force-scale/
+	//								   lang === 'en' ? 'calm' : 'calma',
+	//								   lang === 'en' ? 'light air' : 'ventolina',
+	//								   lang === 'en' ? 'light breeze' : 'brisa muy débil',
+	//								   lang === 'en' ? 'gentle breeze' : 'brisa ligera',
+	//								   lang === 'en' ? 'moderate breeze' : 'brisa moderada',
+	//								   lang === 'en' ? 'fresh breeze' : 'brisa fresca',
+	//								   lang === 'en' ? 'near gale' : 'brisa fuerte',
+	//								   lang === 'en' ? 'gale' : 'viento fuerte',
+	//								   lang === 'en' ? 'strong gale': 'viento duro',
+	//								   lang === 'en' ? 'storm' : 'viento muy duro',
+	//								   lang === 'en' ? 'strong storm' : 'temporal duro',
+	//								   lang === 'en' ? 'very strong storm' : 'temporal muy duro',
+	//								   lang === 'en' ? 'hurricane' : 'temporal huracanado',
+	//	]
+
+	//const healthWindHealth = (lang) => [lang === 'en' ? 'OK' : 'OK']
 
 	def getAQIcolors(Integer id) { AQIcolors[id] }
 
-// ======= IQCA =======
+	// ======= IQCA =======
 
 	int[] IQCAidx = [0, 1, 2, 3, 4, 5]
 
 	int[] IQCAranges = [0, 50, 100, 200, 300, 400, 500]
 
-//	def IQCAhealths = [
-//		//idx: health
-//		0: (lang) -> (lang == 'en') ? 'Optimus': 'Óptimo',
-//		1: (lang) -> (lang == 'en') ? 'Acceptable': 'Aceptable',
-//		2: (lang) -> (lang == 'en') ? 'Caution': 'Precaución',
-//		3: (lang) -> (lang == 'en') ? 'Alert': 'Alerta',
-//		4: (lang) -> (lang == 'en') ? 'Alarm': 'Alarma',
-//		5: (lang) -> (lang == 'en') ? 'Emergency': 'Emergencia',
-//		6: (lang) -> (lang == 'en') ? 'Danger': 'Peligro'
-//	]
+	//	def IQCAhealths = [
+	//		//idx: health
+	//		0: (lang) -> (lang == 'en') ? 'Optimus': 'Óptimo',
+	//		1: (lang) -> (lang == 'en') ? 'Acceptable': 'Aceptable',
+	//		2: (lang) -> (lang == 'en') ? 'Caution': 'Precaución',
+	//		3: (lang) -> (lang == 'en') ? 'Alert': 'Alerta',
+	//		4: (lang) -> (lang == 'en') ? 'Alarm': 'Alarma',
+	//		5: (lang) -> (lang == 'en') ? 'Emergency': 'Emergencia',
+	//		6: (lang) -> (lang == 'en') ? 'Danger': 'Peligro'
+	//	]
 
 	def getIQCAhealth(id, lang='en') { return IQCAhealths[id]?.call(lang) }
 
@@ -203,32 +310,110 @@ class ModelService {
 	def SO2 = 1
 	def PM10 = 3
 	def CO = 6
+	def NO = 7
 	def NO2 = 8
 	def PM25 = 10
+	def NOX = 12
 	def O3 = 14
+	def RAD_SOLAR = 88
+	def IUV = 99
+	def Irrad_UV = 201
+	def Ed305 = 93
+	def Ed313 = 94
+	def Ed320 = 95
+	def Ed340 = 96
+	def Ed380 = 97
+	def Ed395 = 98
+	def PAR = 100
+	def RAP_VEC = 81
+	def DIR_VEC = 82
+	def TEMP_AMB = 83
+	def HUM_REL = 86
+	def PRES_BAR = 87
+	def LLUVIA = 89
 
 	def C1hranges = [
-		(SO2):  [0, 62.5, 125, 200, 1000, 1800, 2600],
-		(PM10): [0, 50, 100, 250, 400, 500, 600],
-		(CO):   [0, 5, 10, 15, 30, 40, 50],
-		(NO2):  [0, 100, 200, 1000, 2000, 3000, 4000],
-		(PM25): [0, 25, 50, 150, 250, 350, 450]
+		(SO2):       [0, 62.5, 125, 200, 1000, 1800, 2600],
+		(PM10):      [0, 50, 100, 250, 400, 500, 600],
+		(CO):        [0, 5, 10, 15, 30, 40, 50],
+		(NO):        [0, 100, 200, 1000, 2000, 3000, 4000],
+		(NO2):       [0, 100, 200, 1000, 2000, 3000, 4000],
+		(PM25):      [0, 25, 50, 150, 250, 350, 450],
+		(NOX):       [0, 190, 381, 572, 763, 955],
+		(RAD_SOLAR): [0, 375, 750, 1125, 1500, 2000],
+		(IUV):       [0, 2, 5, 7, 10, 20],
+		(Irrad_UV):  [0, 0.1, 0.2, 0.3, 0.4, 0.5],
+		(Ed305):     [0, 4, 7, 18, 15, 20],
+		(Ed313):     [0, 4, 8, 20, 30, 40],
+		(Ed320):     [0, 10, 25, 35, 45, 55],
+		(Ed340):     [0, 18, 37, 56, 74, 94],
+		(Ed380):     [0, 24, 48, 72, 96, 125],
+		(Ed395):     [0, 23, 46, 70, 93, 120],
+		(PAR):       [0, 0.05, 0.10, 0.20, 0.30, 0.40],
+		(RAP_VEC):   [0.0, 0.3, 1.4, 3.1, 5.3, 7.8, 10.0, 13.6, 16.9, 20.6, 24.4, 28.3,32.5, 85],
+		(DIR_VEC):   [-180, 180],
+		(TEMP_AMB):  [-5, 5, 10, 17, 24, 30, 40],
+		(HUM_REL):   [0, 30, 70, 100],
+		(PRES_BAR):  [0, 980, 1013, 1014, 1040, 2000],
+		(LLUVIA):    [
+			day:      [0,   5,  10,  25,   50,  100],
+			week:     [0, 8.5,  17,  40,   75,  150],
+			month:    [0,  20,  50, 100,  150,  250],
+			quarter:  [0,  25,  50, 125,  250,  500],
+			semester: [0,  50, 100, 250,  500, 1000],
+			year:     [0, 100, 200, 500, 1000, 2000],
+		]
 	]
 
 	def C8hranges = [
-		(SO2):  null,
-		(PM10): null,
-		(CO):   [0, 5, 10, 15, 30, 40, 50],
-		(NO2):  null,
-		(PM25): null
+		(SO2):        null,
+		(PM10):       null,
+		(CO):         [0, 5, 10, 15, 30, 40, 50],
+		(NO):         null,
+		(NO2):        null,
+		(PM25):       null,
+		(NOX):        null,
+		(RAD_SOLAR):  null,
+		(IUV):        null,
+		(Irrad_UV):   null,
+		(Ed305):      null,
+		(Ed313):      null,
+		(Ed320):      null,
+		(Ed340):      null,
+		(Ed380):      null,
+		(Ed395):      null,
+		(PAR):        null,
+		(RAP_VEC):    null,
+		(DIR_VEC):   null,
+		(TEMP_AMB):   null,
+		(HUM_REL):    null,
+		(PRES_BAR):   null,
+		(LLUVIA):     null
 	]
 
 	def C24hranges = [
-		(SO2):  [0, 62.5, 125, 200, 1000, 1800, 2600],
-		(PM10): [0, 50, 100, 250, 400, 500, 600],
-		(CO):   null,
-		(NO2):  null,
-		(PM25): [0, 25, 50, 150, 250, 350, 450]
+		(SO2):        [0, 62.5, 125, 200, 1000, 1800, 2600],
+		(PM10):       [0, 50, 100, 250, 400, 500, 600],
+		(CO):         null,
+		(NO2):        null,
+		(PM25):       [0, 25, 50, 150, 250, 350, 450],
+		(NOX):        null,
+		(RAD_SOLAR):  null,
+		(IUV):        null,
+		(Irrad_UV):   null,
+		(Ed305):      null,
+		(Ed313):      null,
+		(Ed320):      null,
+		(Ed340):      null,
+		(Ed380):      null,
+		(Ed395):      null,
+		(PAR):        null,
+		(RAP_VEC):    null,
+		(DIR_VEC):    null,
+		(TEMP_AMB):   null,
+		(HUM_REL):    null,
+		(PRES_BAR):   null,
+		(LLUVIA):     null
 	]
 
 // ======= formulas =======
@@ -610,7 +795,6 @@ class ModelService {
 			unit: 'ug/m3',
 			DATA: [
 				value: {prms -> prms?.value8h},
-
 				colDescription: {lang -> (lang == 'es')?['C8h','Concentración promedio en 8 horas']:['C8h','8 hours average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
@@ -691,7 +875,7 @@ class ModelService {
 			]
 		],
 		[
-			magnitude_id: 7,
+			magnitude_id: NO,
 			magnitude_name: [es:'Monóxido de Nitrógeno [NO]', en:'Nitrogen monoxide [NO]'],
 			nasa_name: null,
 			unit: 'ug/m3',
@@ -700,18 +884,32 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['C1h','Concentración promedio en 1 hora']:['C1h','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
-				valuemax: { prms -> prms?.value1max }
+				valuemax: { prms -> prms?.value1max },
+				ranges: C1hranges[NO],                                   // (1)
+				health: {value ->
+					println "hola ..... $value"
+					return getIdxHealth(value, C1hranges[NO])
+				},   // (2)
+				colors: IQCAcolors,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: { prms -> prms?.value1 },
 				colDescription: {lang -> (lang == 'es')?['C1h','Concentración promedio en 1 hora']:['C1h','1 hour average concentration']},
 				valuemin: { prms -> prms?.value1min },
 				valuemed: { prms -> prms?.value1med },
-				valuemax: { prms -> prms?.value1max }
+				valuemax: { prms -> prms?.value1max },
+				ranges: C1hranges[NO],                                   // (1)
+				health: {value -> getIdxHealth(value, C1hranges[NO])},   // (2)
+				colors: IQCAcolors,
+				decimals: 1
 			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[NO])},   // (5)
+			c8h_health: null,  // (6)
+			c24h_health: null, // (7)
 		],
 		[
-			magnitude_id: 12,
+			magnitude_id: NOX,   // 12,
 			magnitude_name: [es:'Óxido de Nitrógeno [NOx]', en:'Nitrogen oxide [NOx]'],
 			unit: 'ug/m3',
 			DATA: [
@@ -719,18 +917,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
 				valuemin: {prms -> prms?.value1min},
 				valuemed: { prms -> prms?.value1med },
-				valuemax: {prms -> prms?.value1max}
+				valuemax: {prms -> prms?.value1max},
+				ranges: C1hranges[NOX],                                   // (1)
+				health: {value -> getIdxHealth(value, C1hranges[NOX])},   // (2)
+				colors: IQCAcolors,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1},
 				colDescription: {lang -> (lang == 'es')?['1hC','Concentración promedio en 1 hora']:['1hC','1 hour average concentration']},
 				valuemin: {prms -> prms?.value1min},
 				valuemed: { prms -> prms?.value1med },
-				valuemax: {prms -> prms?.value1max}
-			]
+				valuemax: {prms -> prms?.value1max},
+				ranges: C1hranges[NOX],                                   // (1)
+				health: {value -> getIdxHealth(value, C1hranges[NOX])},   // (2)
+				colors: IQCAcolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[NO])},   // (5)
+			c8h_health: null,  // (6)
+			c24h_health: null, // (7)
 		],
 		[
-			magnitude_id: 88,
+			magnitude_id: RAD_SOLAR,
 			magnitude_name: [es:'Radiación Solar', en:'Solar radiation'],
 			nasa_name: null,
 			unit: 'W/m2',
@@ -739,18 +948,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C24hranges[RAD_SOLAR],                                   // (1)
+				health: {value -> getIdxHealth(value, C24hranges[RAD_SOLAR])},   // (2)
+				colors: RADScolors,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1max},
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C24hranges[RAD_SOLAR],                                   // (1)
+				health: {value -> getIdxHealth(value, C24hranges[RAD_SOLAR])},   // (2)
+				colors: RADScolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[RAD_SOLAR])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 99,
+			magnitude_id: IUV,
 			magnitude_name: [es:'Indice Radiación UV', en:'UV radiation index [IUV]'],
 			unit: '',
 			DATA: [
@@ -758,18 +978,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C1hranges[IUV],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[IUV])},    // (4)
+				colors: RADScolors,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1max},
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C1hranges[IUV],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[IUV])},    // (4)
+				colors: RADScolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[IUV])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 201,
+			magnitude_id: Irrad_UV,
 			magnitude_name: [es: 'Irradiancia UV', en:'UV Radiance'],
 			nasa_name: null,
 			unit: 'W/m2',
@@ -778,18 +1009,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C1hranges[Irrad_UV],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Irrad_UV])},    // (4)
+				colors: RADScolors,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1max},
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C1hranges[Irrad_UV],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Irrad_UV])},    // (4)
+				colors: RADScolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[Irrad_UV])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 93,
+			magnitude_id: Ed305,
 			magnitude_name: [es:'Ed305', en:'Ed305'],
 			unit: 'uW/(cm2nm)',
 			DATA: [
@@ -797,18 +1039,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C1hranges[Ed305],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed305])},    // (4)
+				colors: RADScolors,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1max},
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C1hranges[Ed305],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed305])},    // (4)
+				colors: RADScolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[Ed305])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 94,
+			magnitude_id: Ed313,
 			magnitude_name: [es:'Ed313', en:'Ed313'],
 			nasa_name: null,
 			unit: 'uW/(cm2nm)',
@@ -817,18 +1070,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C1hranges[Ed313],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed313])},    // (4)
+				colors: RADScolors,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1max},
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C1hranges[Ed313],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed313])},    // (4)
+				colors: RADScolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[Ed313])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 95,
+			magnitude_id: Ed320,
 			magnitude_name: [es:'Ed320', en:'Ed320'],
 			unit: 'uW/(cm2nm)',
 			DATA: [
@@ -836,18 +1100,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C1hranges[Ed320],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed320])},    // (4)
+				colors: RADScolors,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1max},
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C1hranges[Ed320],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed320])},    // (4)
+				colors: RADScolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[Ed320])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 96,
+			magnitude_id: Ed340,
 			magnitude_name: [es:'Ed340', en:'Ed340'],
 			nasa_name: null,
 			unit: 'uW/(cm2nm)',
@@ -856,18 +1131,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C1hranges[Ed340],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed340])},    // (4)
+				colors: RADScolors,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1max},
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C1hranges[Ed340],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed340])},    // (4)
+				colors: RADScolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[Ed340])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 97,
+			magnitude_id: Ed380,
 			magnitude_name: [es:'Ed380', en:'Ed380'],
 			nasa_name: null,
 			unit: 'uW/(cm2nm)',
@@ -876,19 +1162,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C1hranges[Ed380],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed380])},    // (4)
+				colors: RADScolors,
+				decimals: 1
 			],
-			DATA2: null,
 			CONCENTRATION: [
 				value: {prms -> prms?.value1max},
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C1hranges[Ed380],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed380])},    // (4)
+				colors: RADScolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[Ed380])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 98,
+			magnitude_id: Ed395,
 			magnitude_name: [es:'Ed395', en:'Ed395'],
 			nasa_name: null,
 			unit: 'uW/(cm2nm)',
@@ -897,19 +1193,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C1hranges[Ed395],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed395])},    // (4)
+				colors: RADScolors,
+				decimals: 1
 			],
-			DATA2: null,
 			CONCENTRATION: [
 				value: {prms -> prms?.value1max},
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C1hranges[Ed395],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[Ed395])},    // (4)
+				colors: RADScolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[Ed395])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 100,
+			magnitude_id: PAR,
 			magnitude_name: [es:'PAR', en:'PAR'],
 			nasa_name: null,
 			unit: 'uE/(cm2seg)',
@@ -918,19 +1224,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C1hranges[PAR],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[PAR])},    // (4)
+				colors: RADScolors,
+				decimals: 1
 			],
-			DATA2: null,
 			CONCENTRATION: [
 				value: {prms -> prms?.value1max},
 				colDescription: {lang -> (lang == 'es')?['10mX','Máximo promedio en 10 minuntes']:['10mX','Max average in 10 minutes']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C1hranges[PAR],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[PAR])},    // (4)
+				colors: RADScolors,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[PAR])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 81,
+			magnitude_id: RAP_VEC,
 			magnitude_name: [es:'Velocidad viento', en:'Wind speed'],
 			nasa_name: 'wind_speed_[ms-1]',
 			unit: 'm/s',
@@ -941,7 +1257,11 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['1hP','promedio 1 hora']:['1hP','1 hour average']},
 				valuemax: {prms -> prms?.value1max},
 				valuemin: null,
-				valuemed: null
+				valuemed: null,
+				ranges: C1hranges[RAP_VEC],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[RAP_VEC])},    // (4)
+				colors: colorsWindSpeed,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1},
@@ -950,11 +1270,18 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['1hP','promedio 1 hora']:['1hP','1 hour average']},
 				valuemax: {prms -> prms?.value1max},
 				valuemin: null,
-				valuemed: null
-			]
+				valuemed: null,
+				ranges: C1hranges[RAP_VEC],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[RAP_VEC])},    // (4)
+				colors: colorsWindSpeed,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[RAP_VEC])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 82,
+			magnitude_id: DIR_VEC,
 			magnitude_name: [es:'Dirección viento', en:'Wind dirección'],
 			nasa_name: 'wind_direction',
 			unit: '\260',
@@ -965,7 +1292,11 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['1hP','promedio 1 hora']:['1hP','1 hour average']},
 				valuemax: null,
 				valuemin: null,
-				valuemed: null
+				valuemed: null,
+				ranges: C1hranges[DIR_VEC],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[DIR_VEC])},    // (4)
+				colors: colorsWindDir,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1},
@@ -974,11 +1305,18 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['1hP','promedio 1 hora']:['1hP','1 hour average']},
 				valuemax: null,
 				valuemin: null,
-				valuemed: null
-			]
+				valuemed: null,
+				ranges: C1hranges[DIR_VEC],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[DIR_VEC])},    // (4)
+				colors: colorsWindDir,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[DIR_VEC])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 83,
+			magnitude_id: TEMP_AMB,
 			magnitude_name: [es:'Temperatura Media', en:'Average temperature'],
 			nasa_name: 'Temperature_[K]',
 			unit: 'oC',
@@ -987,18 +1325,26 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['1hP','promedio 1 hora']:['1hP','1 hour average']},
 				valuemin: {prms -> prms?.value1min},
 				valuemed: { prms -> prms?.value1med },
-				valuemax: {prms -> prms?.value1max}
+				valuemax: {prms -> prms?.value1max},
+				ranges: C1hranges[TEMP_AMB],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[TEMP_AMB])},    // (4)
+				colors: colorsTEMP,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1},
 				colDescription: {lang -> (lang == 'es')?['1hP','promedio 1 hora']:['1hP','1 hour average']},
 				valuemin: {prms -> prms?.value1min},
 				valuemed: { prms -> prms?.value1med },
-				valuemax: {prms -> prms?.value1max}
+				valuemax: {prms -> prms?.value1max},
+				ranges: C1hranges[TEMP_AMB],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[TEMP_AMB])},    // (4)
+				colors: colorsTEMP,
+				decimals: 1
 			]
 		],
 		[
-			magnitude_id: 86,
+			magnitude_id: HUM_REL,
 			magnitude_name: [es:'Humedad relativa', en:'Relative humidity'],
 			nasa_name: null,
 			unit: '%',
@@ -1008,6 +1354,10 @@ class ModelService {
 				valuemin: {prms -> prms?.value1min},
 				valuemed: { prms -> prms?.value1med },
 				valuemax: {prms -> prms?.value1max},
+				ranges: C1hranges[HUM_REL],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[HUM_REL])},    // (4)
+				colors: colorsHUM,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: {prms -> prms?.value1},
@@ -1015,10 +1365,17 @@ class ModelService {
 				valuemin: {prms -> prms?.value1min},
 				valuemed: { prms -> prms?.value1med },
 				valuemax: {prms -> prms?.value1max},
-			]
+				ranges: C1hranges[HUM_REL],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[HUM_REL])},    // (4)
+				colors: colorsHUM,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[HUM_REL])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 87,
+			magnitude_id: PRES_BAR,
 			magnitude_name: [es:'Presión barométrica', en:'Barometric Pressure'],
 			nasa_name: 'SurfacePressure_[hPa]',
 			unit: 'mb',
@@ -1027,18 +1384,29 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['1hP','promedio 1 hora']:['1hP','1 hour average']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
+				valuemax: null,
+				ranges: C1hranges[PRES_BAR],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[PRES_BAR])},    // (4)
+				colors: colorsBPressure,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: { prms -> prms?.value1 },
 				colDescription: {lang -> (lang == 'es')?['1hP','promedio 1 hora']:['1hP','1 hour average']},
 				valuemin: null,
 				valuemed: null,
-				valuemax: null
-			]
+				valuemax: null,
+				ranges: C1hranges[PRES_BAR],                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[PRES_BAR])},    // (4)
+				colors: colorsBPressure,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[PRES_BAR])},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		],
 		[
-			magnitude_id: 89,
+			magnitude_id: LLUVIA,
 			magnitude_name: [es:'Lluvia acumulada', en:'Accumulate rainfall'],
 			nasa_name: 'Precipitation_[mm]',
 			unit: 'mm',
@@ -1047,15 +1415,26 @@ class ModelService {
 				colDescription: {lang -> (lang == 'es')?['1hAc','Total acumulado en 1 hora']:['1hAc','1 hour accumulate']},
 				valuemax: { prms -> prms?.value1 },
 				valuemin: null,
-				valuemed: null
+				valuemed: null,
+				ranges: C1hranges[LLUVIA],                                        // (3)
+				health: {value -> getIdxHealth(value, C1hranges[LLUVIA].day)},    // (4)
+				colors: colorsRain,
+				decimals: 1
 			],
 			CONCENTRATION: [
 				value: { prms -> prms?.value1 },
 				colDescription: {lang -> (lang == 'es')?['1hAc','Total acumulado en 1 hora']:['1hAc','1 hour accumulate']},
 				valuemax: { prms -> prms?.value1 },
 				valuemin: null,
-				valuemed: null
-			]
+				valuemed: null,
+				ranges: C1hranges[LLUVIA].day,                                    // (3)
+				health: {value -> getIdxHealth(value, C1hranges[LLUVIA].day)},    // (4)
+				colors: colorsRain,
+				decimals: 1
+			],
+			c1h_health: {value -> getIdxHealth(value, C1hranges[LLUVIA].day)},    // (5)
+			c8h_health: null,   // (6)
+			c24h_health: null,  // (7)
 		]
 	]
 
@@ -1099,7 +1478,7 @@ class ModelService {
 	 *
 	 * @author JPSalvadorM@gmail.com
 	 */
-	def getSql4_1mg (itvl, row, magnitudes, opoints, year, month=1, dom=1, hour = 0, forecastingIfAny = true) {
+	def getSql4_1mg (itvl, row, magnitude_id, opoints, year, month=1, dom=1, hour = 0, forecastingIfAny = true) {
 		return """
 			select
 				d.magnitude_id,
@@ -1140,7 +1519,7 @@ class ModelService {
 				dashboard.api_dataseries_vw(
 					'${itvl}',
 					'${row}',
-					null,
+					${magnitude_id},
 					null,
 					${year},
 					${month},
@@ -1150,7 +1529,7 @@ class ModelService {
 				left join dashboard.api_dataseriesfc(
 					'${itvl}',
 					'${row}',
-					null,
+					${magnitude_id},
 					null,
 					${year},
 					${month},
@@ -1158,7 +1537,7 @@ class ModelService {
 					${hour}
 				) f
 				on d.magnitude_id = f.magnitude_id and d.opoint_id = f.opoint_id and d.datetime = f.datetime
-				where d.magnitude_id in (${magnitudes.join(',')}) and d.opoint_id in (${opoints})
+				where d.opoint_id in (${opoints})
 			order by 1, 2, 3
 		"""
 	}
