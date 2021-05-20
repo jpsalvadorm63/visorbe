@@ -2,7 +2,7 @@ package visorbe
 
 import grails.config.Config
 import grails.core.support.GrailsConfigurationAware
-import grails.rest.*
+//import grails.rest.*
 import grails.converters.*
 import groovy.sql.Sql
 import groovy.json.JsonOutput
@@ -52,6 +52,10 @@ class DataseriesController implements GrailsConfigurationAware {
         ][row]
     }
 
+    static String toStr(Number x, int dec=0) { (x instanceof Number) ? (x as Double).round(dec) : '' }
+
+    static String setDecimalP(String x, decimalp='.') {(decimalp=='.')?x:x?.replace('.', decimalp)}
+
     /**
      *
      * @return
@@ -59,7 +63,6 @@ class DataseriesController implements GrailsConfigurationAware {
     def qryDsCSV() {
         // service call sample
         // http://www.aqvisor.net:9090/visorbe-0.2/dshbrd/csvdn?lang=en&magnitude=1,3,6&opoints=1,3,8&year=2021&month=3&dom=25&hour=0&itvl=1+hour&mode=remmaq&row=per+hour&show=data&complete=true&decimalp=false
-
         def show = params.show
         def outs = response.outputStream
         response.status = OK.value()
@@ -101,9 +104,7 @@ class DataseriesController implements GrailsConfigurationAware {
             outs << "* **decimalp** .- true, a numbre use '.' on decimal points. false, ',' for decimal numbers. false: few columns\n".bytes
             outs << "* **sample**\n".bytes
             outs << "`http://www.aqvisor.net:9090/visorbe-0.2/dshbrd/csvdn?lang=en&magnitude=14&opoint=null&year=2021&month=3&dom=25&hour=0&itvl=24+hours&mode=remmaq&row=per+hour&show=data&complete=true&decimalp=false`\n"
-        }
-        else
-        {
+        } else {
             def getMagnitudeSchema = modelService.getMagnitudeSchema
             // params
             String lang = params.lang?params.lang:'en'
@@ -166,52 +167,42 @@ class DataseriesController implements GrailsConfigurationAware {
                         outs << "  * Row width: **${row}**, ${getRowDescription(row)}\n\n".bytes
                     }
                     outs << "## Columns\n\n".bytes
-                    outs << "  * **row** .- type of data, `hourly' hourly data, `aggr` aggregated data\n\n".bytes
+                    outs << "  * **row** .- type of data, `hour' hourly data, `aggr` aggregated data\n\n".bytes
                     outs << "### Magnituide and date time Columns\n\n".bytes
                     outs << "  * **magnitude** .- magnitude name\n\n".bytes
                     outs << "  * **station** .- station name\n\n".bytes
                     outs << "  * **datetime** .- local date and time\n\n".bytes
                     outs << "  * **utcdatetime** .- equivalent UTC date and time\n\n".bytes
                     outs << "### ${row!='per hour'?(rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **C1h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
+                    outs << "  * **data_1h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
                     if(complete) {
-                        outs << "  * **C1h_health** .- health Index for 1 hour concentration\n\n".bytes
-                        outs << "  * **C1h_x** .- x axis data component (for Wind magnitude)\n\n".bytes
-                        outs << "  * **C1h_x** .- y axis data component (for Wind magnitude)\n\n".bytes
-                        outs << "  * **C1h_min** .- minimum\n\n".bytes
-                        outs << "  * **C1h_max** .- maximum\n\n".bytes
+                        outs << "  * **health_1h** .- health Index for 1 hour concentration\n\n".bytes
+                        outs << "  * **data_1h_X** .- x axis data component (for Wind magnitude)\n\n".bytes
+                        outs << "  * **data_1h_Y** .- y axis data component (for Wind magnitude)\n\n".bytes
+                        outs << "  * **data_1h_min** .- minimum\n\n".bytes
+                        outs << "  * **data_1h_max** .- maximum\n\n".bytes
+                        outs << "  * **data_1h_forecasting** .- forecasting data component\n\n".bytes
+                        outs << "  * **data_1h_forecastingX** .- x axis forecasting data component (for Wind magnitude)\n\n".bytes
+                        outs << "  * **data_1h_forecastingY** .- x axis data forecasting component (for Wind magnitude)\n\n".bytes
                     }
-                    outs << "### Hourly forecasting data based ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **fc_C1h** .- forecasting ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
-                    if(complete) {
-                        outs << "  * **fc_C1h_x** .- forecasting x axis data component (for Wind magnitude)\n\n".bytes
-                        outs << "  * **fc_C1h_y** .- forecasting y axis data component (for Wind magnitude)\n\n".bytes
+                    outs << "### Data Concentration Columns\n\n".bytes
+                    outs << "  * **concentration** .- Type of concentration: 1 hour, 8 hours, 24 hour, as detailed next:\n".bytes
+                    for(Integer magnitude_id in magnitudes) {
+                        def magnitude_schema = modelService.magnitude_schemas.find { it.magnitude_id == magnitude_id }
+                        if(magnitude_schema !=null) {
+                            outs << "    - **${magnitude_schema?.magnitude_name[lang]}** .- ${magnitude_schema?.DATA?.colDescription?.call(lang)?.getAt(1)}\n\n".bytes
+                        }
                     }
-                    outs << "### 8 hours moving average data ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **C8h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
+                    outs << "  * **conct_data** .- concentration data\n\n".bytes
                     if(complete) {
-                        outs << "  * **health_C8h** .- Health Index for 8 hours concentration\n\n".bytes
-                        outs << "  * **C8h_min** .- minimum\n\n".bytes
-                        outs << "  * **C8h_max** .- maximum\n\n".bytes
-                    }
-                    outs << "### 8 forecasting hours moving average data ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **fc_C8h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
-                    if(complete) {
-                        outs << "  * **fc_C8h_min** .- minimum\n\n".bytes
-                        outs << "  * **fc_C8h_max** .- maximum\n\n".bytes
-                    }
-                    outs << "### 24 hours moving average data ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **C24h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
-                    if(complete) {
-                        outs << "  * **health_C24h** .- Health Index for 24 hours concentration\n\n".bytes
-                        outs << "  * **C24h_min** .- minimum\n\n".bytes
-                        outs << "  * **C24h_max** .- maximum\n\n".bytes
-                    }
-                    outs << "### 24 forecasting hours moving average data ${row!='per hour'?(', ' + rowDesc + ' aggregated '):''} Columns\n\n".bytes
-                    outs << "  * **fc_C24h** .- ${row!='per hour'?(row + ' aggregated based on '):''}hourly data${row!='per hour'?(' groupped on Magnitude/station/datetime '):''}\n\n".bytes
-                    if(complete) {
-                        outs << "  * **fc_C24h_min** .- minimum\n\n".bytes
-                        outs << "  * **fc_C24h_max** .- maximum\n\n".bytes
+                        outs << "  * **conct_data_health** .- concentration health indicator\n\n".bytes
+                        outs << "  * **conct_data_x** .- x axis concentration data\n\n".bytes
+                        outs << "  * **conct_data_yx** .- y axis concentration data\n\n".bytes
+                        outs << "  * **conct_data_min** .- min concentration data\n\n".bytes
+                        outs << "  * **conct_data_max** .- max concentration data\n\n".bytes
+                        outs << "  * **conct_forecastingx** .- forecasting concentration data\n\n".bytes
+                        outs << "  * **conct_forecasting_minx** .- min forecasting concentration data\n\n".bytes
+                        outs << "  * **conct_forecasting_max** .- max forecasting concentration data\n\n".bytes
                     }
                     outs << "### Indexces \n\n".bytes
                     outs << "  * **IQCA** .- Quito Air Quality Index\n\n".bytes
@@ -228,11 +219,16 @@ class DataseriesController implements GrailsConfigurationAware {
             {
                 response.setHeader "Content-disposition", "attachment; filename=${filenamecsv}"
                 if(complete) {
-                    outs << "row;magnitude;station;datetime;utcdatetime;C1h;C1h_health;C1h_x;C1h_y;C1h_min;C1h_max;fc_C1h;fc_C1h_x;fc_C1h_y;C8h;C8h_health;C8h_min;C8h_max;fc_C8h_max;fc_C8h_min;fc_C8h_max;C24h;C24h_health;C24h_min;C24h_max;fc_C24h;fc_C24h_min;fc_C24h_max;IQCA;fc_IQCA;AQI;fc_AQI\n".bytes
+                    outs << "row;magnitude;station;datetime;utcdatetime;".bytes
+                    outs << "_1;data_1h;health_1h;data_1h_X;data_1h_Y;data_1h_min;data_1h_max;data_1h_forecasting;".bytes
+                    outs << "data_1h_forecastingX;data_1h_forecastingY;".bytes
+                    outs << "_2;concentration;conct_data;conct_data_health;conct_data_x;conct_data_y;conct_data_min;".bytes
+                    outs << "conct_data_max;conct_forecasting;conct_forecasting_min;".bytes
+                    outs << "conct_forecasting_max;_3;IQCA;fc_IQCA;AQI;fc_AQI".bytes
                 } else {
-                    outs << "row;magnitude;station;datetime;utcdatetime;C1h;C8h;C24h;IQCA;AQI\n"
+                    outs << "row;magnitude;station;datetime;utcdatetime;_1;data_1h;_2;concentration;conct_data;_3;IQCA;AQI".bytes
                 }
-
+                outs << "\n".bytes
                 def sqlconn = new Sql(dataSource)
                 int n = 0
                 for(Integer magnitude_id in magnitudes) {
@@ -254,52 +250,75 @@ class DataseriesController implements GrailsConfigurationAware {
                         outs << "${modelService.getOpoint2(rr?.opoint_id)?.opoint_name};".bytes
                         outs << "${rr?.datetime};".split(' ').join('T').bytes
                         outs << "${rr?.utcdatetime};".bytes
-                        def c1h = rr?.value1?Math.round(rr?.value1*10.0)/10.0:null
-                        outs << "${(c1h != null)?c1h:''};".replace('.',decimalp).bytes
+                        outs << "|;".bytes
+                        String c1h = toStr(rr?.value1, 3)
+                        outs << "${setDecimalP(c1h, decimalp)};".bytes
                         if(complete) {
-                            def c1h_health = (c1h!=null)?magnitude_schema?.c1h_health?.call(c1h):null
-                            outs << "${(c1h_health!=null)?c1h_health:''};".replace('.',decimalp).bytes
-                            outs << "${rr?.value1x?Math.round(rr?.value1x*10.0)/10.0:''};".replace('.',decimalp).bytes
-                            outs << "${rr?.value1y?Math.round(rr?.value1y*10.0)/10.0:''};".replace('.',decimalp).bytes
-                            outs << "${rr?.value1min ?Math.round(rr?.value1min*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.value1max ?Math.round(rr?.value1max*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.fc1 ?Math.round(rr?.fc1*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.fc1x ?Math.round(rr?.fc1x*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.fc1y ?Math.round(rr?.fc1y*10.0)/10.0: ''};".replace('.', decimalp).bytes
+                            def c1h_health = (c1h!='')?magnitude_schema?.c1h_health?.call(c1h as Double):null
+                            outs << "${(c1h_health!=null)?c1h_health:''};".bytes
+                            outs << "${setDecimalP(toStr(rr?.value1x, 3), decimalp)};".bytes
+                            outs << "${setDecimalP(toStr(rr?.value1y, 3), decimalp)};".bytes
+                            outs << "${setDecimalP(toStr(rr?.value1min, 3), decimalp)};".bytes
+                            outs << "${setDecimalP(toStr(rr?.value1max, 3), decimalp)};".bytes
+                            outs << "${setDecimalP(toStr(rr?.fc1, 3), decimalp)};".bytes
+                            outs << "${setDecimalP(toStr(rr?.fc1x, 3), decimalp)};".bytes
+                            outs << "${setDecimalP(toStr(rr?.fc1y, 3), decimalp)};".bytes
                         }
-                        def c8h = (rr?.value8h != null)?Math.round(rr?.value8h*10.0)/10.0:null
-                        outs << "${(c8h != null)?c8h:''};".replace('.',decimalp).bytes
-                        if(complete) {
-                            def c8h_health = (c8h!=null)?magnitude_schema?.c8h_health?.call(c8h):null
-                            outs << "${(c8h_health!=null)?c8h_health:''};".replace('.',decimalp).bytes
-                            outs << "${rr?.value8min?Math.round(rr?.value8min*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.value8max?Math.round(rr?.value8max*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.fc8?Math.round(rr?.fc8*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.fc8min?Math.round(rr?.fc8min*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.fc8max?Math.round(rr?.fc8max*10.0)/10.0: ''};".replace('.', decimalp).bytes
+                        outs << "|;".bytes
+                        if([14,6].contains(magnitude_id)) {
+                            outs << "${(lang == 'es')?'8 horas':'8 horas'};".bytes
+                            def c8h = toStr(rr?.value8h, 3)
+                            outs << "${setDecimalP(c8h, decimalp)};".bytes
+                            if(complete) {
+                                def c8h_health = (c8h!='')?magnitude_schema?.c8h_health?.call(c8h as Double):null
+                                outs << "${(c8h_health!=null)?c8h_health:''};;;".bytes
+                                outs << "${setDecimalP(toStr(rr?.value8min,3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.value8max,3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.fc8,3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.fc8min,3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.fc8max,3), decimalp)};".bytes
+                            }
+                        } else
+                        if([1,3,10].contains(magnitude_id)) {
+                            outs << "${(lang == 'es')?'24 horas':'24 hours'};".bytes
+                            def c24h = toStr(rr?.value24h,3)
+                            outs << "${setDecimalP(c24h, decimalp)};".bytes
+                            if(complete) {
+                                def c24h_health = (c24h!='')?magnitude_schema?.c24h_health?.call(c24h as Double):null
+                                outs << "${(c24h_health!=null)?c24h_health:''};;;".bytes
+                                outs << "${setDecimalP(toStr(rr?.value24min,3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.value24max,3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.fc24,3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.fc24min,3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.fc24max,3), decimalp)};".bytes
+                            }
+                        } else {
+                            outs << "${(lang == 'es')?'1 hora':'1 hour'};".bytes
+                            outs << "${setDecimalP(c1h, decimalp)};".bytes
+                            if(complete) {
+                                def c1h_health = (c1h!='')?magnitude_schema?.c1h_health?.call(c1h as Double):null
+                                outs << "${(c1h_health!=null)?c1h_health:''};".bytes
+                                outs << "${setDecimalP(toStr(rr?.value1x, 3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.value1y, 3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.value1min, 3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.value1max, 3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.fc1, 3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.fc1x, 3), decimalp)};".bytes
+                                outs << "${setDecimalP(toStr(rr?.fc1y, 3), decimalp)};".bytes
+                            }
                         }
-                        def c24h = (rr?.value24h != null)?Math.round(rr?.value24h*10.0)/10.0:null
-                        outs << "${(c24h != null)?c24h:''};".replace('.',decimalp).bytes
-                        if(complete) {
-                            def c24h_health = (c24h!=null)?magnitude_schema?.c24h_health?.call(c24h):null
-                            outs << "((${(c24h_health!=null)?c24h_health:''}));".replace('.',decimalp).bytes
-                            outs << "${rr?.value24min?Math.round(rr?.value24min*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.value24max?Math.round(rr?.value24max*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.fc24?Math.round(rr?.fc24*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.fc24min?Math.round(rr?.fc24min*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                            outs << "${rr?.fc24max?Math.round(rr?.fc24max*10.0)/10.0: ''};".replace('.', decimalp).bytes
-                        }
+                        outs << "|;".bytes
                         def iqca = magnitude_schema?.IQCA?.value?.call(rr)
-                        outs << "${iqca?iqca:''};".replace('.',decimalp).bytes
+                        outs << "${setDecimalP(toStr(iqca), decimalp)};".bytes
                         if(complete) {
                             def fc_iqca = magnitude_schema?.IQCA?.value?.call(rrfc)
-                            outs << "${fc_iqca?Math.round(fc_iqca):''};".replace('.', decimalp).bytes
+                            outs << "${setDecimalP(toStr(fc_iqca), decimalp)};".bytes
                         }
                         def aqi = magnitude_schema?.AQI?.value?.call(rr)
-                        outs << "${aqi?aqi:''};".replace('.',decimalp).bytes
+                        outs << "${setDecimalP(toStr(aqi), decimalp)};".bytes
                         if(complete) {
                             def fc_aqi = magnitude_schema?.AQI?.value?.call(rrfc)
-                            outs << "${fc_aqi?fc_aqi: ''}".replace('.', decimalp).bytes
+                            outs << "${setDecimalP(toStr(fc_aqi), decimalp)}".bytes
                         }
                         outs << "\n"
                         n++
@@ -315,108 +334,211 @@ class DataseriesController implements GrailsConfigurationAware {
         outs.close()
     }
 
-    def qryDsJSON() {
-        // service call sample
-        // http://www.aqvisor.net:9090/visorbe-0.2/dshbrd/jsondn?magnitudes=1,3,6&opoints=1,3,8&year=2021&month=3&dom=25&hour=0&itvl=1+hour&row=per+hour
+    def queryToArray(sqlconn, query) {
         def getMagnitudeSchema = modelService.getMagnitudeSchema
-        // params
-        def magnitudes = (params.magnitudes == null || params.magnitudes?.toLowerCase() == 'null')?null:params.magnitudes.split(',')?.collect {it as Integer}
-        def opoints = (params.opoints == null || params.opoints?.toLowerCase() == 'null')?'null':params.opoints
-        def year = params.year?(params.year as Integer):null
-        def month = params.month?(params.month as Integer):null
-        def dom = params.dom?(params.dom as Integer):null
-        def hour = params.dom?(params.hour as Integer):0
-        def itvl = params.itvl?params.itvl:null
-        def row = params.row?:'per hour'
+        def rs = []
+        sqlconn.eachRow(query) { rr ->
+            def magnitude_schema = getMagnitudeSchema(rr?.magnitude_id)
 
-        def sqlconn = new Sql(dataSource)
-        def recordSet = []
+            def c1h = rr?.value1 ? Math.round(rr?.value1 * 10.0) / 10.0 : null
+            def c1h_health = magnitude_schema?.c1h_health?.call(c1h)
+            def c1hx = rr?.value1x ? Math.round(rr?.value1x * 10.0) / 10.0 : null
+            def c1hy = rr?.value1y ? Math.round(rr?.value1y * 10.0) / 10.0 : null
+            def c1hmin = rr?.value1min ? Math.round(rr?.value1min * 10.0) / 10.0 : null
+            def c1hmax = rr?.value1max ? Math.round(rr?.value1max * 10.0) / 10.0 : null
 
-        for(Integer magnitude_id in magnitudes) {
-            String mysql = modelService.getSql4_1mg (itvl, row, magnitude_id, opoints, year, month, dom, hour)
-            sqlconn.eachRow(mysql) { rr ->
-                def magnitude_schema = getMagnitudeSchema(rr?.magnitude_id)
-                def rrfc = [
-                        isHourlyData: rr?.isHourlyData,
-                        value1      : rr?.fc1,
-                        value1max   : rr?.fc1max,
-                        value8h     : rr?.fc8,
-                        value8hmax  : rr?.fc8max,
-                        value24h    : rr?.fc24,
-                        value24hmax : rr?.fc24max
+            def c8h = (rr?.value8h != null) ? Math.round(rr?.value8h * 10.0) / 10.0 : null
+            def c8h_health = (c8h != null) ? magnitude_schema?.c8h_health?.call(c8h) : null
+            def c8hmin = rr?.value8min ? Math.round(rr?.value8min * 10.0) / 10.0 : null
+            def c8hmax = rr?.value8max ? Math.round(rr?.value8max * 10.0) / 10.0 : null
+
+            def c24h = (rr?.value24h != null) ? Math.round(rr?.value24h * 10.0) / 10.0 : null
+            def c24h_health = (c24h != null) ? magnitude_schema?.c24h_health?.call(c24h) : null
+            def c24hmin = rr?.value24min ? Math.round(rr?.value24min * 10.0) / 10.0 : null
+            def c24hmax = rr?.value24max ? Math.round(rr?.value24max * 10.0) / 10.0 : null
+
+            def iqca = magnitude_schema?.IQCA?.value?.call(rr)
+            def aqi = magnitude_schema?.AQI?.value?.call(rr)
+
+            rs << [
+                    magnitude_id: rr?.magnitude_id,
+                    opoint_id   : rr?.opoint_id,
+                    row         : (rr?.isHourlyData == true) ? "hour" : "aggr",
+                    datetime    : rr?.datetime,
+
+                    c1h         : (c1h != null) ? c1h : null,
+                    c1h_health  : (c1h_health != null) ? c1h_health : null,
+                    c1hx        : (c1hx != null) ? c1hx : null,
+                    c1hy        : (c1hy != null) ? c1hy : null,
+                    c1hmin      : (c1hmin != null) ? c1hmin : null,
+                    c1hmax      : (c1hmax != null) ? c1hmax : null,
+
+                    c8h         : (c8h != null) ? c8h : null,
+                    c8h_health  : (c8h_health != null) ? c8h_health : null,
+                    c8hmin      : (c8hmin != null) ? c8hmin : null,
+                    c8hmax      : (c8hmax != null) ? c8hmax : null,
+
+                    c24h        : (c24h != null) ? c24h : null,
+                    c24h_health : (c24h_health != null) ? c24h_health : null,
+                    c24hmin     : (c24hmin != null) ? c24hmin : null,
+                    c24hmax     : (c24hmax != null) ? c24hmax : null,
+
+                    iqca        : (iqca != null) ? iqca : null,
+                    aqi         : (aqi != null) ? aqi : null
                 ]
-                def c1h = rr?.value1 ? Math.round(rr?.value1 * 10.0) / 10.0 : null
-                def c1h_health = magnitude_schema?.c1h_health?.call(c1h)
-                def c1hx = rr?.value1x ? Math.round(rr?.value1x * 10.0) / 10.0 : null
-                def c1hy = rr?.value1y ? Math.round(rr?.value1y * 10.0) / 10.0 : null
-                def c1hmin = rr?.value1min ? Math.round(rr?.value1min * 10.0) / 10.0 : null
-                def c1hmax = rr?.value1max ? Math.round(rr?.value1max * 10.0) / 10.0 : null
-                def fc1h = rr?.fc1 ? Math.round(rr?.fc1 * 10.0) / 10.0 : null
-                def fc1hx = rr?.fc1x ? Math.round(rr?.fc1x * 10.0) / 10.0 : null
-                def fc1hy = rr?.fc1y ? Math.round(rr?.fc1y * 10.0) / 10.0 : null
-
-                def c8h = (rr?.value8h != null) ? Math.round(rr?.value8h * 10.0) / 10.0 : null
-                def c8h_health = (c8h != null) ? magnitude_schema?.c8h_health?.call(c8h) : null
-                def c8hmin = rr?.value8min ? Math.round(rr?.value8min * 10.0) / 10.0 : null
-                def c8hmax = rr?.value8max ? Math.round(rr?.value8max * 10.0) / 10.0 : null
-                def fc8h = rr?.fc8 ? Math.round(rr?.fc8 * 10.0) / 10.0 : null
-                def fc8hmin = rr?.fc8min ? Math.round(rr?.fc8min * 10.0) / 10.0 : null
-                def fc8hmax = rr?.fc8max ? Math.round(rr?.fc8max * 10.0) / 10.0 : null
-
-                def c24h = (rr?.value24h != null) ? Math.round(rr?.value24h * 10.0) / 10.0 : null
-                def c24h_health = (c24h != null) ? magnitude_schema?.c24h_health?.call(c24h) : null
-                def c24hmin = rr?.value24min ? Math.round(rr?.value24min * 10.0) / 10.0 : null
-                def c24hmax = rr?.value24max ? Math.round(rr?.value24max * 10.0) / 10.0 : null
-                def fc24h = rr?.fc24 ? Math.round(rr?.fc24 * 10.0) / 10.0 : null
-                def fc24hmin = rr?.fc24min ? Math.round(rr?.fc24min * 10.0) / 10.0 : null
-                def fc24hmax = rr?.fc24max ? Math.round(rr?.fc24max * 10.0) / 10.0 : null
-
-                def iqca = magnitude_schema?.IQCA?.value?.call(rr)
-                def fc_iqca = magnitude_schema?.IQCA?.value?.call(rrfc)
-                def aqi = magnitude_schema?.AQI?.value?.call(rr)
-                def fc_aqi = magnitude_schema?.AQI?.value?.call(rrfc)
-
-                recordSet << [
-                        magnitude_id: rr?.magnitude_id,
-                        opoint_id   : rr?.opoint_id,
-                        row         : (rr?.isHourlyData == true) ? "hour" : "aggr",
-                        datetime    : rr?.datetime,
-
-                        c1h         : (c1h != null) ? c1h : null,
-                        c1h_health  : (c1h_health != null) ? c1h_health : null,
-                        c1hx        : (c1hx != null) ? c1hx : null,
-                        c1hy        : (c1hy != null) ? c1hy : null,
-                        c1hmin      : (c1hmin != null) ? c1hmin : null,
-                        c1hmax      : (c1hmax != null) ? c1hmax : null,
-                        fc1h        : (fc1h != null) ? fc1h : null,
-                        fc1hx       : (fc1hx != null) ? fc1hx : null,
-                        fc1hy       : (fc1hy != null) ? fc1hy : null,
-
-                        c8h         : (c8h != null) ? c8h : null,
-                        c8h_health  : (c8h_health != null) ? c8h_health : null,
-                        c8hmin      : (c8hmin != null) ? c8hmin : null,
-                        c8hmax      : (c8hmax != null) ? c8hmax : null,
-                        fc8h        : (fc8h != null) ? fc8h : null,
-                        fc8hmin     : (fc8hmin != null) ? fc8hmin : null,
-                        fc8hmax     : (fc8hmax != null) ? fc8hmax : null,
-
-                        c24h        : (c24h != null) ? c24h : null,
-                        c24h_health : (c24h_health != null) ? c24h_health : null,
-                        c24hmin     : (c24hmin != null) ? c24hmin : null,
-                        c24hmax     : (c24hmax != null) ? c24hmax : null,
-                        fc24h       : (fc24h != null) ? fc24h : null,
-                        fc24hmin    : (fc24hmin != null) ? fc24hmin : null,
-                        fc24hmax    : (fc24hmax != null) ? fc24hmax : null,
-
-                        iqca        : (iqca != null) ? iqca : null,
-                        fc_iqca     : (fc_iqca != null) ? fc_iqca : null,
-                        aqi         : (aqi != null) ? aqi : null,
-                        fc_aqi      : (fc_aqi != null) ? fc_aqi : null,
-                ]
-            }
         }
-        render(status: 200, contentType: "application/json", text: JsonOutput.toJson(recordSet))
+        return rs
     }
+
+    def qryDsJSON() {
+        def sqlconn = new Sql(dataSource)
+        def ds = [
+                'AQ': [
+                        'L24H':[
+                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max')"),
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'avg_per_magnitude')"),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max_per_magnitude')"),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max_per_opoint')")
+                        ],
+                        'L7D':[
+                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max')"),
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'avg_per_magnitude')"),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max_per_magnitude')"),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max_per_opoint')")
+                        ],
+                        'LM':[
+                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max')"),
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'avg_per_magnitude')"),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max_per_magnitude')"),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max_per_opoint')")
+                        ]
+                ],
+                'MET': [
+                        'L24H':[
+                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'max')"),
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'avg_per_magnitude')"),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'max_per_magnitude')"),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'max_per_opoint')")
+                        ],
+                        'L7D':[
+                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'max')"),
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'avg_per_magnitude')"),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'max_per_magnitude')"),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'max_per_opoint')")
+                        ],
+                        'LM':[
+                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'max')"),
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'avg_per_magnitude')"),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'max_per_magnitude')"),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'max_per_opoint')")
+                        ]
+                ]
+        ]
+        render(status: 200, contentType: "application/json", text: JsonOutput.toJson(ds))
+    }
+
+//    def qryDsJSON() {
+//        // service call sample1
+//        // http://www.aqvisor.net:9090/visorbe-0.2/dshbrd/jsondn?magnitudes=1,3,6&opoints=1,3,8&year=2021&month=3&dom=25&hour=0&itvl=1+hour&row=per+hour
+//        def getMagnitudeSchema = modelService.getMagnitudeSchema
+//        // params
+//        def magnitudes = (params.magnitudes == null || params.magnitudes?.toLowerCase() == 'null')?null:params.magnitudes.split(',')?.collect {it as Integer}
+//        def opoints = (params.opoints == null || params.opoints?.toLowerCase() == 'null')?'null':params.opoints
+//        def year = params.year?(params.year as Integer):null
+//        def month = params.month?(params.month as Integer):null
+//        def dom = params.dom?(params.dom as Integer):null
+//        def hour = params.dom?(params.hour as Integer):0
+//        def itvl = params.itvl?params.itvl:null
+//        def row = params.row?:'per hour'
+//
+//        def sqlconn = new Sql(dataSource)
+//        def recordSet = []
+//
+//        for(Integer magnitude_id in magnitudes) {
+//            String mysql = modelService.getSql4_1mg (itvl, row, magnitude_id, opoints, year, month, dom, hour)
+//            sqlconn.eachRow(mysql) { rr ->
+//                def magnitude_schema = getMagnitudeSchema(rr?.magnitude_id)
+//                def rrfc = [
+//                        isHourlyData: rr?.isHourlyData,
+//                        value1      : rr?.fc1,
+//                        value1max   : rr?.fc1max,
+//                        value8h     : rr?.fc8,
+//                        value8hmax  : rr?.fc8max,
+//                        value24h    : rr?.fc24,
+//                        value24hmax : rr?.fc24max
+//                ]
+//                def c1h = rr?.value1 ? Math.round(rr?.value1 * 10.0) / 10.0 : null
+//                def c1h_health = magnitude_schema?.c1h_health?.call(c1h)
+//                def c1hx = rr?.value1x ? Math.round(rr?.value1x * 10.0) / 10.0 : null
+//                def c1hy = rr?.value1y ? Math.round(rr?.value1y * 10.0) / 10.0 : null
+//                def c1hmin = rr?.value1min ? Math.round(rr?.value1min * 10.0) / 10.0 : null
+//                def c1hmax = rr?.value1max ? Math.round(rr?.value1max * 10.0) / 10.0 : null
+//                def fc1h = rr?.fc1 ? Math.round(rr?.fc1 * 10.0) / 10.0 : null
+//                def fc1hx = rr?.fc1x ? Math.round(rr?.fc1x * 10.0) / 10.0 : null
+//                def fc1hy = rr?.fc1y ? Math.round(rr?.fc1y * 10.0) / 10.0 : null
+//
+//                def c8h = (rr?.value8h != null) ? Math.round(rr?.value8h * 10.0) / 10.0 : null
+//                def c8h_health = (c8h != null) ? magnitude_schema?.c8h_health?.call(c8h) : null
+//                def c8hmin = rr?.value8min ? Math.round(rr?.value8min * 10.0) / 10.0 : null
+//                def c8hmax = rr?.value8max ? Math.round(rr?.value8max * 10.0) / 10.0 : null
+//                def fc8h = rr?.fc8 ? Math.round(rr?.fc8 * 10.0) / 10.0 : null
+//                def fc8hmin = rr?.fc8min ? Math.round(rr?.fc8min * 10.0) / 10.0 : null
+//                def fc8hmax = rr?.fc8max ? Math.round(rr?.fc8max * 10.0) / 10.0 : null
+//
+//                def c24h = (rr?.value24h != null) ? Math.round(rr?.value24h * 10.0) / 10.0 : null
+//                def c24h_health = (c24h != null) ? magnitude_schema?.c24h_health?.call(c24h) : null
+//                def c24hmin = rr?.value24min ? Math.round(rr?.value24min * 10.0) / 10.0 : null
+//                def c24hmax = rr?.value24max ? Math.round(rr?.value24max * 10.0) / 10.0 : null
+//                def fc24h = rr?.fc24 ? Math.round(rr?.fc24 * 10.0) / 10.0 : null
+//                def fc24hmin = rr?.fc24min ? Math.round(rr?.fc24min * 10.0) / 10.0 : null
+//                def fc24hmax = rr?.fc24max ? Math.round(rr?.fc24max * 10.0) / 10.0 : null
+//
+//                def iqca = magnitude_schema?.IQCA?.value?.call(rr)
+//                def fc_iqca = magnitude_schema?.IQCA?.value?.call(rrfc)
+//                def aqi = magnitude_schema?.AQI?.value?.call(rr)
+//                def fc_aqi = magnitude_schema?.AQI?.value?.call(rrfc)
+//
+//                recordSet << [
+//                        magnitude_id: rr?.magnitude_id,
+//                        opoint_id   : rr?.opoint_id,
+//                        row         : (rr?.isHourlyData == true) ? "hour" : "aggr",
+//                        datetime    : rr?.datetime,
+//
+//                        c1h         : (c1h != null) ? c1h : null,
+//                        c1h_health  : (c1h_health != null) ? c1h_health : null,
+//                        c1hx        : (c1hx != null) ? c1hx : null,
+//                        c1hy        : (c1hy != null) ? c1hy : null,
+//                        c1hmin      : (c1hmin != null) ? c1hmin : null,
+//                        c1hmax      : (c1hmax != null) ? c1hmax : null,
+//                        fc1h        : (fc1h != null) ? fc1h : null,
+//                        fc1hx       : (fc1hx != null) ? fc1hx : null,
+//                        fc1hy       : (fc1hy != null) ? fc1hy : null,
+//
+//                        c8h         : (c8h != null) ? c8h : null,
+//                        c8h_health  : (c8h_health != null) ? c8h_health : null,
+//                        c8hmin      : (c8hmin != null) ? c8hmin : null,
+//                        c8hmax      : (c8hmax != null) ? c8hmax : null,
+//                        fc8h        : (fc8h != null) ? fc8h : null,
+//                        fc8hmin     : (fc8hmin != null) ? fc8hmin : null,
+//                        fc8hmax     : (fc8hmax != null) ? fc8hmax : null,
+//
+//                        c24h        : (c24h != null) ? c24h : null,
+//                        c24h_health : (c24h_health != null) ? c24h_health : null,
+//                        c24hmin     : (c24hmin != null) ? c24hmin : null,
+//                        c24hmax     : (c24hmax != null) ? c24hmax : null,
+//                        fc24h       : (fc24h != null) ? fc24h : null,
+//                        fc24hmin    : (fc24hmin != null) ? fc24hmin : null,
+//                        fc24hmax    : (fc24hmax != null) ? fc24hmax : null,
+//
+//                        iqca        : (iqca != null) ? iqca : null,
+//                        fc_iqca     : (fc_iqca != null) ? fc_iqca : null,
+//                        aqi         : (aqi != null) ? aqi : null,
+//                        fc_aqi      : (fc_aqi != null) ? fc_aqi : null,
+//                ]
+//            }
+//        }
+//        render(status: 200, contentType: "application/json", text: JsonOutput.toJson(recordSet))
+//    }
 
     @Override
     void setConfiguration(Config co) {

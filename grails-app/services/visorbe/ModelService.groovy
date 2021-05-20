@@ -265,19 +265,19 @@ class ModelService {
 	def colorsWindDir = [0: 'rgb(0,200,0)']
 
 	//	const healthWindSpeed = (lang) => [ // The Beaufort Wind Force Scale: https://www.weathergamut.com/2019/02/25/weather-lingo-the-beaufort-wind-force-scale/
-	//								   lang === 'en' ? 'calm' : 'calma',
-	//								   lang === 'en' ? 'light air' : 'ventolina',
-	//								   lang === 'en' ? 'light breeze' : 'brisa muy débil',
-	//								   lang === 'en' ? 'gentle breeze' : 'brisa ligera',
-	//								   lang === 'en' ? 'moderate breeze' : 'brisa moderada',
-	//								   lang === 'en' ? 'fresh breeze' : 'brisa fresca',
-	//								   lang === 'en' ? 'near gale' : 'brisa fuerte',
-	//								   lang === 'en' ? 'gale' : 'viento fuerte',
-	//								   lang === 'en' ? 'strong gale': 'viento duro',
-	//								   lang === 'en' ? 'storm' : 'viento muy duro',
-	//								   lang === 'en' ? 'strong storm' : 'temporal duro',
-	//								   lang === 'en' ? 'very strong storm' : 'temporal muy duro',
-	//								   lang === 'en' ? 'hurricane' : 'temporal huracanado',
+	//		lang === 'en' ? 'calm' : 'calma',
+	//		lang === 'en' ? 'light air' : 'ventolina',
+	//		lang === 'en' ? 'light breeze' : 'brisa muy débil',
+	//		lang === 'en' ? 'gentle breeze' : 'brisa ligera',
+	//		lang === 'en' ? 'moderate breeze' : 'brisa moderada',
+	//		lang === 'en' ? 'fresh breeze' : 'brisa fresca',
+	//		lang === 'en' ? 'near gale' : 'brisa fuerte',
+	//		lang === 'en' ? 'gale' : 'viento fuerte',
+	//		lang === 'en' ? 'strong gale': 'viento duro',
+	//		lang === 'en' ? 'storm' : 'viento muy duro',
+	//		lang === 'en' ? 'strong storm' : 'temporal duro',
+	//		lang === 'en' ? 'very strong storm' : 'temporal muy duro',
+	//		lang === 'en' ? 'hurricane' : 'temporal huracanado',
 	//	]
 
 	//const healthWindHealth = (lang) => [lang === 'en' ? 'OK' : 'OK']
@@ -836,7 +836,7 @@ class ModelService {
 					if(iqca == null && C8h> 0 && C8h <= 50) iqca = Math.round(C8h)
 					if(iqca == null && C8h> 50 && C8h <= 100) iqca = Math.round(C8h)
 					if(iqca == null && C8h> 100 && C8h <= 200) iqca = Math.round(C8h)
-					if(iqca == null && C8h> 200 && C8h <= 400) iqca = Math.round(0,5*C8h+100)
+					if(iqca == null && C8h> 200 && C8h <= 400) iqca = Math.round(0.5*C8h+100)
 					if(iqca == null && C1h> 408 && C1h <= 808) iqca = Math.round(0.25*C1h + 98)
 					if(iqca == null && C1h> 808 && C1h <= 1008) iqca = Math.round(0.5*C1h -104)
 					if(iqca == null && C1h> 1008 && C1h <= 1200) iqca = Math.round((100/192.0)*C1h -125)
