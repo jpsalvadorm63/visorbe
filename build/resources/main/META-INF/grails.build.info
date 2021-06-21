@@ -1,6 +1,6 @@
-#Sun, 20 Jun 2021 12:07:43 -0500
+#Mon, 21 Jun 2021 11:24:51 -0500
 
 info.app.version=0.2
 info.app.name=visorbe
-grails.env=development
+grails.env=production
 info.app.grailsVersion=3.3.11

@@ -49,7 +49,7 @@ class AnalyticsController implements GrailsConfigurationAware {
         def sqlconn = new Sql(dataSource)
         def longjson = null
         sqlconn.eachRow(sqlstr) { it ->
-            longjson = (it.longjson != null)?it.longjson:json
+            longjson = (it.longjson != null)?it.longjson:null
         }
 
         render(status: 200, contentType: "application/json", text: (longjson != null)?longjson:'"no":"data"')
@@ -118,7 +118,7 @@ class AnalyticsController implements GrailsConfigurationAware {
         def sqlconn = new Sql(dataSource)
         def longjson = null
         sqlconn.eachRow(sqlstr) { it ->
-            longjson = (it.longjson != null)?it.longjson:json
+            longjson = (it.longjson != null)?it.longjson:null
         }
 
         render(status: 200, contentType: "application/json", text: (longjson != null)?longjson:'"no":"data"')
