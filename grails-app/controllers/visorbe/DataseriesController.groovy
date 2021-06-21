@@ -15,7 +15,7 @@ class DataseriesController implements GrailsConfigurationAware {
     static responseFormats = ['json', 'html']
     def dataSource
     def modelService
-	
+
     def index() { }
 
     // other functions
@@ -55,6 +55,11 @@ class DataseriesController implements GrailsConfigurationAware {
     static String toStr(Number x, int dec=0) { (x instanceof Number) ? (x as Double).round(dec) : '' }
 
     static String setDecimalP(String x, decimalp='.') {(decimalp=='.')?x:x?.replace('.', decimalp)}
+
+//    def mimapa() {
+//        def result = '{"type":"FeatureCollection","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:EPSG::32717"}},"features":[{"type":"Feature","geometry": {"type":"MultiPolygon","coordinates":[[[[728278.848236808,9648755.69121868],[728278.848236808,9648755.47442728],[728242.290369795,9648738.99074618],[728204.88,9648784.33],[728210.85,9648800.24],[728278.848236808,9648755.69121868]]]]},"properties": {"pid":"0203","abbreviation":"ARG","parroquia":"LA ARGELIA"}}]}'
+//        render(status: 200, contentType: "application/json", text: result)
+//    }
 
     /**
      *
@@ -397,38 +402,41 @@ class DataseriesController implements GrailsConfigurationAware {
                         'L24H':[
                                 max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max')"),
                                 avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'avg_per_magnitude')"),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'min_per_magnitude')"),
                                 max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max_per_magnitude')"),
                                 max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max_per_opoint')")
                         ],
                         'L7D':[
                                 max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max')"),
                                 avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'avg_per_magnitude')"),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'min_per_magnitude')"),
                                 max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max_per_magnitude')"),
                                 max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max_per_opoint')")
                         ],
                         'LM':[
                                 max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max')"),
                                 avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'avg_per_magnitude')"),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'min_per_magnitude')"),
                                 max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max_per_magnitude')"),
                                 max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max_per_opoint')")
                         ]
                 ],
                 'MET': [
                         'L24H':[
-                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'max')"),
                                 avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'avg_per_magnitude')"),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'min_per_magnitude')"),
                                 max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'max_per_magnitude')"),
                                 max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'max_per_opoint')")
                         ],
                         'L7D':[
-                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'max')"),
                                 avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'avg_per_magnitude')"),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'min_per_magnitude')"),
                                 max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'max_per_magnitude')"),
                                 max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'max_per_opoint')")
                         ],
                         'LM':[
-                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'max')"),
                                 avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'avg_per_magnitude')"),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'min_per_magnitude')"),
                                 max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'max_per_magnitude')"),
                                 max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'max_per_opoint')")
                         ]
@@ -436,109 +444,6 @@ class DataseriesController implements GrailsConfigurationAware {
         ]
         render(status: 200, contentType: "application/json", text: JsonOutput.toJson(ds))
     }
-
-//    def qryDsJSON() {
-//        // service call sample1
-//        // http://www.aqvisor.net:9090/visorbe-0.2/dshbrd/jsondn?magnitudes=1,3,6&opoints=1,3,8&year=2021&month=3&dom=25&hour=0&itvl=1+hour&row=per+hour
-//        def getMagnitudeSchema = modelService.getMagnitudeSchema
-//        // params
-//        def magnitudes = (params.magnitudes == null || params.magnitudes?.toLowerCase() == 'null')?null:params.magnitudes.split(',')?.collect {it as Integer}
-//        def opoints = (params.opoints == null || params.opoints?.toLowerCase() == 'null')?'null':params.opoints
-//        def year = params.year?(params.year as Integer):null
-//        def month = params.month?(params.month as Integer):null
-//        def dom = params.dom?(params.dom as Integer):null
-//        def hour = params.dom?(params.hour as Integer):0
-//        def itvl = params.itvl?params.itvl:null
-//        def row = params.row?:'per hour'
-//
-//        def sqlconn = new Sql(dataSource)
-//        def recordSet = []
-//
-//        for(Integer magnitude_id in magnitudes) {
-//            String mysql = modelService.getSql4_1mg (itvl, row, magnitude_id, opoints, year, month, dom, hour)
-//            sqlconn.eachRow(mysql) { rr ->
-//                def magnitude_schema = getMagnitudeSchema(rr?.magnitude_id)
-//                def rrfc = [
-//                        isHourlyData: rr?.isHourlyData,
-//                        value1      : rr?.fc1,
-//                        value1max   : rr?.fc1max,
-//                        value8h     : rr?.fc8,
-//                        value8hmax  : rr?.fc8max,
-//                        value24h    : rr?.fc24,
-//                        value24hmax : rr?.fc24max
-//                ]
-//                def c1h = rr?.value1 ? Math.round(rr?.value1 * 10.0) / 10.0 : null
-//                def c1h_health = magnitude_schema?.c1h_health?.call(c1h)
-//                def c1hx = rr?.value1x ? Math.round(rr?.value1x * 10.0) / 10.0 : null
-//                def c1hy = rr?.value1y ? Math.round(rr?.value1y * 10.0) / 10.0 : null
-//                def c1hmin = rr?.value1min ? Math.round(rr?.value1min * 10.0) / 10.0 : null
-//                def c1hmax = rr?.value1max ? Math.round(rr?.value1max * 10.0) / 10.0 : null
-//                def fc1h = rr?.fc1 ? Math.round(rr?.fc1 * 10.0) / 10.0 : null
-//                def fc1hx = rr?.fc1x ? Math.round(rr?.fc1x * 10.0) / 10.0 : null
-//                def fc1hy = rr?.fc1y ? Math.round(rr?.fc1y * 10.0) / 10.0 : null
-//
-//                def c8h = (rr?.value8h != null) ? Math.round(rr?.value8h * 10.0) / 10.0 : null
-//                def c8h_health = (c8h != null) ? magnitude_schema?.c8h_health?.call(c8h) : null
-//                def c8hmin = rr?.value8min ? Math.round(rr?.value8min * 10.0) / 10.0 : null
-//                def c8hmax = rr?.value8max ? Math.round(rr?.value8max * 10.0) / 10.0 : null
-//                def fc8h = rr?.fc8 ? Math.round(rr?.fc8 * 10.0) / 10.0 : null
-//                def fc8hmin = rr?.fc8min ? Math.round(rr?.fc8min * 10.0) / 10.0 : null
-//                def fc8hmax = rr?.fc8max ? Math.round(rr?.fc8max * 10.0) / 10.0 : null
-//
-//                def c24h = (rr?.value24h != null) ? Math.round(rr?.value24h * 10.0) / 10.0 : null
-//                def c24h_health = (c24h != null) ? magnitude_schema?.c24h_health?.call(c24h) : null
-//                def c24hmin = rr?.value24min ? Math.round(rr?.value24min * 10.0) / 10.0 : null
-//                def c24hmax = rr?.value24max ? Math.round(rr?.value24max * 10.0) / 10.0 : null
-//                def fc24h = rr?.fc24 ? Math.round(rr?.fc24 * 10.0) / 10.0 : null
-//                def fc24hmin = rr?.fc24min ? Math.round(rr?.fc24min * 10.0) / 10.0 : null
-//                def fc24hmax = rr?.fc24max ? Math.round(rr?.fc24max * 10.0) / 10.0 : null
-//
-//                def iqca = magnitude_schema?.IQCA?.value?.call(rr)
-//                def fc_iqca = magnitude_schema?.IQCA?.value?.call(rrfc)
-//                def aqi = magnitude_schema?.AQI?.value?.call(rr)
-//                def fc_aqi = magnitude_schema?.AQI?.value?.call(rrfc)
-//
-//                recordSet << [
-//                        magnitude_id: rr?.magnitude_id,
-//                        opoint_id   : rr?.opoint_id,
-//                        row         : (rr?.isHourlyData == true) ? "hour" : "aggr",
-//                        datetime    : rr?.datetime,
-//
-//                        c1h         : (c1h != null) ? c1h : null,
-//                        c1h_health  : (c1h_health != null) ? c1h_health : null,
-//                        c1hx        : (c1hx != null) ? c1hx : null,
-//                        c1hy        : (c1hy != null) ? c1hy : null,
-//                        c1hmin      : (c1hmin != null) ? c1hmin : null,
-//                        c1hmax      : (c1hmax != null) ? c1hmax : null,
-//                        fc1h        : (fc1h != null) ? fc1h : null,
-//                        fc1hx       : (fc1hx != null) ? fc1hx : null,
-//                        fc1hy       : (fc1hy != null) ? fc1hy : null,
-//
-//                        c8h         : (c8h != null) ? c8h : null,
-//                        c8h_health  : (c8h_health != null) ? c8h_health : null,
-//                        c8hmin      : (c8hmin != null) ? c8hmin : null,
-//                        c8hmax      : (c8hmax != null) ? c8hmax : null,
-//                        fc8h        : (fc8h != null) ? fc8h : null,
-//                        fc8hmin     : (fc8hmin != null) ? fc8hmin : null,
-//                        fc8hmax     : (fc8hmax != null) ? fc8hmax : null,
-//
-//                        c24h        : (c24h != null) ? c24h : null,
-//                        c24h_health : (c24h_health != null) ? c24h_health : null,
-//                        c24hmin     : (c24hmin != null) ? c24hmin : null,
-//                        c24hmax     : (c24hmax != null) ? c24hmax : null,
-//                        fc24h       : (fc24h != null) ? fc24h : null,
-//                        fc24hmin    : (fc24hmin != null) ? fc24hmin : null,
-//                        fc24hmax    : (fc24hmax != null) ? fc24hmax : null,
-//
-//                        iqca        : (iqca != null) ? iqca : null,
-//                        fc_iqca     : (fc_iqca != null) ? fc_iqca : null,
-//                        aqi         : (aqi != null) ? aqi : null,
-//                        fc_aqi      : (fc_aqi != null) ? fc_aqi : null,
-//                ]
-//            }
-//        }
-//        render(status: 200, contentType: "application/json", text: JsonOutput.toJson(recordSet))
-//    }
 
     @Override
     void setConfiguration(Config co) {
