@@ -339,10 +339,15 @@ class DataseriesController implements GrailsConfigurationAware {
         outs.close()
     }
 
-    def queryToArray(sqlconn, query) {
+    def queryToArray(sqlconn, query, boolean isHourlyData) {
+
         def getMagnitudeSchema = modelService.getMagnitudeSchema
         def rs = []
-        sqlconn.eachRow(query) { rr ->
+        sqlconn.eachRow(query) { rrs ->
+            def rr = rrs.toRowResult()
+            rr.remove('ishourlydata')
+            rr.setProperty('isHourlyData', isHourlyData)
+
             def magnitude_schema = getMagnitudeSchema(rr?.magnitude_id)
 
             def c1h = rr?.value1 ? Math.round(rr?.value1 * 10.0) / 10.0 : null
@@ -400,45 +405,45 @@ class DataseriesController implements GrailsConfigurationAware {
         def ds = [
                 'AQ': [
                         'L24H':[
-                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max')"),
-                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'avg_per_magnitude')"),
-                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'min_per_magnitude')"),
-                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max_per_magnitude')"),
-                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max_per_opoint')")
+                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max')", true),
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'avg_per_magnitude')", true),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'min_per_magnitude')", true),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max_per_magnitude')", true),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-24 hours', 'max_per_opoint')", true)
                         ],
                         'L7D':[
-                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max')"),
-                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'avg_per_magnitude')"),
-                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'min_per_magnitude')"),
-                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max_per_magnitude')"),
-                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max_per_opoint')")
+                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max')", false),
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'avg_per_magnitude')", false),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'min_per_magnitude')", false),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max_per_magnitude')", false),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-7 days', 'max_per_opoint')", false)
                         ],
                         'LM':[
-                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max')"),
-                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'avg_per_magnitude')"),
-                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'min_per_magnitude')"),
-                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max_per_magnitude')"),
-                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max_per_opoint')")
+                                max: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max')", false),
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'avg_per_magnitude')", false),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'min_per_magnitude')", false),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max_per_magnitude')", false),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('AQ', '-1 month', 'max_per_opoint')", false)
                         ]
                 ],
                 'MET': [
                         'L24H':[
-                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'avg_per_magnitude')"),
-                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'min_per_magnitude')"),
-                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'max_per_magnitude')"),
-                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'max_per_opoint')")
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'avg_per_magnitude')", true),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'min_per_magnitude')", true),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'max_per_magnitude')", true),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-24 hours', 'max_per_opoint')", true)
                         ],
                         'L7D':[
-                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'avg_per_magnitude')"),
-                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'min_per_magnitude')"),
-                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'max_per_magnitude')"),
-                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'max_per_opoint')")
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'avg_per_magnitude')", false),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'min_per_magnitude')", false),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'max_per_magnitude')", false),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-7 days', 'max_per_opoint')", false)
                         ],
                         'LM':[
-                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'avg_per_magnitude')"),
-                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'min_per_magnitude')"),
-                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'max_per_magnitude')"),
-                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'max_per_opoint')")
+                                avg_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'avg_per_magnitude')", false),
+                                min_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'min_per_magnitude')", false),
+                                max_per_magnitude: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'max_per_magnitude')", false),
+                                max_per_opoint: queryToArray(sqlconn, "select * from dashboard.selectLastData('MET', '-1 month', 'max_per_opoint')", false)
                         ]
                 ]
         ]

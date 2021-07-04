@@ -20,6 +20,17 @@ class AnalyticsController implements GrailsConfigurationAware {
 	
     def index() { }
 
+    def analysisForecasting() {
+        String sqlstr = "select longjson from analysis.DashboardData where description = 'forecasting'"
+        def sqlconn = new Sql(dataSource)
+        def longjson = null
+        sqlconn.eachRow(sqlstr) { it ->
+            longjson = (it.longjson != null)?it.longjson:null
+        }
+
+        render(status: 200, contentType: "application/json", text: (longjson != null)?longjson:'"no":"data"')
+    }
+
     def analysisTotMagnitudeDate() {
         String itvl  = params['itvl']?params['itvl']:'null'
         Integer magn = params['magn']?(params['magn'] as Integer):null

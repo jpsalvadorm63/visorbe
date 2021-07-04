@@ -5,6 +5,7 @@ class UrlMappings {
 		get "/dshbrd/csvdn"(controller:'dataseries', action:'qryDsCSV')
 		get "/dshbrd/jsondn"(controller:'dataseries', action:'qryDsJSON')
 		get "/dshbrd/mimapa"(controller:'dataseries', action:'mimapa')
+		get "/analytics/fc"(controller:'analytics', action:'analysisForecasting')
 		get "/analytics/tot"(controller:'analytics', action:'analysisTot')
 		get "/analytics/totmagn"(controller:'analytics', action:'analysisTotMagnitude')
 		get "/analytics/totmagndate"(controller:'analytics', action:'analysisTotMagnitudeDate') // http://localhost:9090/analytics/totmagndate?itvl=1+month&magn=8&opoint=5&year=2020&month=3&dom=13
