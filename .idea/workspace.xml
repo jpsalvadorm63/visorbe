@@ -4,25 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec4f475-793d-4d00-a1f3-acd5e92a5007" name="Default Changelist" comment="Fixed issues in Analytics">
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisForecasting_closure1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitudeDate_closure2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitude_closure3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTot_closure4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_queryToArray_closure7$_closure8.class" afterDir="false" />
+    <list default="true" id="7ec4f475-793d-4d00-a1f3-acd5e92a5007" name="Default Changelist" comment="added service analysisForecasting()">
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisLastData_closure2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitudeDate_closure3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitude_closure4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTot_closure5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileSnapshots.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitudeDate_closure1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitude_closure2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTot_closure3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitudeDate_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitude_closure3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTot_closure4.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ApplicationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ApplicationController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_queryToArray_closure7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_queryToArray_closure7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings$__clinit__closure1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings$__clinit__closure1.class" afterDir="false" />
@@ -31,35 +29,7 @@
       <change beforePath="$PROJECT_DIR$/build/libs/visorbe-0.2.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/visorbe-0.2.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/visorbe-0.2.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/visorbe-0.2.war.original" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/META-INF/grails.build.info" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/META-INF/grails.build.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application/index.gson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/error.gson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/errors/_errors.gson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/logback.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_cs.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_da.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_de.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_es.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_fr.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_it.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_ja.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_nb.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_nl.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_pl.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_pt_BR.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_pt_PT.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_ru.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_sk.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_sv.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_th.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/messages_zh_CN.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/notFound.gson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/object/_object.gson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/spring/resources.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/stacktrace.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/stacktrace.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grails-app/controllers/visorbe/AnalyticsController.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/grails-app/controllers/visorbe/AnalyticsController.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grails-app/controllers/visorbe/DataseriesController.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/grails-app/controllers/visorbe/DataseriesController.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grails-app/controllers/visorbe/UrlMappings.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/grails-app/controllers/visorbe/UrlMappings.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,17 +75,6 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager" selected="Grails.Grails: visorbe">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Grails: visorbe" type="GrailsRunConfigurationType" factoryName="Grails">
       <setting name="vmparams" value="" />
       <setting name="cmdLine" value="run-app" />
@@ -171,7 +130,10 @@
       <workItem from="1624923405097" duration="19463000" />
       <workItem from="1625146920525" duration="599000" />
       <workItem from="1625325828609" duration="35000" />
-      <workItem from="1625366635881" duration="6709000" />
+      <workItem from="1625366635881" duration="20177000" />
+      <workItem from="1625724457978" duration="704000" />
+      <workItem from="1625789120100" duration="1787000" />
+      <workItem from="1626002523737" duration="831000" />
     </task>
     <task id="LOCAL-00001" summary="IQCA &amp; AQI formulas redefined">
       <created>1618013520101</created>
@@ -222,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624292790348</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added service analysisForecasting()">
+      <created>1625441378993</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1625441378993</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +216,8 @@
     <MESSAGE value="fixed explorer" />
     <MESSAGE value="qryDsJSON was refactored" />
     <MESSAGE value="Fixed issues in Analytics" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed issues in Analytics" />
+    <MESSAGE value="added service analysisForecasting()" />
+    <option name="LAST_COMMIT_MESSAGE" value="added service analysisForecasting()" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
