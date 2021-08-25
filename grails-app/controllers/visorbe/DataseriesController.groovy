@@ -211,13 +211,7 @@ class DataseriesController implements GrailsConfigurationAware {
                     }
                     outs << "### Indexces \n\n".bytes
                     outs << "  * **IQCA** .- Quito Air Quality Index\n\n".bytes
-                    if(complete) {
-                        outs << "  * **fc_IQCA** .- Quito Air Quality forecasting Index\n\n".bytes
-                    }
                     outs << "  * **AQI** .- Air quality international (USA) index\n\n".bytes
-                    if(complete) {
-                        outs << "  * **fc_AQI** .- Air quality international (USA) forecasting index\n\n".bytes
-                    }
                 }
             }
             else
@@ -229,7 +223,7 @@ class DataseriesController implements GrailsConfigurationAware {
                     outs << "data_1h_forecastingX;data_1h_forecastingY;".bytes
                     outs << "_2;concentration;conct_data;conct_data_health;conct_data_x;conct_data_y;conct_data_min;".bytes
                     outs << "conct_data_max;conct_forecasting;conct_forecasting_min;".bytes
-                    outs << "conct_forecasting_max;_3;IQCA;fc_IQCA;AQI;fc_AQI".bytes
+                    outs << "conct_forecasting_max;_3;IQCA;AQI".bytes
                 } else {
                     outs << "row;magnitude;station;datetime;utcdatetime;_1;data_1h;_2;concentration;conct_data;_3;IQCA;AQI".bytes
                 }
@@ -313,18 +307,8 @@ class DataseriesController implements GrailsConfigurationAware {
                             }
                         }
                         outs << "|;".bytes
-                        def iqca = magnitude_schema?.IQCA?.value?.call(rr)
-                        outs << "${setDecimalP(toStr(iqca), decimalp)};".bytes
-                        if(complete) {
-                            def fc_iqca = magnitude_schema?.IQCA?.value?.call(rrfc)
-                            outs << "${setDecimalP(toStr(fc_iqca), decimalp)};".bytes
-                        }
-                        def aqi = magnitude_schema?.AQI?.value?.call(rr)
-                        outs << "${setDecimalP(toStr(aqi), decimalp)};".bytes
-                        if(complete) {
-                            def fc_aqi = magnitude_schema?.AQI?.value?.call(rrfc)
-                            outs << "${setDecimalP(toStr(fc_aqi), decimalp)}".bytes
-                        }
+                        outs << "${setDecimalP(toStr(rr?.iqca, 0), decimalp)};".bytes
+                        outs << "${setDecimalP(toStr(rr?.aqi, 0), decimalp)};".bytes
                         outs << "\n"
                         n++
                         if(n==1024) {

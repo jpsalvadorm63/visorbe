@@ -4,6 +4,9 @@ class UrlMappings {
     static mappings = {
 		get "/dshbrd/csvdn"(controller:'dataseries', action:'qryDsCSV')
 		get "/dshbrd/jsondn"(controller:'dataseries', action:'qryDsJSON')
+
+		get "/analytics/period"(controller:'analytics', action:'qryPeriod')
+
 		get "/dshbrd/mimapa"(controller:'dataseries', action:'mimapa')
 		get "/analytics/fc"(controller:'analytics', action:'analysisForecasting')
 		get "/analytics/ld"(controller:'analytics', action:'analysisLastData')

@@ -1514,7 +1514,9 @@ class ModelService {
 				f.fc8max,
 				f.fc24,
 				f.fc24min,
-				f.fc24max
+				f.fc24max,
+				d.iqca,
+				d.aqi
 			from
 				dashboard.api_dataseries_vw(
 					'${itvl}',
