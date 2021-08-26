@@ -36,6 +36,7 @@ class AnalyticsController implements GrailsConfigurationAware {
         String sqlstr = """
             select array_to_json(array_agg(row_to_json(ds))) longjson from(
                 select
+                    ${year} "year",
                     ds.magnitude_id,
                     ds.opoint_id,
                     array_agg(ds.datetime order by ds.datetime) datetime,
