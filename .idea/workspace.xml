@@ -4,26 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec4f475-793d-4d00-a1f3-acd5e92a5007" name="Default Changelist" comment="Added period service">
+    <list default="true" id="7ec4f475-793d-4d00-a1f3-acd5e92a5007" name="Default Changelist" comment="Period service, added year">
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileSnapshots.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisForecasting_closure1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisLastData_closure2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitudeDate_closure3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitude_closure4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTot_closure5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ApplicationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/ApplicationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings$__clinit__closure1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings$__clinit__closure1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/WsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/visorbe/WsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/visorbe-0.2.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/visorbe-0.2.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/visorbe-0.2.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/visorbe-0.2.war.original" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/META-INF/grails.build.info" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/META-INF/grails.build.info" afterDir="false" />
@@ -139,7 +126,9 @@
       <workItem from="1627316709433" duration="5935000" />
       <workItem from="1628004466340" duration="9253000" />
       <workItem from="1629918330461" duration="833000" />
-      <workItem from="1629920558354" duration="7389000" />
+      <workItem from="1629920558354" duration="7567000" />
+      <workItem from="1630036309943" duration="2568000" />
+      <workItem from="1630163282083" duration="916000" />
     </task>
     <task id="LOCAL-00001" summary="IQCA &amp; AQI formulas redefined">
       <created>1618013520101</created>
@@ -211,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629925150535</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Period service, added year">
+      <created>1629999069030</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1629999069030</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TraitInjectorService">
@@ -465,7 +461,8 @@
     <MESSAGE value="added service analysisForecasting()" />
     <MESSAGE value="Added  analysisLastData(itvl)" />
     <MESSAGE value="Added period service" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added period service" />
+    <MESSAGE value="Period service, added year" />
+    <option name="LAST_COMMIT_MESSAGE" value="Period service, added year" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

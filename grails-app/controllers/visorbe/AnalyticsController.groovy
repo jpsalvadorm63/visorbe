@@ -34,49 +34,64 @@ class AnalyticsController implements GrailsConfigurationAware {
         String longjson = null
         String
         String sqlstr = """
-            select array_to_json(array_agg(row_to_json(ds))) longjson from(
+            select
+                array_to_json(array_agg(row_to_json(ds))) longjson
+            from (
                 select
                     ${year} "year",
-                    ds.magnitude_id,
-                    ds.opoint_id,
-                    array_agg(ds.datetime order by ds.datetime) datetime,
-                    case
-                        when ds.magnitude_id in (3,10) then array_agg(ds.avg12 order by ds.datetime)
-                        when ds.magnitude_id in (1,24) then array_agg(ds.avg24 order by ds.datetime)
-                        when ds.magnitude_id = 24 then array_agg(ds.avg8 order by ds.datetime)
-                        else array_agg(ds.avg1 order by ds.datetime)
-                    end concentration,
-                    case
-                        when ds.magnitude_id in (3,10) then array_agg(ds.min12 order by ds.datetime)
-                        when ds.magnitude_id in (1,24) then array_agg(ds.min24 order by ds.datetime)
-                        when ds.magnitude_id = 24 then array_agg(ds.min8 order by ds.datetime)
-                        else array_agg(ds.min1 order by ds.datetime)
-                    end min_concentration,
-                    case
-                        when ds.magnitude_id in (3,10) then array_agg(ds.max12 order by ds.datetime)
-                        when ds.magnitude_id in (1,24) then array_agg(ds.max24 order by ds.datetime)
-                        when ds.magnitude_id = 24 then array_agg(ds.max8 order by ds.datetime)
-                        else array_agg(ds.max1 order by ds.datetime)
-                    end max_concentration,
-                    case
-                        when ds.magnitude_id in (1,3,6,8,10,24) then array_agg(ds.aqi order by ds.datetime)
-                    end aqi,
-                    case
-                        when ds.magnitude_id in (1,3,6,8,10,24) then array_agg(ds.iqca order by ds.datetime)
-                    end iqca
-                from dashboard.api_dataseries(
-                    '${timelap}',
-                    '${row}',
-                    null,
-                    null,
-                    ${year},
-                    ${month},
-                    ${dom},
-                    0
-                ) ds
-                where ds.magnitude_id in ${magnitudes} and ds.opoint_id in ${opoints} 
-                group by ds.magnitude_id,ds.opoint_id
-            ) ds
+                    q.magnitude_id,
+                    q.opoint_id,
+                    array_agg(ds order by ds.datetime) as data
+                from
+                     (
+                        select
+                               magnitude_id,
+                               opoint_id
+                        from dashboard.magop_ids
+                        where magnitude_id in ${magnitudes} and opoint_id in ${opoints}
+                     ) q
+                     left join
+                     (
+                         select
+                            ds.magnitude_id m,
+                            ds.opoint_id o,
+                            ds.datetime,
+                            case
+                                when ds.magnitude_id in (3,10) then ds.avg12
+                                when ds.magnitude_id in (1,24) then ds.avg24
+                                when ds.magnitude_id = 24 then ds.avg8
+                                else ds.avg1
+                            end c,
+                            case
+                                when ds.magnitude_id in (3,10) then ds.min12
+                                when ds.magnitude_id in (1,24) then ds.min24
+                                when ds.magnitude_id = 24 then ds.min8
+                                else ds.min1
+                            end mn,
+                            case
+                                when ds.magnitude_id in (3,10) then ds.max12
+                                when ds.magnitude_id in (1,24) then ds.max24
+                                when ds.magnitude_id = 24 then ds.max8
+                                else ds.max1
+                            end mx,
+                            case
+                                when ds.magnitude_id in (1,3,6,8,10,24) then ds.aqi
+                            end aqi,
+                            case
+                                when ds.magnitude_id in (1,3,6,8,10,24) then ds.iqca
+                            end iqca
+                         from dashboard.api_dataseries(
+                             '${timelap}',
+                             '${row}',
+                             null,
+                             null,
+                             ${year},
+                             ${month},
+                             ${dom},
+                             0
+                        ) ds
+                     ) ds on q.magnitude_id = ds.m and q.opoint_id = ds.o
+                group by q.magnitude_id, q.opoint_id) ds
         """
         def sqlconn = new Sql(dataSource)
         sqlconn.eachRow(sqlstr) { it ->
