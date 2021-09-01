@@ -279,7 +279,10 @@ class DataseriesController implements GrailsConfigurationAware {
                             }
                         } else
                         if([1,3,10].contains(magnitude_id)) {
-                            outs << "${(lang == 'es')?'24 horas':'24 hours'};".bytes
+                            if(magnitude_id == 1)
+                                outs << "${(lang == 'es')?'24 horas':'24 hours'};".bytes
+                            else
+                                outs << "${(lang == 'es')?'12 horas':'12 hours'};".bytes
                             def c24h = toStr(rr?.value24h,3)
                             outs << "${setDecimalP(c24h, decimalp)};".bytes
                             if(complete) {
