@@ -92,6 +92,7 @@ environments:
         dataSource:
             dbCreate: update
             url: jdbc:postgresql://50.116.33.232:5432/visorprod
+            pooled: true
             properties:
                 jmxEnabled: true
                 initialSize: 5

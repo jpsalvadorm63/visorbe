@@ -4,17 +4,453 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec4f475-793d-4d00-a1f3-acd5e92a5007" name="Default Changelist" comment="Period service, added year">
+    <list default="true" id="7ec4f475-793d-4d00-a1f3-acd5e92a5007" name="Default Changelist" comment="PM shows 12 hours data">
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/fileSnapshots.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.5/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/visorbe-0.2.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/visorbe-0.2.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/visorbe-0.2.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/visorbe-0.2.war.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/META-INF/grails.build.info" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/META-INF/grails.build.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.dependencies" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.mainClass" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTotMagnitude_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController$_analysisTot_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/AnalyticsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ApplicationController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ApplicationLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/BootStrap$_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/BootStrap$_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/BootStrap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$DashboardRec.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$DatasetFc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$DatasetVw.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure15.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16$_closure17$_closure18.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16$_closure17$_closure19.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16$_closure17$_closure20.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16$_closure17$_closure21.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16$_closure17$_closure22.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16$_closure17$_closure23$_closure24.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16$_closure17$_closure23$_closure25.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16$_closure17$_closure23$_closure26.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16$_closure17$_closure23.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16$_closure17.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13$_closure16.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8$_closure13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDashboard_closure8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDn_closure5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesDn_closure6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesFc_closure3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesFc_closure4$_closure11$_closure12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesFc_closure4$_closure11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesFc_closure4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesVw_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesVw_closure2$_closure9$_closure10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesVw_closure2$_closure9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController$_qryDataseriesVw_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DashboardService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_qryDsCSV_closure6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_queryToArray_closure7$_closure8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController$_queryToArray_closure7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/DataseriesController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findIdxInRanges_closure315.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure313.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__findOpoint_closure314.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__magnitudeById_closure316.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readDistances_closure317.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readMagnitudes_closure312.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints4OpenAQ_closure311.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$__tt__readOpoints_closure310.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_calcIQCA24h_closure300.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure100.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure101.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure102.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure103.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure104.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure105.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure106.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure107.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure108.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure109.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure110.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure111.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure112.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure113.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure114.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure115.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure116.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure117.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure118.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure119.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure120.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure121.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure122.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure123.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure124.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure125.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure126.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure127.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure128.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure129.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure130.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure131.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure132.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure133.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure134.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure135.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure136.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure137.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure138.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure139.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure140.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure141.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure142.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure143.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure144.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure145.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure146.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure147.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure148.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure149.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure15.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure150.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure151.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure152.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure153.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure154.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure155.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure156.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure157.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure158.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure159.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure16.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure160.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure161.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure162.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure163.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure164.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure165.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure166.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure167.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure168.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure169.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure17.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure170.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure171.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure172.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure173.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure174.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure175.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure176.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure177.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure178.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure179.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure18.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure180.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure181.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure182.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure183.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure184.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure185.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure186.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure187.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure188.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure189.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure19.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure190.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure191.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure192.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure193.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure194.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure195.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure196.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure197.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure198.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure199.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure20.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure200.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure201.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure202.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure203.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure204.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure205.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure206.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure207.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure208.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure209.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure21.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure210.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure211.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure212.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure213.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure214.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure215.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure216.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure217.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure218.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure219.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure22.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure220.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure221.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure222.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure223.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure224.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure225.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure226.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure227.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure228.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure229.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure23.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure230.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure231.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure232.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure233.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure234.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure235.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure236.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure237.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure238.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure239.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure24.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure240.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure241.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure242.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure243.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure244.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure245.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure246.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure247.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure248.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure249.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure25.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure250.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure251.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure252.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure253.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure254.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure255.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure256.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure257.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure258.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure259.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure26.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure260.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure261.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure262.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure263.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure264.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure265.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure266.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure267.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure268.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure269.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure27.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure270.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure271.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure272.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure273.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure274.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure275.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure276.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure277.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure278.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure279.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure28.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure280.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure281.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure282.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure283.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure284.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure285.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure286.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure287$_closure318.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure287.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure288$_closure319.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure288.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure289$_closure320.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure289.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure29.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure290$_closure321.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure290.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure291$_closure322.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure291.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure292$_closure323.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure292.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure30.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure31.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure32.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure33.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure34.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure35.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure36.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure37.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure38.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure39.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure40.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure41.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure42.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure43.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure44.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure45.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure46.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure47.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure48.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure49.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure50.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure51.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure52.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure53.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure54.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure55.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure56.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure57.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure58.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure59.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure60.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure61.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure62.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure63.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure64.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure65.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure66.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure67.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure68.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure69.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure70.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure71.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure72.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure73.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure74.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure75.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure76.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure77.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure78.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure79.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure80.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure81.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure82.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure83.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure84.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure85.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure86.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure87.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure88.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure89.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure90.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure91.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure92.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure93.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure94.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure95.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure96.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure97.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure98.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_closure99.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_conn_closure297.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findIdxInRanges_closure298.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_findOpoint_closure296.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIcolors_closure302.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getAQIhealth_closure301.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getHealth_closure306.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAcolor_closure304.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIQCAhealth_closure303.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getIdxHealth_closure305.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_getSql4_1mg_closure308.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_init_closure309.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_magnitudeById_closure299.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readDistances_closure307.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readMagnitudes_closure295.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints4OpenAQ_closure294.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService$_readOpoints_closure293.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/ModelService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryAQMagnitudes_closure3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryDataset_closure4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryDataset_closure5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryDataset_closure6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryDataset_closure7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryDataset_closure8$_closure12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryDataset_closure8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryDataset_closure9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryOpoint_closure1$_closure10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryOpoint_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryOpoint_closure2$_closure11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController$_qryOpoint_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/OpenaqController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$__tt__getSql4Magnitude_closure15.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$__tt__getSql4Magnitude_closure16.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$__tt__getSql4Magnitude_closure17.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$__tt__getSql4Magnitude_closure18.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$__tt__getSql4Station_closure12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$__tt__getSql4Station_closure13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$__tt__getSql4Station_closure14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getDataFieldN_closure6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getDataFieldTitle_closure5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getDataField_closure4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getMagnitudes_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getSql4Data_closure7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getSql4Magnitude_closure11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getSql4Station_closure9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getSqlData_closure8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getSqlMagnitudes_closure10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getSqlTiming_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService$_getStations_closure3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/SqlBuilderService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings$__clinit__closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/UrlMappings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/WsController$_querydbData_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/WsController$_querydbMagnitude_closure3$_closure5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/WsController$_querydbMagnitude_closure3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/WsController$_querydbStation_closure2$_closure4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/WsController$_querydbStation_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/visorbe/WsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_application_index_gson$_run_closure1$_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_application_index_gson$_run_closure1$_closure3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_application_index_gson$_run_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_application_index_gson.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_error_gson$_run_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_error_gson.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_errors__errors_gson$_run_closure1$_closure2$_closure4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_errors__errors_gson$_run_closure1$_closure2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_errors__errors_gson$_run_closure1$_closure3$_closure5$_closure6$_closure7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_errors__errors_gson$_run_closure1$_closure3$_closure5$_closure6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_errors__errors_gson$_run_closure1$_closure3$_closure5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_errors__errors_gson$_run_closure1$_closure3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_errors__errors_gson$_run_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_errors__errors_gson.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_notFound_gson$_run_closure1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_notFound_gson.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gson-classes/main/visorbe_object__object_gson.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/visorbe-0.2.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/visorbe-0.2.war.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/META-INF/grails.build.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/stacktrace.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/war/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/grails-app/controllers/visorbe/AnalyticsController.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/grails-app/controllers/visorbe/AnalyticsController.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grails-app/controllers/visorbe/UrlMappings.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/grails-app/controllers/visorbe/UrlMappings.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +462,45 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="visorbe" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="visorbe" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="JPA Structure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="JPA Structure" value="false" />
+      </map>
+    </option>
   </component>
   <component name="ProjectId" id="1qjTzgLT0RJvOgxf7KGGrxxyTzi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -54,9 +527,9 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -74,6 +547,10 @@
     <configuration name="rest-api_1#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" runType="Run single request">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Grails.Grails: visorbe" />
+      <item itemvalue="HTTP Request.rest-api_1#1" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="HTTP Request.rest-api_1#1" />
@@ -128,7 +605,13 @@
       <workItem from="1629918330461" duration="833000" />
       <workItem from="1629920558354" duration="7567000" />
       <workItem from="1630036309943" duration="2568000" />
-      <workItem from="1630163282083" duration="916000" />
+      <workItem from="1630163282083" duration="3400000" />
+      <workItem from="1632018531840" duration="2696000" />
+      <workItem from="1632179330691" duration="67000" />
+      <workItem from="1632179405674" duration="1418000" />
+      <workItem from="1632184600720" duration="3051000" />
+      <workItem from="1632191779562" duration="1690000" />
+      <workItem from="1632207113690" duration="25000000" />
     </task>
     <task id="LOCAL-00001" summary="IQCA &amp; AQI formulas redefined">
       <created>1618013520101</created>
@@ -207,7 +690,21 @@
       <option name="project" value="LOCAL" />
       <updated>1629999069030</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Period service, changed service query">
+      <created>1630164291052</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1630164291052</updated>
+    </task>
+    <task id="LOCAL-00013" summary="PM shows 12 hours data">
+      <created>1630497849568</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1630497849568</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TraitInjectorService">
@@ -218,25 +715,25 @@
             <StateHolder>
               <option name="knownFactories">
                 <list>
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-domain-class/3.3.11/85b06a40e55cca1cc369c1acac67e5a7918968d6/grails-plugin-domain-class-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-taglib/3.3.2/ac756b51210375b92014a4a206a0443e93474491/grails-web-taglib-3.3.2.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-common/3.3.11/d4501856e2343868e0cf6be1cce3bce130412a8e/grails-web-common-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/converters/3.3.1/afc1ea5fa7d7d52e83017856fa5a651d38145048/converters-3.3.1.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/services/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-databinding/3.3.11/4a0119aef6f0abe064135ac87fb96ca37a76a4d9/grails-web-databinding-3.3.11.jar!/META-INF/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/hibernate5/6.1.12/3a6cab2f373067ea3112d8a1489fb8d139669389/hibernate5-6.1.12.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-common/3.3.11/d4501856e2343868e0cf6be1cce3bce130412a8e/grails-web-common-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/3.3.11/a596ee9c243d7ad6ab82c41f5f77a685f918beb4/grails-plugin-codecs-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-taglib/3.3.2/ac756b51210375b92014a4a206a0443e93474491/grails-web-taglib-3.3.2.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/services/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-core/3.3.11/43b2b59f83e417cf0785df8d474e423362c01793/grails-core-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-validation/3.3.11/66a59f07685f61c638e5e25039d3c78a544e6c7c/grails-validation-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-controllers/3.3.11/d89dc46b3250aaa4216e8e2bb4dc4213ce96d397/grails-plugin-controllers-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-domain-class/3.3.11/85b06a40e55cca1cc369c1acac67e5a7918968d6/grails-plugin-domain-class-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-support/6.1.12.RELEASE/ce853a725ff8358616f5ba3379e9e130a56e4833/grails-datastore-gorm-support-6.1.12.RELEASE.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/converters/3.3.1/afc1ea5fa7d7d52e83017856fa5a651d38145048/converters-3.3.1.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-services/3.3.11/821fb8260862189be7a8bf01fa6bad2318658cc4/grails-plugin-services-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/gsp/3.3.2/f1e032675f2233c0b18f4de8e74d830197d11ac5/gsp-3.3.2.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-rest/3.3.11/7fb7e221039472a0e0dd1b6e1c74902871eb0cd8/grails-plugin-rest-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.3.11/621f30ad8ae7b848aab4b740894448070ad4cc54/grails-web-3.3.11.jar!/META-INF/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-interceptors/3.3.11/aecbdb9b20f271d63cd307d55dfafdbf3c0faae3/grails-plugin-interceptors-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-core/3.3.11/43b2b59f83e417cf0785df8d474e423362c01793/grails-core-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/gsp/3.3.2/f1e032675f2233c0b18f4de8e74d830197d11ac5/gsp-3.3.2.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-services/3.3.11/821fb8260862189be7a8bf01fa6bad2318658cc4/grails-plugin-services-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/3.3.11/a596ee9c243d7ad6ab82c41f5f77a685f918beb4/grails-plugin-codecs-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-support/6.1.12.RELEASE/ce853a725ff8358616f5ba3379e9e130a56e4833/grails-datastore-gorm-support-6.1.12.RELEASE.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-controllers/3.3.11/d89dc46b3250aaa4216e8e2bb4dc4213ce96d397/grails-plugin-controllers-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.3.11/621f30ad8ae7b848aab4b740894448070ad4cc54/grails-web-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-rest/3.3.11/7fb7e221039472a0e0dd1b6e1c74902871eb0cd8/grails-plugin-rest-3.3.11.jar!/META-INF/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-taglib/3.3.2/75056cd2647d469cb2bc36dd7dbb7e708fe8583/grails-taglib-3.3.2.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-validation/3.3.11/66a59f07685f61c638e5e25039d3c78a544e6c7c/grails-validation-3.3.11.jar!/META-INF/grails.factories" />
                 </list>
               </option>
               <option name="traits">
@@ -292,24 +789,24 @@
             <StateHolder>
               <option name="knownFactories">
                 <list>
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-domain-class/3.3.11/85b06a40e55cca1cc369c1acac67e5a7918968d6/grails-plugin-domain-class-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-taglib/3.3.2/ac756b51210375b92014a4a206a0443e93474491/grails-web-taglib-3.3.2.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-common/3.3.11/d4501856e2343868e0cf6be1cce3bce130412a8e/grails-web-common-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/converters/3.3.1/afc1ea5fa7d7d52e83017856fa5a651d38145048/converters-3.3.1.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/services/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-databinding/3.3.11/4a0119aef6f0abe064135ac87fb96ca37a76a4d9/grails-web-databinding-3.3.11.jar!/META-INF/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/hibernate5/6.1.12/3a6cab2f373067ea3112d8a1489fb8d139669389/hibernate5-6.1.12.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-common/3.3.11/d4501856e2343868e0cf6be1cce3bce130412a8e/grails-web-common-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/3.3.11/a596ee9c243d7ad6ab82c41f5f77a685f918beb4/grails-plugin-codecs-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-taglib/3.3.2/ac756b51210375b92014a4a206a0443e93474491/grails-web-taglib-3.3.2.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/services/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-core/3.3.11/43b2b59f83e417cf0785df8d474e423362c01793/grails-core-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-validation/3.3.11/66a59f07685f61c638e5e25039d3c78a544e6c7c/grails-validation-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-controllers/3.3.11/d89dc46b3250aaa4216e8e2bb4dc4213ce96d397/grails-plugin-controllers-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-domain-class/3.3.11/85b06a40e55cca1cc369c1acac67e5a7918968d6/grails-plugin-domain-class-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-support/6.1.12.RELEASE/ce853a725ff8358616f5ba3379e9e130a56e4833/grails-datastore-gorm-support-6.1.12.RELEASE.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/converters/3.3.1/afc1ea5fa7d7d52e83017856fa5a651d38145048/converters-3.3.1.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-services/3.3.11/821fb8260862189be7a8bf01fa6bad2318658cc4/grails-plugin-services-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-rest/3.3.11/7fb7e221039472a0e0dd1b6e1c74902871eb0cd8/grails-plugin-rest-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.3.11/621f30ad8ae7b848aab4b740894448070ad4cc54/grails-web-3.3.11.jar!/META-INF/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-interceptors/3.3.11/aecbdb9b20f271d63cd307d55dfafdbf3c0faae3/grails-plugin-interceptors-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-core/3.3.11/43b2b59f83e417cf0785df8d474e423362c01793/grails-core-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-services/3.3.11/821fb8260862189be7a8bf01fa6bad2318658cc4/grails-plugin-services-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/3.3.11/a596ee9c243d7ad6ab82c41f5f77a685f918beb4/grails-plugin-codecs-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-support/6.1.12.RELEASE/ce853a725ff8358616f5ba3379e9e130a56e4833/grails-datastore-gorm-support-6.1.12.RELEASE.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-controllers/3.3.11/d89dc46b3250aaa4216e8e2bb4dc4213ce96d397/grails-plugin-controllers-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.3.11/621f30ad8ae7b848aab4b740894448070ad4cc54/grails-web-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-rest/3.3.11/7fb7e221039472a0e0dd1b6e1c74902871eb0cd8/grails-plugin-rest-3.3.11.jar!/META-INF/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-taglib/3.3.2/75056cd2647d469cb2bc36dd7dbb7e708fe8583/grails-taglib-3.3.2.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-validation/3.3.11/66a59f07685f61c638e5e25039d3c78a544e6c7c/grails-validation-3.3.11.jar!/META-INF/grails.factories" />
                 </list>
               </option>
               <option name="traits">
@@ -364,25 +861,25 @@
             <StateHolder>
               <option name="knownFactories">
                 <list>
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-domain-class/3.3.11/85b06a40e55cca1cc369c1acac67e5a7918968d6/grails-plugin-domain-class-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-taglib/3.3.2/ac756b51210375b92014a4a206a0443e93474491/grails-web-taglib-3.3.2.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-common/3.3.11/d4501856e2343868e0cf6be1cce3bce130412a8e/grails-web-common-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/converters/3.3.1/afc1ea5fa7d7d52e83017856fa5a651d38145048/converters-3.3.1.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/services/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-databinding/3.3.11/4a0119aef6f0abe064135ac87fb96ca37a76a4d9/grails-web-databinding-3.3.11.jar!/META-INF/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/hibernate5/6.1.12/3a6cab2f373067ea3112d8a1489fb8d139669389/hibernate5-6.1.12.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-common/3.3.11/d4501856e2343868e0cf6be1cce3bce130412a8e/grails-web-common-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/3.3.11/a596ee9c243d7ad6ab82c41f5f77a685f918beb4/grails-plugin-codecs-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-taglib/3.3.2/ac756b51210375b92014a4a206a0443e93474491/grails-web-taglib-3.3.2.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/services/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.11/7e22818ba02ee711adfdbde9dc122b927c0c0b2f/grails-web-url-mappings-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-core/3.3.11/43b2b59f83e417cf0785df8d474e423362c01793/grails-core-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-validation/3.3.11/66a59f07685f61c638e5e25039d3c78a544e6c7c/grails-validation-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-controllers/3.3.11/d89dc46b3250aaa4216e8e2bb4dc4213ce96d397/grails-plugin-controllers-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-domain-class/3.3.11/85b06a40e55cca1cc369c1acac67e5a7918968d6/grails-plugin-domain-class-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-support/6.1.12.RELEASE/ce853a725ff8358616f5ba3379e9e130a56e4833/grails-datastore-gorm-support-6.1.12.RELEASE.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/converters/3.3.1/afc1ea5fa7d7d52e83017856fa5a651d38145048/converters-3.3.1.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-services/3.3.11/821fb8260862189be7a8bf01fa6bad2318658cc4/grails-plugin-services-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/gsp/3.3.2/f1e032675f2233c0b18f4de8e74d830197d11ac5/gsp-3.3.2.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-rest/3.3.11/7fb7e221039472a0e0dd1b6e1c74902871eb0cd8/grails-plugin-rest-3.3.11.jar!/META-INF/grails.factories" />
-                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.3.11/621f30ad8ae7b848aab4b740894448070ad4cc54/grails-web-3.3.11.jar!/META-INF/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-interceptors/3.3.11/aecbdb9b20f271d63cd307d55dfafdbf3c0faae3/grails-plugin-interceptors-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-core/3.3.11/43b2b59f83e417cf0785df8d474e423362c01793/grails-core-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/gsp/3.3.2/f1e032675f2233c0b18f4de8e74d830197d11ac5/gsp-3.3.2.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-services/3.3.11/821fb8260862189be7a8bf01fa6bad2318658cc4/grails-plugin-services-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/3.3.11/a596ee9c243d7ad6ab82c41f5f77a685f918beb4/grails-plugin-codecs-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-support/6.1.12.RELEASE/ce853a725ff8358616f5ba3379e9e130a56e4833/grails-datastore-gorm-support-6.1.12.RELEASE.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-controllers/3.3.11/d89dc46b3250aaa4216e8e2bb4dc4213ce96d397/grails-plugin-controllers-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.3.11/621f30ad8ae7b848aab4b740894448070ad4cc54/grails-web-3.3.11.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-rest/3.3.11/7fb7e221039472a0e0dd1b6e1c74902871eb0cd8/grails-plugin-rest-3.3.11.jar!/META-INF/grails.factories" />
                   <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-taglib/3.3.2/75056cd2647d469cb2bc36dd7dbb7e708fe8583/grails-taglib-3.3.2.jar!/META-INF/grails.factories" />
+                  <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-validation/3.3.11/66a59f07685f61c638e5e25039d3c78a544e6c7c/grails-validation-3.3.11.jar!/META-INF/grails.factories" />
                 </list>
               </option>
               <option name="traits">
@@ -462,7 +959,9 @@
     <MESSAGE value="Added  analysisLastData(itvl)" />
     <MESSAGE value="Added period service" />
     <MESSAGE value="Period service, added year" />
-    <option name="LAST_COMMIT_MESSAGE" value="Period service, added year" />
+    <MESSAGE value="Period service, changed service query" />
+    <MESSAGE value="PM shows 12 hours data" />
+    <option name="LAST_COMMIT_MESSAGE" value="PM shows 12 hours data" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

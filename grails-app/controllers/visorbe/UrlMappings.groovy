@@ -11,7 +11,11 @@ class UrlMappings {
 		get "/analytics/fc"(controller:'analytics', action:'analysisForecasting')
 		get "/analytics/ld"(controller:'analytics', action:'analysisLastData')
 		get "/analytics/tot"(controller:'analytics', action:'analysisTot')
-		get "/analytics/totmagn"(controller:'analytics', action:'analysisTotMagnitude')
+		get "/analytics/totxmagn"(controller:'analytics', action:'analysisTotMagnitude')
+		get "/analytics/totmagn4opoint"(controller:'analytics', action:'analysisTotMagnitude4Opoint')
+		get "/analytics/totxmagnxdate"(controller:'analytics', action:'analysisTotMagnitudeXDate')
+		get "/analytics/totmagnxdate4opoint"(controller:'analytics', action:'analysisTotMagnitudeXDate4Opoint')
+
 		get "/analytics/totmagndate"(controller:'analytics', action:'analysisTotMagnitudeDate') // http://localhost:9090/analytics/totmagndate?itvl=1+month&magn=8&opoint=5&year=2020&month=3&dom=13
 		get "/ws/dbresult"(controller:'ws', action:'qwerydb')
 		get "/dshbrd/dataseries"(controller:'dashboard', action:'qryDataseriesVw')
